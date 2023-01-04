@@ -6,10 +6,12 @@ import {errorCheck} from '../../Services/Validate';
 import './RegisterCard.css';
 import { AddUser } from '../../Services/UserManagement';
 import { useChangeUserContext } from '../../Providers/LoggedUserProvider';
+import { useNavigate } from 'react-router-dom';
 
 const RegisterCard = () => {
 
     const userChange = useChangeUserContext();
+    const navigate = useNavigate();
 
     const [user, setUser] = useState({
         username : '',
@@ -86,6 +88,8 @@ const RegisterCard = () => {
             AddUser(user);
             console.log('registrado');
             userChange(user);
+            navigate('/userHome');
+
             
 
             

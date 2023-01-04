@@ -27,6 +27,18 @@
       "username": "Webds",
       "email": "web@gma",
       "password": "12345678"
+    },
+    {
+      "id": "pepetoni",
+      "username": "pepetoni",
+      "email": "pe@gma",
+      "password": "12345678"
+    },
+    {
+      "id": "pepi",
+      "username": "pepi",
+      "email": "de@de",
+      "password": "12345678"
     }
   ]
 }

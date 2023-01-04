@@ -1,0 +1,26 @@
+.signOutDesign{
+    text-align: right;
+    align-items: flex-end;
+    color: lightgrey;
+    cursor:pointer;
+    margin-right: 2rem;
+    margin-bottom: 1.7rem;
+    float:right;
+}
+
+.signOutDesign:hover{
+    color:darkred;
+    transition:0.5s;
+}
+
+.avatarDesign{
+    margin: 1rem;
+    
+}
+
+.avatarDesign:hover{
+    cursor:pointer;
+    border-radius: 2px;
+    border-color:white;
+    transition:0.5s;
+}

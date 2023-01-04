@@ -1,6 +1,9 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useChangeUserContext, useUserContext } from '../../Providers/LoggedUserProvider';
+import { Avatar } from 'antd';
+import {UserOutlined} from '@ant-design/icons';
+import './LoggedHeader.css';
 
 const LoggedHeader = () => {
 
@@ -20,7 +23,7 @@ const LoggedHeader = () => {
         <div className="linkDesign" onClick={()=>setTimeout(()=>{navigate("/mycompos")},250)}>My Compos</div>
         <div className="linkDesign" onClick={()=>setTimeout(()=>{navigate("/createnew")},250)}>Create New</div>
         <div className="linkDesign" onClick={()=>setTimeout(()=>{navigate("/explore")},250)}>Explore</div>
-        <div className="profileDesign">Hello, {user.username}</div>
+        <Avatar onClick={() => navigate("/profile")}className="avatarDesign" size="large" icon={<UserOutlined/>}/>
         <div className="signOutDesign" onClick={() => signOut()}>Sign out</div>
 
         
