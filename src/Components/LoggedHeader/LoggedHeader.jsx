@@ -21,7 +21,7 @@ const LoggedHeader = () => {
         <div className="linkDesign" onClick={()=>setTimeout(()=>{navigate("/createnew")},250)}>Create New</div>
         <div className="linkDesign" onClick={()=>setTimeout(()=>{navigate("/explore")},250)}>Explore</div>
         <div className="profileDesign">Hello, {user.username}</div>
-        <div className="signOutDesign" onClick={signOut()}>Sign out</div>
+        <div className="signOutDesign" onClick={() => signOut()}>Sign out</div>
 
         
     </div>
