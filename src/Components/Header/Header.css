@@ -1,0 +1,25 @@
+
+
+.titleDesign{
+  margin-left: 2rem;
+  display: flex;
+  color: white;
+  cursor:default;
+   
+}
+
+.headerDesign {
+    background-color: darkcyan;
+    height: 6rem;
+    display: flex;
+    flex-direction: row;
+    text-align:left;
+    position:relative;
+
+ 
+   
+}
+
+
+
+

@@ -1,0 +1,9 @@
+.pizarraDesign {
+    height:50rem;
+    background-color: antiquewhite;
+    display: inline-block;
+}
+
+.element {
+    cursor:pointer;
+}

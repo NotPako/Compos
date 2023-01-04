@@ -1,0 +1,27 @@
+.listDesign{
+    display: flex;
+    float:left;
+    background-color: cadetblue;
+    width:20rem;
+    height:max-content;
+}
+
+#newElement {
+    height: max-content;
+    margin-left: 1rem;
+    margin-top: 0.5rem;
+}
+
+.elementsDesign {
+    cursor: pointer;
+}
+
+.elementsDesign:hover {
+    color:whitesmoke;
+}
+
+.elDraggable{
+    cursor:pointer;
+    height:max-content;
+    width:max-content;
+}

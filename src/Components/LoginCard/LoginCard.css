@@ -1,0 +1,23 @@
+.loginCardDesign{
+    align-items: center;
+    text-align: center;
+    flex-direction: column;
+    border-radius: 20%;
+    border-color:blue;
+}
+.fieldDesign{
+    width: 15rem;
+    margin-left:2rem;
+}
+
+
+.errorMsg{
+    color:red;
+    font-size: small;
+    cursor:default;
+    width:12rem;
+    text-align: center;
+    display:flex;
+    margin: auto;
+
+}

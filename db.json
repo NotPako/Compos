@@ -1,0 +1,32 @@
+{
+  "profiles": [
+    {
+      "username": "Pepe",
+      "email": "pepe@gmail.com",
+      "password": "thisisajson2?"
+    },
+    {
+      "username": "Paco",
+      "email": "pabg@gmail.com",
+      "password": "12345678"
+    },
+    {
+      "id": 23,
+      "username": "badasd",
+      "email": "pabg@e",
+      "password": "12345678"
+    },
+    {
+      "id": "badasd",
+      "username": "badasd",
+      "email": "pabg@e",
+      "password": "12345678"
+    },
+    {
+      "id": "Webds",
+      "username": "Webds",
+      "email": "web@gma",
+      "password": "12345678"
+    }
+  ]
+}

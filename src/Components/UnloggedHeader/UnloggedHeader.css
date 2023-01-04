@@ -1,0 +1,47 @@
+.linkDesign{
+    transition:0.5s;
+    cursor: pointer;
+    margin-bottom: 1.5rem;
+    margin-right: 4rem;
+    color: white;
+    font-weight: 700;
+    font-size: x-large;
+}
+
+.linkDesign:hover{
+    transition:0.5s;
+    color:grey;
+}
+
+.linksDesign {
+    display: flex;
+    flex-direction: row;
+    margin-left:5rem;
+    align-items: flex-end;
+ 
+   
+}
+
+.logButDesign {
+    text-align: right;
+    align-items: flex-end;
+    color: lightgrey;
+    cursor:pointer;
+    margin-right: 2rem;
+    margin-bottom: 1rem;
+    float:right;
+}
+
+.barreta {
+    text-align: right;
+    align-items: flex-end;
+    color: lightgrey;
+    margin-right: 2rem;
+    margin-bottom: 1rem;
+    float:right;
+}
+
+.logButDesign:hover{
+    transition:0.5s;
+    color: white;
+}
