@@ -20,7 +20,9 @@
       "id": "badasd",
       "username": "badasd",
       "email": "pabg@e",
-      "password": "12345678"
+      "password": "12345678",
+      "avatar":  "",
+      "instrument": "Drummer"
     },
     {
       "id": "Webds",

@@ -1,12 +1,22 @@
 .profileCardDesign{
-    margin-top: 10rem;
+    margin-top: 8rem;
     margin-left: auto;
     margin-right: auto;
     width:70rem;
     height:35rem;
     display:flex;
-    flex-direction:column;
     background-color: #B5CA8D;
 }
+
+.leftSideDesign{
+    display:flex;
+    flex-direction: column;
+}
+
+.rightSideDesign{
+    right: 4rem;
+    margin-top: 5rem;
+}
+
 
 

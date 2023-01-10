@@ -41,4 +41,11 @@ export const checkCredentials = async (user, pass) => {
     
 }
 
+export const getUserData = async (user) => {
+    const res = await fetch(`${apiRoot}profiles/${user.username}`);
+    const prof = await res.json();
+    return(prof);
+
+}
+
 export const checkUser = (user) => {}

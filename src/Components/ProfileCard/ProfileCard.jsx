@@ -1,16 +1,18 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useState } from 'react';
-import { LoadingOutlined, UserOutlined , PlusOutlined} from '@ant-design/icons';
+import { LoadingOutlined, UserOutlined , PlusOutlined, EditOutlined} from '@ant-design/icons';
 import { message, Upload } from 'antd';
 import './ProfileCard.css';
 import { Avatar, Form, Input, Button } from 'antd';
 import { useUserContext } from '../../Providers/LoggedUserProvider';
+import { getUserData } from '../../Services/UserManagement';
 
 
 const ProfileCard = () => {
     
 
 const user = useUserContext();
+
   const [form] = Form.useForm();
 
   const onFinish = values => {
@@ -23,7 +25,24 @@ const user = useUserContext();
 
   const [pictureUrl, setPictureUrl] = useState("");
   const [loading, setLoading] = useState(false);
-  const [imageUrl, setImageUrl] = useState();
+  const [userInfo, setUserInfo] = useState("");
+  const [imageUrl, setImageUrl] = useState("");
+
+  useEffect(() => {
+
+    if(userInfo === ""){
+    
+    getUserData(user).then(
+      res => (setUserInfo(res))
+    ).catch(error => console.log(error))
+    console.log(userInfo)
+    } else {
+      console.log(userInfo)
+    }
+    
+    
+  
+  }, [userInfo])
 
   const uploadButton = (
     <div>
@@ -32,61 +51,25 @@ const user = useUserContext();
     </div>
   );
 
+ 
+
     
     return(
       <div className='profileCardDesign'>
-      
-        <Form
-        form={form}
-        name="profile"
-        onFinish={onFinish}
-        onFinishFailed={onFinishFailed}
-        className="formDesign"
-      >
-         <Form.Item>
-        
-        <Upload name="avatar" listType="picture-card">
-        {imageUrl ? (
-        <img
-          src={imageUrl}
-          alt="avatar"
-          style={{
-            width: '100%',
-          }}
-        />
-      ) : (
-        uploadButton
-      )}
-
-        </Upload>
-        </Form.Item>
-        <Form.Item
-          name="username"
-          label="Username"
-          rules={[{ required: true, message: 'Please input your username!' }]}
-        >
-          <Input size='large' style={{width: '15rem'}}/>
-        </Form.Item>
-        <Form.Item
-          name="email"
-          label="Email"
-          rules={[{ required: true, message: 'Please input your email!' }]}
-        >
+        <div className='leftSideDesign'>
+          <Avatar  icon={imageUrl === "" ? <UserOutlined/> : {}} size={230}/>
+          <Upload>
+          <Button icon={<EditOutlined />}>Edit</Button>
+          </Upload>
+          <h1>{userInfo.username}</h1>
           
-        </Form.Item>
-        <Form.Item
-          name="password"
-          label="Password"
-          rules={[{ required: true, message: 'Please input your password!' }]}
-        >
-          <Input.Password size='large' style={{width: '15rem'}}/>
-        </Form.Item>
-        <Form.Item>
-          <Button type="primary" htmlType="submit">
-            Update Profile
-          </Button>
-        </Form.Item>
-      </Form>
+        </div>
+        <div className='rightSideDesign'>
+          <p>Email: {userInfo.email}</p>
+          <p>Instrument: {userInfo.instrument}</p>
+
+        </div>
+        
       </div>
     );
       

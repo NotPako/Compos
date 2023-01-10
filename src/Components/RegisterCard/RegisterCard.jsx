@@ -1,12 +1,36 @@
 import React from 'react';
 import { UserOutlined, MailOutlined, LockOutlined } from '@ant-design/icons';
-import { Input, Button, Popover } from 'antd';
+import { Input, Button, Popover, Cascader} from 'antd';
 import { useState } from 'react';
 import {errorCheck} from '../../Services/Validate';
 import './RegisterCard.css';
 import { AddUser } from '../../Services/UserManagement';
 import { useChangeUserContext } from '../../Providers/LoggedUserProvider';
 import { useNavigate } from 'react-router-dom';
+
+const options = [
+    {
+      value: 'Pianist',
+      label: 'Pianist',
+      
+    },
+    {
+        value: 'Drummer',
+        label: 'Drummer',
+    },
+    {
+        value: 'Guitarrist',
+        label: 'Guitarrist',
+    },
+    {
+        value: 'Singer',
+        label: 'Singer',
+    },
+    {
+        value: 'Trombone',
+        label: 'Trombone',
+    }
+]
 
 const RegisterCard = () => {
 
@@ -17,22 +41,18 @@ const RegisterCard = () => {
         username : '',
         email : '',
         password: '',
-        password2: ''
+        password2: '',
+        instrument: ''
     });
 
     const [userError, setUserError] = useState({
         usernameError : '',
         emailError : '',
         passwordError : '',
-        password2Error : ''
+        password2Error : '',
+        instumentError: ''
     })
 
-    const [userErrorShake, setUserErrorShake] = useState({
-        usernameError : '',
-        emailError : '',
-        passwordError : '',
-        password2Error : ''
-    })
 
     const [regError, setRegError] = useState('');
     
@@ -97,12 +117,21 @@ const RegisterCard = () => {
             ///Si hi han, mostrem missatge de que revise els errors
             setRegError('Please, fix the errors above first');
             console.log(userError);
+            
 
             
 
 
             
         }
+    }
+
+    const onChangeCascader = (value) => {
+        setUser((prevState)=>({...prevState, 
+            [user.instrument]: value
+        }));
+
+        console.log(user)
     }
 
     return(
@@ -123,7 +152,10 @@ const RegisterCard = () => {
                 </Popover>
                 <br />
                 <Input className={(regError === '' ? "fieldDesign" : "fieldDesignShake")}  name="password2" type="password" size="large" status={userError.password2Error === "" ? "" : "error"} placeholder="Confirm password" prefix={<LockOutlined/>} onChange={(e)=>inputHandler(e)} onBlur={(e)=>errorHandler(e)}></Input>
-                <div className='errorMsg'>{userError.password2Error}</div>   
+                <div className='errorMsg'>{userError.password2Error}</div>
+                <br />
+                <Cascader name='instrument' options={options} placeholder="What do you play?" ></Cascader>
+
                 </div>
             <br/>
             <br/>

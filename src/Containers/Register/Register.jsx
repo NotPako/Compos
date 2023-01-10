@@ -1,5 +1,6 @@
 import React from 'react';
 import RegisterCard from '../../Components/RegisterCard/RegisterCard';
+import './Register.css';
 
 const Register = () => {
     return(

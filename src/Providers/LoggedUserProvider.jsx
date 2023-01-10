@@ -18,7 +18,7 @@ export const LoggedUserProvider = (props) => {
 
     const userChange = (logged) => {
         console.log("el logged",logged);
-        debugger;
+      
         setUser(logged);
     }
 
