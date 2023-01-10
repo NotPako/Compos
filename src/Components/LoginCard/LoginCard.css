@@ -4,6 +4,8 @@
     flex-direction: column;
     border-radius: 20%;
     border-color:blue;
+    margin-top: 5rem;
+
 }
 .fieldDesign{
     width: 15rem;

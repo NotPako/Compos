@@ -1,5 +1,5 @@
 .linkDesign{
-    transition:0.5s;
+    transition:0.3s;
     cursor: pointer;
     margin-bottom: 1.5rem;
     margin-right: 4rem;
@@ -9,7 +9,7 @@
 }
 
 .linkDesign:hover{
-    transition:0.5s;
+    transition:0.3s;
     color:grey;
 }
 
@@ -22,14 +22,32 @@
    
 }
 
+.linkSelectedDesign{
+    transition:0.3s;
+    cursor: pointer;
+    margin-bottom: 1.5rem;
+    margin-right: 4rem;
+    color: white;
+    font-weight: 700;
+    font-size: x-large;
+    border-bottom: 1px solid white;
+}
+
+.linkSelectedDesign:hover{
+    transition:0.3s;
+    color:grey;
+}
+
 .logButDesign {
     text-align: right;
     align-items: flex-end;
     color: lightgrey;
     cursor:pointer;
     margin-right: 2rem;
-    margin-bottom: 1rem;
+    margin-bottom: 1.7rem;
     float:right;
+    right:6rem;
+    position: absolute;
 }
 
 .barreta {
@@ -37,11 +55,27 @@
     align-items: flex-end;
     color: lightgrey;
     margin-right: 2rem;
-    margin-bottom: 1rem;
+    margin-bottom: 1.7rem;
     float:right;
+    right:5rem;
+    position: absolute;
+
 }
 
+.signDesign{
+    text-align: right;
+    align-items: flex-end;
+    color: lightgrey;
+    cursor:pointer;
+    margin-right: 2rem;
+    margin-bottom: 1.7rem;
+    float:right;
+    right:1rem;
+    position: absolute;
+}
 .logButDesign:hover{
     transition:0.5s;
     color: white;
 }
+
+

@@ -8,6 +8,7 @@
     flex-direction: column;
     border-radius: 20%;
     border-color:blue;
+    margin-top: 4rem;
 }
 
 .errorMsg{

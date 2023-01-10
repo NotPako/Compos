@@ -39,6 +39,12 @@
       "username": "pepi",
       "email": "de@de",
       "password": "12345678"
+    },
+    {
+      "id": "pep",
+      "username": "pep",
+      "email": "pabg@gm",
+      "password": "12345678"
     }
   ]
 }
