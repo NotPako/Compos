@@ -3,7 +3,9 @@ import ProfileCard from '../../Components/ProfileCard/ProfileCard';
 
 const Profile = () => {
     return(
+        <div className='backgroundDesign'>
         <ProfileCard/>
+        </div>
     )
 }
 

@@ -2,9 +2,11 @@
     align-items: center;
     text-align: center;
     flex-direction: column;
-    border-radius: 20%;
-    border-color:blue;
+    border-color: grey;
     margin-top: 5rem;
+    background-color: #B5CA8D;
+    width: 30vw;
+    height: 40vh;
 
 }
 .fieldDesign{

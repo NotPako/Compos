@@ -1,6 +1,6 @@
 import React from 'react';
 import { useState } from 'react';
-import { LoadingOutlined, PlusOutlined } from '@ant-design/icons';
+import { LoadingOutlined, UserOutlined , PlusOutlined} from '@ant-design/icons';
 import { message, Upload } from 'antd';
 import './ProfileCard.css';
 import { Avatar, Form, Input, Button } from 'antd';
@@ -21,8 +21,21 @@ const user = useUserContext();
     console.log('Failed:', errorInfo);
   };
 
+  const [pictureUrl, setPictureUrl] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [imageUrl, setImageUrl] = useState();
+
+  const uploadButton = (
+    <div>
+      {loading ? <LoadingOutlined /> : <PlusOutlined />}
+      <div style={{ marginTop: 8 }}>Upload</div>
+    </div>
+  );
+
     
     return(
+      <div className='profileCardDesign'>
+      
         <Form
         form={form}
         name="profile"
@@ -30,6 +43,23 @@ const user = useUserContext();
         onFinishFailed={onFinishFailed}
         className="formDesign"
       >
+         <Form.Item>
+        
+        <Upload name="avatar" listType="picture-card">
+        {imageUrl ? (
+        <img
+          src={imageUrl}
+          alt="avatar"
+          style={{
+            width: '100%',
+          }}
+        />
+      ) : (
+        uploadButton
+      )}
+
+        </Upload>
+        </Form.Item>
         <Form.Item
           name="username"
           label="Username"
@@ -57,6 +87,7 @@ const user = useUserContext();
           </Button>
         </Form.Item>
       </Form>
+      </div>
     );
       
     }
