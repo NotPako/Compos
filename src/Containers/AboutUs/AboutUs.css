@@ -1,0 +1,22 @@
+.textTitleDesign{
+    color: darkolivegreen;
+    width: 80%;
+    margin: 0 auto;
+    margin-top:3rem;
+}
+
+.textDesign{
+    width: 60rem;
+    margin:0 auto;
+    margin-top:2rem;
+    font-size: large;
+    justify-content: center;
+    text-align: justify;
+}
+
+.aboutUsDesign{
+    align-items: center;
+    justify-content: center;
+    display: flex;
+
+}

@@ -2,7 +2,7 @@
 
 var apiRoot = 'http://localhost:8000/';
 
-export const AddUser =  (user) => {
+export const AddUser =  (user, instrument) => {
 
     fetch(`${apiRoot}profiles`, {
         method: 'POST',
@@ -10,7 +10,8 @@ export const AddUser =  (user) => {
         id: user.username,
         username: user.username,
         email: user.email,
-        password: user.password
+        password: user.password,
+        instrument: instrument
 
         }),
        headers: {

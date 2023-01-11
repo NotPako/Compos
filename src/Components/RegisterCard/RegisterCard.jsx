@@ -1,12 +1,13 @@
 import React from 'react';
 import { UserOutlined, MailOutlined, LockOutlined } from '@ant-design/icons';
-import { Input, Button, Popover, Cascader} from 'antd';
+import { Input, Button, Popover, Cascader, message} from 'antd';
 import { useState } from 'react';
 import {errorCheck} from '../../Services/Validate';
 import './RegisterCard.css';
 import { AddUser } from '../../Services/UserManagement';
 import { useChangeUserContext } from '../../Providers/LoggedUserProvider';
 import { useNavigate } from 'react-router-dom';
+
 
 const options = [
     {
@@ -36,13 +37,14 @@ const RegisterCard = () => {
 
     const userChange = useChangeUserContext();
     const navigate = useNavigate();
+    const [instrument, setInstrument] = useState("");
 
     const [user, setUser] = useState({
-        username : '',
-        email : '',
-        password: '',
-        password2: '',
-        instrument: ''
+        username : "",
+        email : "",
+        password: "",
+        password2: "",
+        
     });
 
     const [userError, setUserError] = useState({
@@ -50,11 +52,22 @@ const RegisterCard = () => {
         emailError : '',
         passwordError : '',
         password2Error : '',
-        instumentError: ''
+        
     })
 
 
     const [regError, setRegError] = useState('');
+    const [messageApi, contextHolder] = message.useMessage();
+
+    const success = () => {
+    messageApi.open({
+        type: 'success',
+        content: 'Registered succesfully',
+      });
+      console.log('Està executant-se')
+};
+    
+    
     
 
     const inputHandler = (e) => {
@@ -70,6 +83,8 @@ const RegisterCard = () => {
             Password may contain numbers and letters
         </div>
     );
+
+    
 
     const errorHandler = (e) => {
 
@@ -103,12 +118,16 @@ const RegisterCard = () => {
             password2Error : ""
         })){
             ///No hi han errors, registrem l'usuari, buidem camps i mostrem missatge de confirmació
+           
             setRegError('');
             console.log(user);
-            AddUser(user);
+            AddUser(user, instrument);
             console.log('registrado');
             userChange(user);
+            
             navigate('/userHome');
+
+            
 
             
 
@@ -127,15 +146,20 @@ const RegisterCard = () => {
     }
 
     const onChangeCascader = (value) => {
-        setUser((prevState)=>({...prevState, 
-            [user.instrument]: value
-        }));
+        
+        
+        setInstrument(value[0]);
+        
+        
+      
 
-        console.log(user)
+
     }
 
     return(
         <div className="registerCardDesign">
+            
+         
             <div className="cardHeaderDesign">
                 <h1>Sign up</h1>
             </div>
@@ -154,7 +178,7 @@ const RegisterCard = () => {
                 <Input className={(regError === '' ? "fieldDesign" : "fieldDesignShake")}  name="password2" type="password" size="large" status={userError.password2Error === "" ? "" : "error"} placeholder="Confirm password" prefix={<LockOutlined/>} onChange={(e)=>inputHandler(e)} onBlur={(e)=>errorHandler(e)}></Input>
                 <div className='errorMsg'>{userError.password2Error}</div>
                 <br />
-                <Cascader name='instrument' options={options} placeholder="What do you play?" ></Cascader>
+                <Cascader name='instrument' options={options} onChange={onChangeCascader}placeholder="What do you play?" ></Cascader>
 
                 </div>
             <br/>
@@ -164,6 +188,7 @@ const RegisterCard = () => {
                 <div className='errorMsg'>{regError}</div>
                 
             </div>
+            
         </div>
     )
 }

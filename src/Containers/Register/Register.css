@@ -1,4 +1,4 @@
-.backgroundDesign::before{
+.backgroundDesign{
     
     width: 100vw;
     height: 100vh;
@@ -6,8 +6,8 @@
     justify-content: center;
     text-align: center;
     display:flex;
-    animation: animatedBackground 10s linear infinite;
-  background-image: url(https://img.freepik.com/vector-premium/fondo-azul-degradado-abstracto_642529-14.jpg?w=2000);
+   
+  background-image: url();
   background-size: cover;
     
 }
