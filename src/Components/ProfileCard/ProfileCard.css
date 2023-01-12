@@ -9,14 +9,28 @@
 }
 
 .leftSideDesign{
+    margin-top:4rem;
+    margin-left:4rem;
     display:flex;
     flex-direction: column;
 }
 
 .rightSideDesign{
-    right: 4rem;
+    margin-left:25rem;
     margin-top: 5rem;
+    
 }
 
+.mailDesign{
+    font-size:large;
+}
+.avatarCardDesign{
+    margin-bottom:1rem;
+}
+.saveProfDesign{
+    bottom:2rem;
+    right:2rem;
+    position: absolute;
+}
 
 
