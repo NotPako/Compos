@@ -2,11 +2,14 @@ import React from 'react';
 import './PopUp.css';
 import {Popover2} from '@blueprintjs/popover2'
 import ElementList from '../ElementList/ElementList';
+import Button from 'antd';
 
 
 
 
 const PopUp = (props) => {
+
+    
 
     return (props.trigger) ? (
        <div className="popup">

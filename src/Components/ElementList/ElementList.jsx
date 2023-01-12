@@ -3,6 +3,7 @@ import './ElementList.css';
 import PopUp from '../PopUp/PopUp';
 import {useState} from 'react';
 import Draggable from "react-draggable";
+import {Button, Input} from 'antd';
 
 
 
@@ -14,6 +15,8 @@ const ElementList = () => {
     const [buttonPopup, setButtonPopup] = useState(false);
 
     const [disableMode, setDisableMode] = useState(false);
+    const [compTitle, setCompTitle] = useState("New compo");
+    const [editMode, setEditMode] = useState(false);
 
     const [list, setList] = useState(elements);
 
@@ -47,7 +50,11 @@ const ElementList = () => {
         setDisableMode(false);
     }
 
-    
+    const inputHandler = (e) => {
+        console.log(e.target.value);
+        setCompTitle(e.target.value);
+
+    }
 
     function addNewPart(){
       setButtonPopup(true);
@@ -58,10 +65,12 @@ const ElementList = () => {
 
 
         <div className='listDesign'>
-        
-                <button id='newElement' onClick={() => addNewPart()}>
+            {editMode ? <Input defaultValue={compTitle} onChange={(e) => inputHandler(e)}style={{marginLeft:'2rem', marginTop:'1.5rem',marginBottom:'1rem', width:'200px'}}onBlur={() => setEditMode(false)}/> : 
+            <h2 style={{color:'white', marginLeft:'2rem'}} onClick={() => setEditMode(true)}>{compTitle}</h2>}
+            
+                <Button id='newElement' onClick={() => addNewPart()}>
                     New part
-                </button>
+                </Button>
 
                 <PopUp trigger={buttonPopup} setTrigger={setButtonPopup} doIt={addPart}>
                     <div>

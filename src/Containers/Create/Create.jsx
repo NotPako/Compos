@@ -1,16 +1,12 @@
 import React from 'react';
 import { Button } from 'antd';
 import './Create.css'
+import ElementList from '../../Components/ElementList/ElementList';
 
 const Create = () => {
     return(
     <div>
-        <div className='partsBarDesign'>
-            <h2 style={{color:'white'}}>New composition</h2>
-            <br/>
-            <Button>New Part</Button>
-
-        </div>
+        <ElementList/>
     </div>
     )
 }
