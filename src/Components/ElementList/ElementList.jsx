@@ -3,7 +3,7 @@ import './ElementList.css';
 import PopUp from '../PopUp/PopUp';
 import {useState} from 'react';
 import Draggable from "react-draggable";
-import {Button, Input} from 'antd';
+import {Button, Input, Card} from 'antd';
 
 
 
@@ -29,7 +29,7 @@ const ElementList = () => {
     const [partList, setPartList] = useState([]);
 
     function createPart (name) {
-        setPartList(partList.concat(<Draggable>{name}</Draggable>))
+        setPartList(partList.concat(<Card title={name}>{name}</Card>))
     }
 
     
@@ -68,7 +68,7 @@ const ElementList = () => {
             {editMode ? <Input defaultValue={compTitle} onChange={(e) => inputHandler(e)}style={{marginLeft:'2rem', marginTop:'1.5rem',marginBottom:'1rem', width:'200px'}}onBlur={() => setEditMode(false)}/> : 
             <h2 style={{color:'white', marginLeft:'2rem'}} onClick={() => setEditMode(true)}>{compTitle}</h2>}
             
-                <Button id='newElement' onClick={() => addNewPart()}>
+                <Button style={{width:'12rem'}} id='newElement' onClick={() => addNewPart()}>
                     New part
                 </Button>
 
@@ -88,7 +88,7 @@ const ElementList = () => {
             <br></br>
                 <ul>
                     {list.map((element) => 
-                    <div key={element.name} onClick={() => setPartList(partList.concat(<Draggable><div className="elDraggable">{element.name}</div></Draggable>))} className="elementsDesign">{element.name}</div>)}
+                    <div key={element.name} onClick={() => setPartList(partList.concat(<Card title={element.name}></Card>))} className="elementsDesign"><Card style={{marginBottom:'1rem', width:'15rem'}}title={element.name}><p>Length: {element.length}</p></Card></div>)}
                 </ul>
 
             <br></br>
