@@ -4,6 +4,8 @@ import PopUp from '../PopUp/PopUp';
 import {useState} from 'react';
 import Draggable from "react-draggable";
 import {Button, Input, Card} from 'antd';
+import { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 
 
@@ -13,10 +15,12 @@ const ElementList = () => {
     {name:'estribillo', length:'8 comp'}];
     
     const [buttonPopup, setButtonPopup] = useState(false);
-
+    const [startingPopup, setStartingPopup] = useState(false);
     const [disableMode, setDisableMode] = useState(false);
     const [compTitle, setCompTitle] = useState("New compo");
     const [editMode, setEditMode] = useState(false);
+    const [projectName, setProjectName] = useState("");
+    let navigate = useNavigate();
 
     const [list, setList] = useState(elements);
 
@@ -28,10 +32,16 @@ const ElementList = () => {
 
     const [partList, setPartList] = useState([]);
 
+    const GoAway = () => {
+        navigate('./myCompos');
+    }
+
     function createPart (name) {
         setPartList(partList.concat(<Card title={name}>{name}</Card>))
     }
-
+    useEffect(() => {
+        setStartingPopup(true);
+    },[])
     
 
 
@@ -39,6 +49,11 @@ const ElementList = () => {
         setPart(prevState => ({ ...prevState, [e.target.name]: e.target.value}));
         
 
+    };
+
+    const handleChangeName = (e) => {
+        setProjectName(e.target.value);
+        setCompTitle(e.target.value);
     };
 
    
@@ -61,6 +76,11 @@ const ElementList = () => {
       setDisableMode(true);
     }
 
+    function giveItName(){
+        console.log('algo');
+        setStartingPopup(false);
+    }
+
     return(
 
 
@@ -72,7 +92,7 @@ const ElementList = () => {
                     New part
                 </Button>
 
-                <PopUp trigger={buttonPopup} setTrigger={setButtonPopup} doIt={addPart}>
+                <PopUp newComp={false} strigger={buttonPopup} setTrigger={setButtonPopup} doIt={addPart}>
                     <div>
                         <h3>Add a name</h3>
                         <input type="text" placeholder="Ex. Intro" name="name" onChange={(e) => {handleChange(e)}}></input>
@@ -81,6 +101,13 @@ const ElementList = () => {
                         <h3>How many bars?</h3>
                         <input type="number" name="length" onChange={(e) => {handleChange(e)}}></input>
                     </div>
+                </PopUp>
+                <PopUp newComp={true} trigger={startingPopup} setTrigger={setStartingPopup} doIt={giveItName} goAway={GoAway}>
+                    <div>
+                        <h3>Start with a name for your compo</h3>
+                        <input type="text" placeholder="New composition" name="name" onChange={(e) => {handleChangeName(e)}}></input>
+                    </div>
+                    
                 </PopUp>
                 
 
