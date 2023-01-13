@@ -6,13 +6,14 @@ import Draggable from "react-draggable";
 import {Button, Input, Card} from 'antd';
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { GithubPicker } from 'react-color';
 
 
 
 const ElementList = () => {
 
-    let elements = [{name: 'intro', length:'8 comp'}, 
-    {name:'estribillo', length:'8 comp'}];
+    let elements = [{name: 'intro', length:'8 comp', color:'white'}, 
+    {name:'estribillo', length:'8 comp', color:'white'}];
     
     const [buttonPopup, setButtonPopup] = useState(false);
     const [startingPopup, setStartingPopup] = useState(false);
@@ -20,13 +21,15 @@ const ElementList = () => {
     const [compTitle, setCompTitle] = useState("New compo");
     const [editMode, setEditMode] = useState(false);
     const [projectName, setProjectName] = useState("");
+    const [cardColor, setCardColor] = useState("");
     let navigate = useNavigate();
 
     const [list, setList] = useState(elements);
 
     const [part, setPart] = useState({
         name: "",
-        length: 0
+        length: 0,
+        color: "white"
     })
 
 
@@ -45,8 +48,13 @@ const ElementList = () => {
     
 
 
-    const handleChange = (e) => {
+    const handleChange = (e, isItColor) => {
+        if(isItColor){
+            setCardColor(e.hex);
+            setPart(prevState => ({...prevState, color: e.hex}))
+        } else {
         setPart(prevState => ({ ...prevState, [e.target.name]: e.target.value}));
+        }
         
 
     };
@@ -79,6 +87,11 @@ const ElementList = () => {
     function giveItName(){
         console.log('algo');
         setStartingPopup(false);
+        
+    }
+    const handleChangeColor = (e) => {
+        console.log(e.hex);
+        setCardColor(e.hex);
     }
 
     return(
@@ -92,7 +105,7 @@ const ElementList = () => {
                     New part
                 </Button>
 
-                <PopUp newComp={false} strigger={buttonPopup} setTrigger={setButtonPopup} doIt={addPart}>
+                <PopUp trigger={buttonPopup} setTrigger={setButtonPopup} doIt={addPart}>
                     <div>
                         <h3>Add a name</h3>
                         <input type="text" placeholder="Ex. Intro" name="name" onChange={(e) => {handleChange(e)}}></input>
@@ -101,6 +114,12 @@ const ElementList = () => {
                         <h3>How many bars?</h3>
                         <input type="number" name="length" onChange={(e) => {handleChange(e)}}></input>
                     </div>
+                    <div>
+                        <h3>Select a color</h3>
+                        <p>{cardColor}</p>
+                    <GithubPicker color='white' onChange={(e) => handleChange(e, true)}/>
+                    </div>
+                   
                 </PopUp>
                 <PopUp newComp={true} trigger={startingPopup} setTrigger={setStartingPopup} doIt={giveItName} goAway={GoAway}>
                     <div>
@@ -115,7 +134,7 @@ const ElementList = () => {
             <br></br>
                 <ul>
                     {list.map((element) => 
-                    <div key={element.name} onClick={() => setPartList(partList.concat(<Card title={element.name}></Card>))} className="elementsDesign"><Card style={{marginBottom:'1rem', width:'15rem'}}title={element.name}><p>Length: {element.length}</p></Card></div>)}
+                    <div key={element.name} onClick={() => setPartList(partList.concat(<Card title={element.name}></Card>))} className="elementsDesign"><Card style={{marginBottom:'1rem', width:'15rem', backgroundColor: `${element.color}`,}}title={element.name}><p>Length: {element.length}</p></Card></div>)}
                 </ul>
 
             <br></br>
