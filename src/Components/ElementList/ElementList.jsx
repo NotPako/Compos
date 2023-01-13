@@ -36,7 +36,7 @@ const ElementList = () => {
     const [partList, setPartList] = useState([]);
 
     const GoAway = () => {
-        navigate('./myCompos');
+        navigate('../mycompos');
     }
 
     function createPart (name) {
@@ -89,10 +89,7 @@ const ElementList = () => {
         setStartingPopup(false);
         
     }
-    const handleChangeColor = (e) => {
-        console.log(e.hex);
-        setCardColor(e.hex);
-    }
+   
 
     return(
 
@@ -134,7 +131,7 @@ const ElementList = () => {
             <br></br>
                 <ul>
                     {list.map((element) => 
-                    <div key={element.name} onClick={() => setPartList(partList.concat(<Card title={element.name}></Card>))} className="elementsDesign"><Card style={{marginBottom:'1rem', width:'15rem', backgroundColor: `${element.color}`,}}title={element.name}><p>Length: {element.length}</p></Card></div>)}
+                    <div key={element.name} onClick={() => setPartList(partList.concat(<Card style={{backgroundColor: `${element.color}`, width: `${element.length}rem`}}title={element.name}></Card>))} className="elementsDesign"><Card style={{marginBottom:'1rem', width:'15rem', backgroundColor: `${element.color}`,}}title={element.name}><p>Length: {element.length}</p></Card></div>)}
                 </ul>
 
             <br></br>

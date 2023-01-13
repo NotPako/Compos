@@ -11,7 +11,9 @@ const Blackboard = () => {
     
     return(
     
-       <div></div>
+       <div className="cardGridDesign">
+       
+       </div>
 
       
     );
