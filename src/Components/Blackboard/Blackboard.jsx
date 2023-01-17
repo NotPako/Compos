@@ -5,15 +5,17 @@ import PopUp from '../PopUp/PopUp';
 import {useState} from 'react';
 
 
-const Blackboard = () => {
+const Blackboard = ({partsList}) => {
 
 
     
     return(
     
-       <div className="cardGridDesign">
-       
-       </div>
+        <div className='pizarraDesign'>
+        {partsList.map((part, index) => (
+          <div key={index}>{part}</div>
+        ))}
+      </div>
 
       
     );

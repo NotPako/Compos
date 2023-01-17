@@ -11,7 +11,7 @@ import { GithubPicker } from 'react-color';
 
 
 
-const ElementList = () => {
+const ElementList = ({partsBlack, setPartsBlack}) => {
 
     let elements = [{name: 'intro', length:'8 comp', color:'white'}, 
     {name:'estribillo', length:'8 comp', color:'white'}];
@@ -103,6 +103,12 @@ const ElementList = () => {
         newArray.splice(index, 1);
         setList(newArray);
     }
+
+    const displayIt = (element) => {
+        setPartList(partList.concat(
+            <Card style={{backgroundColor: `${element.color}`, width: `${parseInt(element.length) + 4}rem`}}title={element.name}></Card>));
+        setPartsBlack(partList);
+    }
    
 
     return(
@@ -145,15 +151,14 @@ const ElementList = () => {
             <br></br>
                 <ul>
                     {list.map((element, index) => 
-                    <div key={element.name} onClick={() => setPartList(partList.concat(
-                    <Card style={{backgroundColor: `${element.color}`, width: `${parseInt(element.length) + 4}rem`}}title={element.name}></Card>))} className="elementsDesign">
+                    <div key={element.name} onClick={() => displayIt(element)} className="elementsDesign">
                         
-                        <Card style={{marginBottom:'1rem', width:'15rem', backgroundColor: `${element.color}`,}}title={element.name}><p>Length: {element.length}</p><p><div><DeleteOutlined onClick={(e) => handleDeleteClick(e, index)}className='deleteDesign'/></div></p></Card></div>)}
+                        <Card style={{marginBottom:'1rem', width:'15rem', backgroundColor: `${element.color}`,}}title={element.name}><p>Length: {element.length}</p><p><DeleteOutlined onClick={(e) => handleDeleteClick(e, index)}className='deleteDesign'/></p></Card></div>)}
                 </ul>
 
             <br></br>
 
-            {partList}
+            
         
         </div>
 

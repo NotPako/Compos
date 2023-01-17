@@ -1,7 +1,9 @@
 .pizarraDesign {
-    height:50rem;
-    background-color: antiquewhite;
-    display: inline-block;
+    height:max-content;
+    width:max-content;
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-auto-flow:row;
 }
 
 .element {
