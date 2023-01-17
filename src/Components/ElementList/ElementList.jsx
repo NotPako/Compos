@@ -4,6 +4,7 @@ import PopUp from '../PopUp/PopUp';
 import {useState} from 'react';
 import Draggable from "react-draggable";
 import {Button, Input, Card} from 'antd';
+import {DeleteOutlined} from '@ant-design/icons';
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { GithubPicker } from 'react-color';
@@ -89,6 +90,19 @@ const ElementList = () => {
         setStartingPopup(false);
         
     }
+
+    const handleDeleteClick = (event, index) => {
+        event.stopPropagation();
+        deletePart(index);
+    }
+
+    const deletePart = (index) => {
+        console.log("se borra");
+        console.log(index);
+        const newArray = [...list];
+        newArray.splice(index, 1);
+        setList(newArray);
+    }
    
 
     return(
@@ -130,8 +144,11 @@ const ElementList = () => {
             
             <br></br>
                 <ul>
-                    {list.map((element) => 
-                    <div key={element.name} onClick={() => setPartList(partList.concat(<Card style={{backgroundColor: `${element.color}`, width: `${element.length}rem`}}title={element.name}></Card>))} className="elementsDesign"><Card style={{marginBottom:'1rem', width:'15rem', backgroundColor: `${element.color}`,}}title={element.name}><p>Length: {element.length}</p></Card></div>)}
+                    {list.map((element, index) => 
+                    <div key={element.name} onClick={() => setPartList(partList.concat(
+                    <Card style={{backgroundColor: `${element.color}`, width: `${parseInt(element.length) + 4}rem`}}title={element.name}></Card>))} className="elementsDesign">
+                        
+                        <Card style={{marginBottom:'1rem', width:'15rem', backgroundColor: `${element.color}`,}}title={element.name}><p>Length: {element.length}</p><p><div><DeleteOutlined onClick={(e) => handleDeleteClick(e, index)}className='deleteDesign'/></div></p></Card></div>)}
                 </ul>
 
             <br></br>

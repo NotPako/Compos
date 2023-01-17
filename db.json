@@ -61,18 +61,6 @@
       "password": "12345678"
     },
     {
-      "id": 24,
-      "username": "",
-      "email": "",
-      "password": ""
-    },
-    {
-      "id": 25,
-      "username": "",
-      "email": "",
-      "password": ""
-    },
-    {
       "id": "pepet45",
       "username": "pepet45",
       "email": "pert@we",
@@ -115,13 +103,6 @@
       "email": "jhb@bf",
       "password": "12345678",
       "instrument": "Guitarrist"
-    },
-    {
-      "id": 26,
-      "username": "",
-      "email": "",
-      "password": "",
-      "instrument": ""
     },
     {
       "id": "jh",
