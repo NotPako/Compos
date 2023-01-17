@@ -3,3 +3,9 @@
     width:20vw;
     height:100vh;
 }
+
+.createDesign{
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: stretch;
+}

@@ -2,9 +2,8 @@ import React from 'react';
 import './ElementList.css';
 import PopUp from '../PopUp/PopUp';
 import {useState} from 'react';
-import Draggable from "react-draggable";
 import {Button, Input, Card} from 'antd';
-import {DeleteOutlined} from '@ant-design/icons';
+import {DeleteOutlined, CloseOutlined} from '@ant-design/icons';
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { GithubPicker } from 'react-color';
@@ -104,10 +103,20 @@ const ElementList = ({partsBlack, setPartsBlack}) => {
         setList(newArray);
     }
 
+    const handleDeleteCard = (index) => {
+        console.log(index);
+        const newArray = [...partsBlack];
+        newArray.splice(index, 1);
+        setPartsBlack(newArray);
+    }
+
     const displayIt = (element) => {
         setPartList(partList.concat(
             <Card style={{backgroundColor: `${element.color}`, width: `${parseInt(element.length) + 4}rem`}}title={element.name}></Card>));
-        setPartsBlack(partList);
+        setPartsBlack(partsBlack.concat(
+            <Card style={{backgroundColor: `${element.color}`, width: `${parseInt(element.length) + 4}rem`}}title={element.name}><CloseOutlined onClick={() => handleDeleteCard(partsBlack.length)}className='closeCardDesign'/></Card>
+        ));
+        
     }
    
 

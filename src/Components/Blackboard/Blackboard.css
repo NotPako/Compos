@@ -1,9 +1,12 @@
 .pizarraDesign {
     height:max-content;
     width:max-content;
-    display: grid;
-    grid-template-columns: repeat(6, 1fr);
-    grid-auto-flow:row;
+    margin-left: 25rem;
+    color: white;
+    display:flex;
+    flex-wrap: wrap;
+
+   
 }
 
 .element {
