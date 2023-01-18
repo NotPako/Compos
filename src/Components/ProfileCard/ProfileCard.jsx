@@ -27,6 +27,7 @@ const user = useUserContext();
   const [loading, setLoading] = useState(false);
   const [userInfo, setUserInfo] = useState("");
   const [imageUrl, setImageUrl] = useState("");
+  
 
   const props = {
     name: 'file',
@@ -40,7 +41,7 @@ const user = useUserContext();
       }
       if (info.file.status === 'done') {
         message.success(`${info.file.name} file uploaded successfully`);
-        setImageUrl(info.file.url);
+        setImageUrl(info.file.response.url);
       } else if (info.file.status === 'error') {
         message.error(`${info.file.name} file upload failed.`);
       }

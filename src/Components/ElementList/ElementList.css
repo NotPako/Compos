@@ -3,13 +3,20 @@
     float:left;
     background-color: cadetblue;
     width:20rem;
-    height:100vh;
+    height:max-content;
     flex-direction: column;
     
 }
 
+
+.cardDesign:hover .closeCardDesign{
+    visibility: visible;
+}
+
 .closeCardDesign{
     cursor:pointer;
+    display:'none';
+    visibility: hidden;
 }
 
 .closeCardDesign:hover {

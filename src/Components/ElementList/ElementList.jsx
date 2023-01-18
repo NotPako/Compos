@@ -22,6 +22,8 @@ const ElementList = ({partsBlack, setPartsBlack}) => {
     const [editMode, setEditMode] = useState(false);
     const [projectName, setProjectName] = useState("");
     const [cardColor, setCardColor] = useState("");
+    const [isCrossVisible, setIsCrossVisible] = useState(false);
+
     let navigate = useNavigate();
 
     const [list, setList] = useState(elements);
@@ -114,7 +116,9 @@ const ElementList = ({partsBlack, setPartsBlack}) => {
         setPartList(partList.concat(
             <Card style={{backgroundColor: `${element.color}`, width: `${parseInt(element.length) + 4}rem`}}title={element.name}></Card>));
         setPartsBlack(partsBlack.concat(
-            <Card style={{backgroundColor: `${element.color}`, width: `${parseInt(element.length) + 4}rem`}}title={element.name}><CloseOutlined onClick={() => handleDeleteCard(partsBlack.length)}className='closeCardDesign'/></Card>
+            <Card className='cardDesign'
+            style={{backgroundColor: `${element.color}`, width: `${parseInt(element.length) + 4}rem`}}title={element.name} 
+            ><div style={{float:'right'}}> <CloseOutlined onClick={() => handleDeleteCard(partsBlack.length)}className='closeCardDesign'/></div></Card>
         ));
         
     }
