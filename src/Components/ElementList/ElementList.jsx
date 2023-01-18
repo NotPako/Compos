@@ -7,6 +7,8 @@ import {DeleteOutlined, CloseOutlined} from '@ant-design/icons';
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { GithubPicker } from 'react-color';
+import { autoSave } from '../../Services/CompoManagement';
+import { useUserContext } from '../../Providers/LoggedUserProvider';
 
 
 
@@ -23,6 +25,8 @@ const ElementList = ({partsBlack, setPartsBlack}) => {
     const [projectName, setProjectName] = useState("");
     const [cardColor, setCardColor] = useState("");
     const [isCrossVisible, setIsCrossVisible] = useState(false);
+    const [existId, setExistId] = useState("");
+    const user = useUserContext();
 
     let navigate = useNavigate();
 
@@ -41,9 +45,7 @@ const ElementList = ({partsBlack, setPartsBlack}) => {
         navigate('../mycompos');
     }
 
-    function createPart (name) {
-        setPartList(partList.concat(<Card title={name}>{name}</Card>))
-    }
+    
     useEffect(() => {
         setStartingPopup(true);
     },[])
@@ -57,13 +59,17 @@ const ElementList = ({partsBlack, setPartsBlack}) => {
         } else {
         setPart(prevState => ({ ...prevState, [e.target.name]: e.target.value}));
         }
+
+        
         
 
     };
+    
 
     const handleChangeName = (e) => {
         setProjectName(e.target.value);
         setCompTitle(e.target.value);
+        
     };
 
    
@@ -73,11 +79,13 @@ const ElementList = ({partsBlack, setPartsBlack}) => {
         setButtonPopup(false);
         setList(newList);
         setDisableMode(false);
+        
     }
 
     const inputHandler = (e) => {
         console.log(e.target.value);
         setCompTitle(e.target.value);
+        
 
     }
 
@@ -103,6 +111,8 @@ const ElementList = ({partsBlack, setPartsBlack}) => {
         const newArray = [...list];
         newArray.splice(index, 1);
         setList(newArray);
+
+        
     }
 
     const handleDeleteCard = (index) => {
@@ -110,6 +120,9 @@ const ElementList = ({partsBlack, setPartsBlack}) => {
         const newArray = [...partsBlack];
         newArray.splice(index, 1);
         setPartsBlack(newArray);
+        console.log(partsBlack);
+        saveCompo();
+        
     }
 
     const displayIt = (element) => {
@@ -118,8 +131,30 @@ const ElementList = ({partsBlack, setPartsBlack}) => {
         setPartsBlack(partsBlack.concat(
             <Card className='cardDesign'
             style={{backgroundColor: `${element.color}`, width: `${parseInt(element.length) + 4}rem`}}title={element.name} 
-            ><div style={{float:'right'}}> <CloseOutlined onClick={() => handleDeleteCard(partsBlack.length)}className='closeCardDesign'/></div></Card>
+            ><div style={{float:'right'}}> <CloseOutlined onClick={() => handleDeleteCard(partsBlack.length)} className='closeCardDesign'/></div></Card>
         ));
+        
+    }
+
+    const saveCompo = () => {
+        const date = new Date();
+        console.log(date);
+        const author = user.username;
+        console.log(author);
+        const whiteList = list.map(element => ({name: element.name, color: element.color, length: element.length}));
+        const blackList = partsBlack.map(element => ({name: element.props.title, color: element.props.style.backgroundColor}));
+        console.log(whiteList);
+        console.log(blackList);
+        const title = compTitle;
+        
+        if(existId === ""){
+        setExistId(autoSave(title, author, date, whiteList, blackList, existId));
+        } else {
+            autoSave(title, author, date, whiteList, blackList, existId)
+        }
+
+        console.log(existId);
+
         
     }
    
