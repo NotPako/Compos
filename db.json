@@ -110,6 +110,13 @@
       "email": "",
       "password": "",
       "instrument": ""
+    },
+    {
+      "id": "Pabjg_00",
+      "username": "Pabjg_00",
+      "email": "reyma@gmail.com",
+      "password": "12345678",
+      "instrument": "Singer"
     }
   ],
   "compos": [
