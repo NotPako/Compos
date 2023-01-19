@@ -2,8 +2,8 @@ import React from 'react';
 import './ElementList.css';
 import PopUp from '../PopUp/PopUp';
 import {useState} from 'react';
-import {Button, Input, Card} from 'antd';
-import {DeleteOutlined, CloseOutlined} from '@ant-design/icons';
+import {Button, Input, Card, notification} from 'antd';
+import {DeleteOutlined, CloseOutlined, SmileOutlined} from '@ant-design/icons';
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { GithubPicker } from 'react-color';
@@ -26,7 +26,22 @@ const ElementList = ({partsBlack, setPartsBlack}) => {
     const [cardColor, setCardColor] = useState("");
     const [isCrossVisible, setIsCrossVisible] = useState(false);
     const [existId, setExistId] = useState("");
-    
+    const [api, contextHolder] = notification.useNotification();
+    const openNotification = () => {
+    api.open({
+      message: 'Remember to save your compo',
+      description:
+        'Use the button in the right low corner to save the state of your compo, otherwise it will be lost',
+      icon: (
+        <SmileOutlined
+          style={{
+            color: '#108ee9',
+          }}
+        />
+      ),
+    });
+  };
+
     const user = useUserContext();
 
     let navigate = useNavigate();
@@ -48,7 +63,9 @@ const ElementList = ({partsBlack, setPartsBlack}) => {
 
     
     useEffect(() => {
+        
         setStartingPopup(true);
+        openNotification();
     },[])
     
 
@@ -169,8 +186,8 @@ const ElementList = ({partsBlack, setPartsBlack}) => {
    
 
     return(
-
-
+        <>
+        {contextHolder}
         <div className='listDesign'>
             {editMode ? <Input defaultValue={compTitle} onChange={(e) => inputHandler(e)}style={{marginLeft:'2rem', marginTop:'1.5rem',marginBottom:'1rem', width:'200px'}}onBlur={() => checkTitleEmpty()}/> : 
             <h2 style={{color:'white', marginLeft:'2rem'}} onClick={() => setEditMode(true)}>{compTitle}</h2>}
@@ -218,7 +235,7 @@ const ElementList = ({partsBlack, setPartsBlack}) => {
             
         
         </div>
-
+        </>
     );
 }
 

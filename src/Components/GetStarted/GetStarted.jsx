@@ -13,7 +13,8 @@ const GetStarted = () => {
             <img className='imageHeader' alt= '' src={headImage}>    
             </img>
             <div className='esloganDesign'>The simpliest way to build structures</div>
-            <Button type="primary" shape='round' style={{zIndex:10, position:'absolute', top:'500px', right:'100px'}} onClick={()=>setTimeout(()=>{navigate("/signup")},250)}>Get started</Button>
+            <Button type="primary" shape='round' style={{zIndex:10, position:'absolute', top:'500px', right:'100px'}} 
+            onClick={()=>setTimeout(()=>{navigate("/signup")},250)}>Get started</Button>
             
         </div>
 
