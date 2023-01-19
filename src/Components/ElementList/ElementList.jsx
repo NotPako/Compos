@@ -26,6 +26,7 @@ const ElementList = ({partsBlack, setPartsBlack}) => {
     const [cardColor, setCardColor] = useState("");
     const [isCrossVisible, setIsCrossVisible] = useState(false);
     const [existId, setExistId] = useState("");
+    
     const user = useUserContext();
 
     let navigate = useNavigate();
@@ -80,6 +81,14 @@ const ElementList = ({partsBlack, setPartsBlack}) => {
         setList(newList);
         setDisableMode(false);
         
+    }
+
+    const checkTitleEmpty = () => {
+        if(compTitle !== ""){
+        setEditMode(false);
+        } else {
+
+        }
     }
 
     const inputHandler = (e) => {
@@ -163,7 +172,7 @@ const ElementList = ({partsBlack, setPartsBlack}) => {
 
 
         <div className='listDesign'>
-            {editMode ? <Input defaultValue={compTitle} onChange={(e) => inputHandler(e)}style={{marginLeft:'2rem', marginTop:'1.5rem',marginBottom:'1rem', width:'200px'}}onBlur={() => setEditMode(false)}/> : 
+            {editMode ? <Input defaultValue={compTitle} onChange={(e) => inputHandler(e)}style={{marginLeft:'2rem', marginTop:'1.5rem',marginBottom:'1rem', width:'200px'}}onBlur={() => checkTitleEmpty()}/> : 
             <h2 style={{color:'white', marginLeft:'2rem'}} onClick={() => setEditMode(true)}>{compTitle}</h2>}
             
                 <Button style={{width:'12rem'}} id='newElement' onClick={() => addNewPart()}>

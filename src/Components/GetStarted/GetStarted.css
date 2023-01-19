@@ -1,0 +1,18 @@
+.imageHeader{
+    width: 100%;
+}
+
+.esloganDesign{
+    position: absolute;
+    color: white;
+    font-size: larger;
+    margin-top: '300px';
+    margin-left: '200px';
+    
+}
+
+.parent {
+    display: flex;
+   
+  }
+  

@@ -5,6 +5,7 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from 'react-router-dom';
 import { LoggedUserProvider } from './Providers/LoggedUserProvider';
+import './Fonts/vonique_92/Vonique92_D.otf'
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

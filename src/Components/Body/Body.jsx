@@ -14,7 +14,7 @@ import UserHome from '../../Containers/UserHome/UserHome';
 
 const Body = () => {
     return(
-        <>
+        <div>
         <Routes>
             <Route path='/' element={<Home/>}/>
             <Route path='/explore' element={<Explore/>}/>
@@ -27,7 +27,7 @@ const Body = () => {
             <Route path='/profile' element={<Profile/>}/>
             
         </Routes>
-        </>
+        </div>
     )
 }
 

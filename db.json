@@ -167,7 +167,169 @@
         }
       ],
       "id": "rxe4RbA"
+    },
+    {
+      "title": "Mix 80",
+      "author": "badasd",
+      "date": "2023-01-19T10:31:50.014Z",
+      "list": [
+        {
+          "name": "intro",
+          "color": "white",
+          "length": "8 comp"
+        },
+        {
+          "name": "estribillo",
+          "color": "white",
+          "length": "8 comp"
+        },
+        {
+          "name": "Puente",
+          "color": "#004dcf",
+          "length": "4"
+        }
+      ],
+      "blackList": [
+        {
+          "name": "intro",
+          "color": "white"
+        }
+      ],
+      "id": "GU3A89d"
+    },
+    {
+      "title": "New compo",
+      "author": "badasd",
+      "date": "2023-01-19T17:52:11.000Z",
+      "list": [
+        {
+          "name": "intro",
+          "color": "white",
+          "length": "8 comp"
+        },
+        {
+          "name": "estribillo",
+          "color": "white",
+          "length": "8 comp"
+        }
+      ],
+      "blackList": [],
+      "id": "5e3RBM7"
+    },
+    {
+      "title": "New compo",
+      "author": "badasd",
+      "date": "2023-01-19T17:54:08.457Z",
+      "list": [
+        {
+          "name": "intro",
+          "color": "white",
+          "length": "8 comp"
+        },
+        {
+          "name": "estribillo",
+          "color": "white",
+          "length": "8 comp"
+        }
+      ],
+      "blackList": [],
+      "id": "xNORC3n"
+    },
+    {
+      "title": "popolo",
+      "author": "badasd",
+      "date": "2023-01-19T18:34:14.774Z",
+      "list": [
+        {
+          "name": "Intro",
+          "color": "#1273de",
+          "length": "4"
+        },
+        {
+          "name": "estribillo",
+          "color": "#c4def6",
+          "length": "8"
+        }
+      ],
+      "blackList": [
+        {
+          "name": "Intro",
+          "color": "#1273de"
+        },
+        {
+          "name": "estribillo",
+          "color": "#c4def6"
+        },
+        {
+          "name": "Intro",
+          "color": "#1273de"
+        },
+        {
+          "name": "Intro",
+          "color": "#1273de"
+        }
+      ],
+      "id": "sNnDpjz"
+    },
+    {
+      "title": "popolo",
+      "author": "badasd",
+      "date": "2023-01-19T18:34:16.460Z",
+      "list": [
+        {
+          "name": "Intro",
+          "color": "#1273de",
+          "length": "4"
+        },
+        {
+          "name": "estribillo",
+          "color": "#c4def6",
+          "length": "8"
+        }
+      ],
+      "blackList": [
+        {
+          "name": "Intro",
+          "color": "#1273de"
+        },
+        {
+          "name": "estribillo",
+          "color": "#c4def6"
+        },
+        {
+          "name": "Intro",
+          "color": "#1273de"
+        }
+      ],
+      "id": "vSdgfE3"
+    },
+    {
+      "title": "popolo",
+      "author": "badasd",
+      "date": "2023-01-19T18:34:17.774Z",
+      "list": [
+        {
+          "name": "Intro",
+          "color": "#1273de",
+          "length": "4"
+        },
+        {
+          "name": "estribillo",
+          "color": "#c4def6",
+          "length": "8"
+        }
+      ],
+      "blackList": [
+        {
+          "name": "Intro",
+          "color": "#1273de"
+        },
+        {
+          "name": "estribillo",
+          "color": "#c4def6"
+        }
+      ],
+      "id": "bYlX4dp"
     }
-  
   ]
 }
