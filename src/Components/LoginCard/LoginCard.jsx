@@ -63,7 +63,7 @@ const LoginCard = () => {
     return(
         <div className='loginCardDesign'>
             <div className='loginHeaderDesign'>
-                <h1>Login</h1>
+                <h1 style={{color:'white'}}>Login</h1>
             </div>
             <div className='loginBodyDesign'>
                 <Input size='large' name='username' className='fieldDesign' placeholder='Username' onChange={(e)=>inputHandler(e)} prefix={<UserOutlined/>}></Input>

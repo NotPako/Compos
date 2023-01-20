@@ -161,7 +161,7 @@ const RegisterCard = () => {
             
          
             <div className="cardHeaderDesign">
-                <h1>Sign up</h1>
+                <h1 style={{color:'white'}}>Sign up</h1>
             </div>
             <div className="cardBodyDesign">
                 <Input className="fieldDesign"  name="username" size="large" placeholder="Username" prefix={<UserOutlined/>} status={userError.usernameError === "" ? "" : "error"} onChange={(e)=>inputHandler(e)} onBlur={(e)=>errorHandler(e)}></Input>

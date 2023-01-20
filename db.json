@@ -361,6 +361,25 @@
         }
       ],
       "id": "Cw7GLLs"
+    },
+    {
+      "title": "New compo",
+      "author": "badasd",
+      "date": "2023-01-20T11:50:50.764Z",
+      "list": [
+        {
+          "name": "intro",
+          "color": "white",
+          "length": "8 comp"
+        },
+        {
+          "name": "estribillo",
+          "color": "white",
+          "length": "8 comp"
+        }
+      ],
+      "blackList": [],
+      "id": "mvcAW1D"
     }
   ]
 }

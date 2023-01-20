@@ -1,12 +1,14 @@
-.textTitleDesign{
+
+
+.titleTutDesign{
     color: lightslategray;
     width: 80%;
     margin: 0 auto;
     margin-top:3rem;
 }
 
-.textDesign{
-    width: 60rem;
+.textTutDesign{
+    width: 30rem;
     margin:0 auto;
     margin-top:2rem;
     font-size: large;
@@ -14,9 +16,9 @@
     text-align: justify;
 }
 
-.aboutUsDesign{
-    align-items: center;
-    justify-content: center;
-    display: flex;
-
+.videoDesign{
+    width:40rem;
+    height:auto;
+    margin-right: 10rem;
+    border:solid 1px grey;
 }

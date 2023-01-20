@@ -1,11 +1,14 @@
 import React from 'react'
 import LoginCard from '../../Components/LoginCard/LoginCard';
-import './Login.css'
+import './Login.css';
+import { motion } from 'framer-motion';
 const Login = () => {
     return(
-        <div className="backgroundDesign">
+        <motion.div initial={{opacity:0}}
+        animate={{opacity: 1}}
+        exit={{opacity:0}} className="backgroundDesign">
             <LoginCard/>
-        </div>
+        </motion.div>
     )
 }
 

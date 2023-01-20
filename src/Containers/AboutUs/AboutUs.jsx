@@ -1,9 +1,12 @@
 import React from 'react';
 import './AboutUs.css';
+import { motion } from 'framer-motion';
 
 const AboutUs = () => {
     return(
-        < div className='aboutusDesign'>
+        < motion.div initial={{opacity:0}}
+        animate={{opacity: 1}}
+        exit={{opacity:0}} className='aboutusDesign'>
             <h1 className="textTitleDesign">What motivates Compos</h1>
             <p className='textDesign'>At Compos, we believe that creating music should be accessible to everyone. 
                 That's why we've developed a revolutionary platform that makes it easy for musicians of all skill levels and genres to write, edit, and share their music. 
@@ -22,8 +25,15 @@ const AboutUs = () => {
             </p>
 
             <h1 className="textTitleDesign">Our team</h1>
-            <p className='textDesign'></p>
-        </div>
+            <p className='textDesign'>
+                At this moment, our team consists in only one person, our founder, creator, developer, and the one that is also writing this. Myself. So, if you feel you could bring some light
+                and improvement to this react application, feel free to contact in the email located in the footer of this page.
+            </p>
+            <h1 className="textTitleDesign">Why compos</h1>
+            <p className='textDesign'>
+                
+            </p>
+        </motion.div>
     )
 }
 

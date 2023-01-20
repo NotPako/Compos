@@ -1,7 +1,8 @@
 .backgroundDesign{
     background-image: url('../../Resources/BackAvre.jpg');
-    width: 100vw;
-    height: 100vh;
+    width: auto;
+    height: auto;
+    background-size: auto;
     
     justify-content: center;
     text-align: center;

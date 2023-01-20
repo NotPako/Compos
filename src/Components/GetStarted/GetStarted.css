@@ -6,9 +6,42 @@
     position: absolute;
     color: white;
     font-size: larger;
-    margin-top: '300rem';
-    margin-left: '200rem';
-    
+    margin-top: 15rem;
+    margin-left: 25rem;
+    font-family: 'ComposFont';
+    cursor:default;
+}
+
+.butDesign{
+    z-index: 10;
+    position: absolute;
+    background-color: white;
+    color: cadetblue;
+    margin-top: 20%;
+    right: 20%;
+    height: 2.6rem;
+    width: 16rem;
+    font-size: xx-large;
+    justify-content: center;
+    align-items: center;
+    font-family: 'ComposFont';
+    display: flex;
+}
+
+.butDesign:hover {
+    display:flex;
+    z-index: 10;
+    position: absolute;
+    background-color: cadetblue;
+    color: white;
+    margin-top: 20%;
+    right: 20%;
+    height: 4.6rem;
+    width: 12rem;
+    font-size: xx-large;
+    justify-content: center;
+    align-items: center;
+    transition:0.5s
 }
 
 .parent {
