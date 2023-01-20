@@ -43,7 +43,7 @@ const LoginCard = () => {
             console.log("logged in");
             userChange(user);
             console.log("usuario que se loggea", user);
-            navigate('/userHome');
+            navigate('/mycompos');
 
 
            

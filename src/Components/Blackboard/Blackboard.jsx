@@ -1,6 +1,7 @@
 import React from 'react';
 import './Blackboard.css';
 import { Button } from 'antd/es/radio';
+import {SaveOutlined} from '@ant-design/icons'
 
 
 
@@ -15,7 +16,6 @@ const Blackboard = ({partsList}) => {
           <div key={index}>{part}</div>
         ))}
       </div>
-      <Button size='large' style={{position:'fixed', bottom:'20px', right:'20px'}}>Save state</Button>
       </div>
 
       

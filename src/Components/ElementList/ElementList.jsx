@@ -2,8 +2,8 @@ import React from 'react';
 import './ElementList.css';
 import PopUp from '../PopUp/PopUp';
 import {useState} from 'react';
-import {Button, Input, Card, notification} from 'antd';
-import {DeleteOutlined, CloseOutlined, SmileOutlined} from '@ant-design/icons';
+import {Button, Input, Card, notification, Cascader, message} from 'antd';
+import {DeleteOutlined, CloseOutlined, SmileOutlined, SaveOutlined} from '@ant-design/icons';
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { GithubPicker } from 'react-color';
@@ -14,8 +14,11 @@ import { useUserContext } from '../../Providers/LoggedUserProvider';
 
 const ElementList = ({partsBlack, setPartsBlack}) => {
 
-    let elements = [{name: 'intro', length:'8 comp', color:'white'}, 
-    {name:'estribillo', length:'8 comp', color:'white'}];
+    let DrumPreset = [{name: 'Intro', length:'8', color:'red'}, 
+    {name:'Chorus', length:'16', color:'yellow'},
+    {name:'Verse', length:'8', color:'green'},{
+        name:'Break', length:'2', color:'purple'
+    }];
     
     const [buttonPopup, setButtonPopup] = useState(false);
     const [startingPopup, setStartingPopup] = useState(false);
@@ -24,9 +27,11 @@ const ElementList = ({partsBlack, setPartsBlack}) => {
     const [editMode, setEditMode] = useState(false);
     const [projectName, setProjectName] = useState("");
     const [cardColor, setCardColor] = useState("");
-    const [isCrossVisible, setIsCrossVisible] = useState(false);
     const [existId, setExistId] = useState("");
+    const [preset, setPreset] = useState("");
     const [api, contextHolder] = notification.useNotification();
+    const [messageApi, contextSaveHolder] = message.useMessage();
+    let variables = {DrumPreset};
     const openNotification = () => {
     api.open({
       message: 'Remember to save your compo',
@@ -42,11 +47,19 @@ const ElementList = ({partsBlack, setPartsBlack}) => {
     });
   };
 
+    const options= [
+    {
+        value: 'DrumPreset',
+        label: 'Drummer classic',
+    },
+    
+    ];
+
     const user = useUserContext();
 
     let navigate = useNavigate();
 
-    const [list, setList] = useState(elements);
+    const [list, setList] = useState([]);
 
     const [part, setPart] = useState({
         name: "",
@@ -66,7 +79,7 @@ const ElementList = ({partsBlack, setPartsBlack}) => {
         
         setStartingPopup(true);
         openNotification();
-    },[])
+    }, [])
     
 
 
@@ -141,6 +154,13 @@ const ElementList = ({partsBlack, setPartsBlack}) => {
         
     }
 
+    const success = () => {
+        messageApi.open({
+          type: 'success',
+          content: 'Compo saved succesfully',
+        });
+      };
+
     const handleDeleteCard = (index) => {
         console.log(index);
         const newArray = [...partsBlack];
@@ -173,21 +193,34 @@ const ElementList = ({partsBlack, setPartsBlack}) => {
         console.log(blackList);
         const title = compTitle;
         
-        if(existId === ""){
-        setExistId(autoSave(title, author, date, whiteList, blackList, existId));
-        } else {
-            autoSave(title, author, date, whiteList, blackList, existId)
-        }
+        autoSave(title, author, date, whiteList, blackList);
+            success();
+
+        
 
         console.log(existId);
 
         
+    }
+
+    const loadPreset = () => {
+        if(preset !== ""){
+            console.log(preset)
+            setList(variables[preset])
+        } else{
+            //Ací tinc que dir que seleccione un preset
+        }
+    }
+
+    const onChangePreset = (value) => {
+        setPreset(value[0]);
     }
    
 
     return(
         <>
         {contextHolder}
+        {contextSaveHolder}
         <div className='listDesign'>
             {editMode ? <Input defaultValue={compTitle} onChange={(e) => inputHandler(e)}style={{marginLeft:'2rem', marginTop:'1.5rem',marginBottom:'1rem', width:'200px'}}onBlur={() => checkTitleEmpty()}/> : 
             <h2 style={{color:'white', marginLeft:'2rem'}} onClick={() => setEditMode(true)}>{compTitle}</h2>}
@@ -195,6 +228,10 @@ const ElementList = ({partsBlack, setPartsBlack}) => {
                 <Button style={{width:'12rem'}} id='newElement' onClick={() => addNewPart()}>
                     New part
                 </Button>
+                <div className='presetSelectorDesign'>
+                    <Cascader options={options} onChange={onChangePreset} placeholder="Or select one preset"></Cascader>
+                    <Button onClick={() => loadPreset()}>Load preset</Button>
+                </div>
 
                 <PopUp trigger={buttonPopup} setTrigger={setButtonPopup} doIt={addPart}>
                     <div>
@@ -231,10 +268,12 @@ const ElementList = ({partsBlack, setPartsBlack}) => {
                 </ul>
 
             <br></br>
+           
 
             
         
         </div>
+        <Button onClick={() => saveCompo()}size='large' style={{position:'fixed', bottom:'20px', right:'20px'}}><SaveOutlined/> Save state</Button>
         </>
     );
 }
