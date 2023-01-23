@@ -126,30 +126,49 @@
       "author": "badasd",
       "date": "23/1/2023",
       "instrument": "Drummer",
-      "list": [],
-      "blackList": [],
-      "id": 6
+      "list": [
+        {
+          "name": "Intro",
+          "color": "red",
+          "length": "8"
+        },
+        {
+          "name": "Chorus",
+          "color": "yellow",
+          "length": "16"
+        },
+        {
+          "name": "Verse",
+          "color": "green",
+          "length": "8"
+        },
+        {
+          "name": "Break",
+          "color": "purple",
+          "length": "2"
+        }
+      ],
+      "blackList": [
+        {
+          "name": "Intro",
+          "length": "12rem",
+          "color": "red"
+        },
+        {
+          "name": "Chorus",
+          "length": "20rem",
+          "color": "yellow"
+        },
+        {
+          "name": "Verse",
+          "length": "12rem",
+          "color": "green"
+        }
+      ],
+      "id": 1
     },
     {
-      "title": "Esta si",
-      "author": "badasd",
-      "date": "23/1/2023",
-      "instrument": "Drummer",
-      "list": [],
-      "blackList": [],
-      "id": 7
-    },
-    {
-      "title": "Esta no",
-      "author": "badasd",
-      "date": "23/1/2023",
-      "instrument": "Drummer",
-      "list": [],
-      "blackList": [],
-      "id": 8
-    },
-    {
-      "title": "Te elements",
+      "title": "New compo",
       "author": "badasd",
       "date": "23/1/2023",
       "instrument": "Drummer",
@@ -178,22 +197,87 @@
       "blackList": [
         {
           "name": "Intro",
+          "length": "12rem",
           "color": "red"
         },
         {
           "name": "Chorus",
+          "length": "20rem",
           "color": "yellow"
-        },
-        {
-          "name": "Verse",
-          "color": "green"
         },
         {
           "name": "Chorus",
+          "length": "20rem",
+          "color": "yellow"
+        },
+        {
+          "name": "Chorus",
+          "length": "20rem",
+          "color": "yellow"
+        },
+        {
+          "name": "Chorus",
+          "length": "20rem",
           "color": "yellow"
         }
       ],
-      "id": 9
+      "id": 2
+    },
+    {
+      "title": "La bona",
+      "author": "badasd",
+      "date": "23/1/2023",
+      "instrument": "Drummer",
+      "list": [
+        {
+          "name": "Intro",
+          "color": "red",
+          "length": "8"
+        },
+        {
+          "name": "Chorus",
+          "color": "yellow",
+          "length": "16"
+        },
+        {
+          "name": "Verse",
+          "color": "green",
+          "length": "8"
+        },
+        {
+          "name": "Break",
+          "color": "purple",
+          "length": "2"
+        }
+      ],
+      "blackList": [
+        {
+          "name": "Intro",
+          "length": "12rem",
+          "color": "red"
+        },
+        {
+          "name": "Chorus",
+          "length": "20rem",
+          "color": "yellow"
+        },
+        {
+          "name": "Chorus",
+          "length": "20rem",
+          "color": "yellow"
+        },
+        {
+          "name": "Chorus",
+          "length": "20rem",
+          "color": "yellow"
+        },
+        {
+          "name": "Chorus",
+          "length": "20rem",
+          "color": "yellow"
+        }
+      ],
+      "id": 3
     }
   ]
 }

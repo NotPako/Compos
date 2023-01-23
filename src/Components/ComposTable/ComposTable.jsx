@@ -52,12 +52,7 @@ const ComposTable = ({isMine, thisWeek}) => {
             } else if(thisWeek === 'true'){
                 getCompos().then(
                     res => {
-                    const filteredWeek = res.filter((item) => {
-                        const itemDate = new Date(item.date);
-                        return itemDate >= oneWeekAgo;
-                    })
-                      setDataSource(filteredWeek);
-                      console.log(res);
+                        setDataSource(res)
                     }
                   ).catch(error => console.log(error))
             }

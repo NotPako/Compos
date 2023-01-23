@@ -206,7 +206,7 @@ const ElementList = ({partsBlack, setPartsBlack}) => {
         const author = user.username;
         console.log(author);
         const whiteList = list.map(element => ({name: element.name, color: element.color, length: element.length}));
-        const blackList = partsBlack.map(element => ({name: element.props.title, color: element.props.style.backgroundColor}));
+        const blackList = partsBlack.map(element => ({name: element.props.title, length: element.props.style.width, color: element.props.style.backgroundColor}));
         console.log(whiteList);
         console.log(blackList);
         const title = compTitle;
