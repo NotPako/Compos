@@ -8,7 +8,8 @@
     {
       "username": "Paco",
       "email": "pabg@gmail.com",
-      "password": "12345678"
+      "password": "12345678",
+      "instrument": "Singer"
     },
     {
       "id": 23,
@@ -146,6 +147,53 @@
       "list": [],
       "blackList": [],
       "id": 8
+    },
+    {
+      "title": "Te elements",
+      "author": "badasd",
+      "date": "23/1/2023",
+      "instrument": "Drummer",
+      "list": [
+        {
+          "name": "Intro",
+          "color": "red",
+          "length": "8"
+        },
+        {
+          "name": "Chorus",
+          "color": "yellow",
+          "length": "16"
+        },
+        {
+          "name": "Verse",
+          "color": "green",
+          "length": "8"
+        },
+        {
+          "name": "Break",
+          "color": "purple",
+          "length": "2"
+        }
+      ],
+      "blackList": [
+        {
+          "name": "Intro",
+          "color": "red"
+        },
+        {
+          "name": "Chorus",
+          "color": "yellow"
+        },
+        {
+          "name": "Verse",
+          "color": "green"
+        },
+        {
+          "name": "Chorus",
+          "color": "yellow"
+        }
+      ],
+      "id": 9
     }
   ]
 }

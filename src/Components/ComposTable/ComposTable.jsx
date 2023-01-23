@@ -4,6 +4,7 @@ import { getCompos, deleteCompo } from '../../Services/CompoManagement';
 import { DeleteOutlined } from '@ant-design/icons';
 import { SearchOutlined } from '@ant-design/icons';
 import { useUserContext } from '../../Providers/LoggedUserProvider';
+import { useNavigate } from 'react-router-dom';
 
 import './ComposTable.css';
 
@@ -13,6 +14,7 @@ const ComposTable = ({isMine, thisWeek}) => {
     const [searchText, setSearchText] = useState("");
     const [instrCasc, setInstrCasc] = useState("");
     const user = useUserContext();
+    const navigate = useNavigate();
 
     const search = (data) => {
         if(instrCasc === ""){
@@ -21,6 +23,10 @@ const ComposTable = ({isMine, thisWeek}) => {
             const firsData = data.filter((item) => item.title.toLowerCase().startsWith(searchText));
             return(firsData.filter((item) => item.instrument.startsWith(instrCasc)));
         }
+    }
+
+    const goToView = (element) => {
+        navigate('/viewMode', {state: `${element.id}`});
     }
     
     const oneWeekAgo = new Date();
@@ -66,7 +72,8 @@ const ComposTable = ({isMine, thisWeek}) => {
     const columns = [{
         title: 'Name',
         dataIndex: 'title',
-        key:'name'
+        key:'name',
+        render: (text, record) => <a onClick={() => goToView(record)}>{text}</a>
     },
     {
         title: 'Author',

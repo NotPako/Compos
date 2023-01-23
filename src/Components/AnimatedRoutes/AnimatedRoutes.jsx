@@ -9,6 +9,7 @@ import MyCompos from '../../Containers/MyCompos/MyCompos';
 import Profile from '../../Containers/Profile/Profile';
 import Register from '../../Containers/Register/Register';
 import {AnimatePresence} from 'framer-motion';
+import ViewMode from '../../Containers/ViewMode/ViewMode';
 
 
 function AnimatedRoutes() {
@@ -27,6 +28,7 @@ function AnimatedRoutes() {
             <Route path='/mycompos' element={<MyCompos/>}/>
             <Route path='/createnew' element={<Create/>}/>
             <Route path='/profile' element={<Profile/>}/>
+            <Route path='/viewMode' element={<ViewMode/>}/>
 
         </Routes>
       </AnimatePresence>

@@ -58,6 +58,16 @@ export const deleteCompo = async (id) => {
       }
 }
 
+export const getCompoById = async (id) => {
+    return fetch(`${apiRoot}/${id}`)
+    .then(response => response.json())
+    .then(data => {  
+        return data
+       
+    })
+    .catch(error => console.error(error));
+}
+
 
     
    
