@@ -8,7 +8,6 @@ import Login from '../../Containers/Login/Login';
 import MyCompos from '../../Containers/MyCompos/MyCompos';
 import Profile from '../../Containers/Profile/Profile';
 import Register from '../../Containers/Register/Register';
-import UserHome from '../../Containers/UserHome/UserHome';
 import {AnimatePresence} from 'framer-motion';
 
 
@@ -25,7 +24,6 @@ function AnimatedRoutes() {
             <Route path='/aboutus' element={<AboutUs/>}/>
             <Route path='/login' element={<Login/>}/>
             <Route path='/signup' element={<Register/>}/>
-            <Route path='/userHome' element={<UserHome/>}/>
             <Route path='/mycompos' element={<MyCompos/>}/>
             <Route path='/createnew' element={<Create/>}/>
             <Route path='/profile' element={<Profile/>}/>

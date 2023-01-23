@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react'
-import { Table, Input, Cascader} from 'antd';
+import { Table, Input, Cascader, Popconfirm} from 'antd';
 import { getCompos, deleteCompo } from '../../Services/CompoManagement';
 import { DeleteOutlined } from '@ant-design/icons';
 import { SearchOutlined } from '@ant-design/icons';
@@ -7,27 +7,49 @@ import { useUserContext } from '../../Providers/LoggedUserProvider';
 
 import './ComposTable.css';
 
-const ComposTable = () => {
+const ComposTable = ({isMine, thisWeek}) => {
 
     const [dataSource, setDataSource] = useState([]);
     const [searchText, setSearchText] = useState("");
-    const [filteredData, setFilteredData] = useState();
     const user = useUserContext();
 
     const search = (data) => {
         return data.filter((item) => item.title.toLowerCase().startsWith(searchText));
     }
     
+    const oneWeekAgo = new Date();
+    oneWeekAgo.setDate(oneWeekAgo.getDate() - 7);
 
     useEffect(() => {
 
-    
+        if(isMine === 'true'){
             getCompos(user.username).then(
               res => {
                 setDataSource(res);
                 console.log(res);
               }
             ).catch(error => console.log(error))
+        } else {
+            if(thisWeek === 'false'){
+            getCompos().then(
+                res => {
+                  setDataSource(res);
+                  console.log(res);
+                }
+              ).catch(error => console.log(error))
+            } else if(thisWeek === 'true'){
+                getCompos().then(
+                    res => {
+                    const filteredWeek = res.filter((item) => {
+                        const itemDate = new Date(item.date);
+                        return itemDate >= oneWeekAgo;
+                    })
+                      setDataSource(filteredWeek);
+                      console.log(res);
+                    }
+                  ).catch(error => console.log(error))
+            }
+        }
             
         
       
@@ -57,9 +79,14 @@ const ComposTable = () => {
     },
     {
         title: '',
-        render: (text, record) => (
-            <DeleteOutlined className='deleteButton' onClick={() => handleDeleteRow(record)}/>
-        )
+        render: isMine === 'true' ? (text, record) => (
+            <Popconfirm title="Sure to delete?" onConfirm={() => handleDeleteRow(record)}>
+                <DeleteOutlined className='deleteButton'/>
+            </Popconfirm>
+        
+        ) : () => {
+            <></>
+        }
         
     }
 ];

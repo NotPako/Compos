@@ -121,7 +121,23 @@
   ],
   "compos": [
     {
-      "title": "EstaSi",
+      "title": "Hawai de vacaciones",
+      "author": "badasd",
+      "date": "23/1/2023",
+      "list": [],
+      "blackList": [],
+      "id": 3
+    },
+    {
+      "title": "Esta no",
+      "author": "badasd",
+      "date": "23/1/2023",
+      "list": [],
+      "blackList": [],
+      "id": 4
+    },
+    {
+      "title": "Esta si",
       "author": "badasd",
       "date": "23/1/2023",
       "list": [
@@ -150,29 +166,9 @@
         {
           "name": "Chorus",
           "color": "yellow"
-        },
-        {
-          "name": "Verse",
-          "color": "green"
         }
       ],
-      "id": 1
-    },
-    {
-      "title": "Hawai de vacaciones",
-      "author": "badasd",
-      "date": "23/1/2023",
-      "list": [],
-      "blackList": [],
-      "id": 3
-    },
-    {
-      "title": "Esta no",
-      "author": "badasd",
-      "date": "23/1/2023",
-      "list": [],
-      "blackList": [],
-      "id": 4
+      "id": 5
     }
   ]
 }
