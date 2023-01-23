@@ -121,265 +121,58 @@
   ],
   "compos": [
     {
-      "id": "25",
-      "title": "Mix 80",
+      "title": "EstaSi",
       "author": "badasd",
-      "date": "",
-      "list": [
-        {
-          "name": "intro",
-          "length": "8",
-          "color": "white"
-        }
-      ],
-      "blackList": [
-        {
-          "name": "intro",
-          "color": "white"
-        }
-      ]
-    },
-    {
-      "title": "Pepe",
-      "author": "badasd",
-      "date": "2023-01-18T15:54:57.640Z",
-      "list": [
-        {
-          "name": "intro",
-          "color": "white",
-          "length": "8 comp"
-        },
-        {
-          "name": "estribillo",
-          "color": "white",
-          "length": "8 comp"
-        }
-      ],
-      "blackList": [
-        {
-          "name": "estribillo",
-          "color": "white"
-        },
-        {
-          "name": "estribillo",
-          "color": "white"
-        },
-        {
-          "name": "estribillo",
-          "color": "white"
-        },
-        {
-          "name": "estribillo",
-          "color": "white"
-        }
-      ],
-      "id": "rxe4RbA"
-    },
-    {
-      "title": "Mix 80",
-      "author": "badasd",
-      "date": "2023-01-19T10:31:50.014Z",
-      "list": [
-        {
-          "name": "intro",
-          "color": "white",
-          "length": "8 comp"
-        },
-        {
-          "name": "estribillo",
-          "color": "white",
-          "length": "8 comp"
-        },
-        {
-          "name": "Puente",
-          "color": "#004dcf",
-          "length": "4"
-        }
-      ],
-      "blackList": [
-        {
-          "name": "intro",
-          "color": "white"
-        }
-      ],
-      "id": "GU3A89d"
-    },
-    {
-      "title": "New compo",
-      "author": "badasd",
-      "date": "2023-01-19T17:52:11.000Z",
-      "list": [
-        {
-          "name": "intro",
-          "color": "white",
-          "length": "8 comp"
-        },
-        {
-          "name": "estribillo",
-          "color": "white",
-          "length": "8 comp"
-        }
-      ],
-      "blackList": [],
-      "id": "5e3RBM7"
-    },
-    {
-      "title": "New compo",
-      "author": "badasd",
-      "date": "2023-01-19T17:54:08.457Z",
-      "list": [
-        {
-          "name": "intro",
-          "color": "white",
-          "length": "8 comp"
-        },
-        {
-          "name": "estribillo",
-          "color": "white",
-          "length": "8 comp"
-        }
-      ],
-      "blackList": [],
-      "id": "xNORC3n"
-    },
-    {
-      "title": "popolo",
-      "author": "badasd",
-      "date": "2023-01-19T18:34:14.774Z",
+      "date": "23/1/2023",
       "list": [
         {
           "name": "Intro",
-          "color": "#1273de",
-          "length": "4"
-        },
-        {
-          "name": "estribillo",
-          "color": "#c4def6",
+          "color": "red",
           "length": "8"
-        }
-      ],
-      "blackList": [
-        {
-          "name": "Intro",
-          "color": "#1273de"
         },
         {
-          "name": "estribillo",
-          "color": "#c4def6"
+          "name": "Chorus",
+          "color": "yellow",
+          "length": "16"
         },
         {
-          "name": "Intro",
-          "color": "#1273de"
-        },
-        {
-          "name": "Intro",
-          "color": "#1273de"
-        }
-      ],
-      "id": "sNnDpjz"
-    },
-    {
-      "title": "popolo",
-      "author": "badasd",
-      "date": "2023-01-19T18:34:16.460Z",
-      "list": [
-        {
-          "name": "Intro",
-          "color": "#1273de",
-          "length": "4"
-        },
-        {
-          "name": "estribillo",
-          "color": "#c4def6",
+          "name": "Verse",
+          "color": "green",
           "length": "8"
+        },
+        {
+          "name": "Break",
+          "color": "purple",
+          "length": "2"
         }
       ],
       "blackList": [
         {
-          "name": "Intro",
-          "color": "#1273de"
+          "name": "Chorus",
+          "color": "yellow"
         },
         {
-          "name": "estribillo",
-          "color": "#c4def6"
-        },
-        {
-          "name": "Intro",
-          "color": "#1273de"
+          "name": "Verse",
+          "color": "green"
         }
       ],
-      "id": "vSdgfE3"
+      "id": 1
     },
     {
-      "title": "popolo",
+      "title": "Hawai de vacaciones",
       "author": "badasd",
-      "date": "2023-01-19T18:34:17.774Z",
-      "list": [
-        {
-          "name": "Intro",
-          "color": "#1273de",
-          "length": "4"
-        },
-        {
-          "name": "estribillo",
-          "color": "#c4def6",
-          "length": "8"
-        }
-      ],
-      "blackList": [
-        {
-          "name": "Intro",
-          "color": "#1273de"
-        },
-        {
-          "name": "estribillo",
-          "color": "#c4def6"
-        }
-      ],
-      "id": "bYlX4dp"
-    },
-    {
-      "title": "New compo",
-      "author": "badasd",
-      "date": "2023-01-19T19:46:19.145Z",
-      "list": [
-        {
-          "name": "intro",
-          "color": "white",
-          "length": "8 comp"
-        },
-        {
-          "name": "estribillo",
-          "color": "white",
-          "length": "8 comp"
-        }
-      ],
-      "blackList": [
-        {
-          "name": "intro",
-          "color": "white"
-        }
-      ],
-      "id": "Cw7GLLs"
-    },
-    {
-      "title": "New compo",
-      "author": "badasd",
-      "date": "2023-01-20T11:50:50.764Z",
-      "list": [
-        {
-          "name": "intro",
-          "color": "white",
-          "length": "8 comp"
-        },
-        {
-          "name": "estribillo",
-          "color": "white",
-          "length": "8 comp"
-        }
-      ],
+      "date": "23/1/2023",
+      "list": [],
       "blackList": [],
-      "id": "mvcAW1D"
+      "id": 3
+    },
+    {
+      "title": "Esta no",
+      "author": "badasd",
+      "date": "23/1/2023",
+      "list": [],
+      "blackList": [],
+      "id": 4
     }
   ]
 }

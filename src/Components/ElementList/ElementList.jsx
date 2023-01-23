@@ -27,7 +27,6 @@ const ElementList = ({partsBlack, setPartsBlack}) => {
     const [editMode, setEditMode] = useState(false);
     const [projectName, setProjectName] = useState("");
     const [cardColor, setCardColor] = useState("");
-    const [existId, setExistId] = useState("");
     const [preset, setPreset] = useState("");
     const [api, contextHolder] = notification.useNotification();
     const [messageApi, contextSaveHolder] = message.useMessage();
@@ -167,7 +166,7 @@ const ElementList = ({partsBlack, setPartsBlack}) => {
         newArray.splice(index, 1);
         setPartsBlack(newArray);
         console.log(partsBlack);
-        saveCompo();
+        
         
     }
 
@@ -187,18 +186,19 @@ const ElementList = ({partsBlack, setPartsBlack}) => {
         console.log(date);
         const author = user.username;
         console.log(author);
+        const instrument = user.instrument;
         const whiteList = list.map(element => ({name: element.name, color: element.color, length: element.length}));
         const blackList = partsBlack.map(element => ({name: element.props.title, color: element.props.style.backgroundColor}));
         console.log(whiteList);
         console.log(blackList);
         const title = compTitle;
         
-        autoSave(title, author, date, whiteList, blackList);
-            success();
+        autoSave(title, author, date.toLocaleDateString(), whiteList, blackList, instrument);
+        success();
 
         
 
-        console.log(existId);
+       
 
         
     }

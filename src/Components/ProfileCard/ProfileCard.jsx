@@ -3,9 +3,10 @@ import { useState } from 'react';
 import { LoadingOutlined, UserOutlined , PlusOutlined, EditOutlined, MailOutlined} from '@ant-design/icons';
 import { message, Upload } from 'antd';
 import './ProfileCard.css';
-import { Avatar, Form, Input, Button } from 'antd';
+import { Avatar, Form, Input, Button, Cascader} from 'antd';
 import { useUserContext } from '../../Providers/LoggedUserProvider';
 import { getUserData } from '../../Services/UserManagement';
+import { options } from '../RegisterCard/RegisterCard';
 
 
 const ProfileCard = () => {
@@ -55,7 +56,7 @@ const user = useUserContext();
     getUserData(user).then(
       res => (setUserInfo(res))
     ).catch(error => console.log(error))
-    console.log(userInfo)
+    console.log(userInfo.instrument)
     } else {
       console.log(userInfo)
     }
@@ -64,12 +65,7 @@ const user = useUserContext();
   
   }, [userInfo])
 
-  const uploadButton = (
-    <div>
-      {loading ? <LoadingOutlined /> : <PlusOutlined />}
-      <div style={{ marginTop: 8 }}>Upload</div>
-    </div>
-  );
+ 
 
  
 
@@ -82,14 +78,20 @@ const user = useUserContext();
           <Button icon={<EditOutlined />}>Edit</Button>
           </Upload>
           <h1>{userInfo.username}</h1>
+          <Input className='inputsDesign' placeholder='Want to change your username?'></Input>
           
         </div>
         <div className='rightSideDesign'>
-          <p className="mailDesign">
+          <div className="mailDesign">
             <div><MailOutlined style={{color: "white"}}/></div>
             <div>{userInfo.email}</div>
-          </p>
-          <h2 style={{}}>{userInfo.instrument}</h2>
+          </div>
+          <Cascader defaultValue={`${userInfo.isntrument}`} name='instrument' options={options}></Cascader>
+          <br/>
+          <div style={{display:'inline-block'}}>
+            <h3>Password:</h3>
+            <Input className='inputsDesign' type='password' value={userInfo.password}></Input>
+          </div>
 
         </div>
         <Button className="saveProfDesign">Save profile</Button>

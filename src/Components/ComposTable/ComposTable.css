@@ -7,3 +7,11 @@
     margin-top: 2rem;
     margin-bottom: 2rem;
 }
+
+.deleteButton{
+    cursor:pointer;
+}
+
+.deleteButton:hover{
+    color:red;
+}

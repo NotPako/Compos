@@ -9,7 +9,7 @@ import { useChangeUserContext } from '../../Providers/LoggedUserProvider';
 import { useNavigate } from 'react-router-dom';
 
 
-const options = [
+export const options = [
     {
       value: 'Pianist',
       label: 'Pianist',
