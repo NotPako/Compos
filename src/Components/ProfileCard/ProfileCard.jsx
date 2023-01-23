@@ -86,7 +86,7 @@ const user = useUserContext();
             <div><MailOutlined style={{color: "white"}}/></div>
             <div>{userInfo.email}</div>
           </div>
-          <Cascader defaultValue={`${userInfo.isntrument}`} name='instrument' options={options}></Cascader>
+          <Cascader defaultValue={`${userInfo.instrument}`} name='instrument' options={options}></Cascader>
           <br/>
           <div style={{display:'inline-block'}}>
             <h3>Password:</h3>

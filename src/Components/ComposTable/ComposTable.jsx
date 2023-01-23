@@ -11,10 +11,16 @@ const ComposTable = ({isMine, thisWeek}) => {
 
     const [dataSource, setDataSource] = useState([]);
     const [searchText, setSearchText] = useState("");
+    const [instrCasc, setInstrCasc] = useState("");
     const user = useUserContext();
 
     const search = (data) => {
-        return data.filter((item) => item.title.toLowerCase().startsWith(searchText));
+        if(instrCasc === ""){
+        return(data.filter((item) => item.title.toLowerCase().startsWith(searchText)));
+        } else {
+            const firsData = data.filter((item) => item.title.toLowerCase().startsWith(searchText));
+            return(firsData.filter((item) => item.instrument.startsWith(instrCasc)));
+        }
     }
     
     const oneWeekAgo = new Date();
@@ -127,12 +133,14 @@ const handleDeleteRow = (element) => {
 }
 
 
+
+
     
   return (
     <div className='tableContDesign'>
         <div className='filterBarDesign'>
-        <Input style={{width:'20rem'}}placeholder='Search by name' onChange={(e) => setSearchText(e.target.value.toLowerCase())} value={searchText} prefix={<SearchOutlined/>}></Input>
-        <Cascader style={{marginLeft:'40rem'}}options={options} placeholder="Filter by instrument"/>
+        <Input style={{width:'20rem'}}placeholder='Search by name' onChange={(e) => {setSearchText(e.target.value.toLowerCase()); search(dataSource)}} value={searchText} prefix={<SearchOutlined/>}></Input>
+        <Cascader style={{marginLeft:'40rem'}}options={options} onChange={(value) => value === undefined ? setInstrCasc("") : setInstrCasc(value[0])}placeholder="Filter by instrument"/>
         </div>
         
         <Table columns={columns} dataSource={search(dataSource)}/>

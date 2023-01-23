@@ -9,6 +9,7 @@ import { useNavigate } from 'react-router-dom';
 import { GithubPicker } from 'react-color';
 import { autoSave } from '../../Services/CompoManagement';
 import { useUserContext } from '../../Providers/LoggedUserProvider';
+import { getUserData } from '../../Services/UserManagement';
 
 
 
@@ -30,6 +31,8 @@ const ElementList = ({partsBlack, setPartsBlack}) => {
     const [preset, setPreset] = useState("");
     const [api, contextHolder] = notification.useNotification();
     const [messageApi, contextSaveHolder] = message.useMessage();
+    const [userInfo, setUserInfo] = useState("");
+    
     let variables = {DrumPreset};
     const openNotification = () => {
     api.open({
@@ -78,7 +81,23 @@ const ElementList = ({partsBlack, setPartsBlack}) => {
         
         setStartingPopup(true);
         openNotification();
-    }, [])
+    }, []);
+
+    useEffect(() => {
+
+        if(userInfo === ""){
+        
+        getUserData(user).then(
+          res => (setUserInfo(res))
+        ).catch(error => console.log(error))
+        console.log(userInfo.instrument)
+        } else {
+          console.log(userInfo)
+        }
+        
+        
+      
+      }, [userInfo])
     
 
 
@@ -186,15 +205,15 @@ const ElementList = ({partsBlack, setPartsBlack}) => {
         console.log(date);
         const author = user.username;
         console.log(author);
-        const instrument = user.instrument;
         const whiteList = list.map(element => ({name: element.name, color: element.color, length: element.length}));
         const blackList = partsBlack.map(element => ({name: element.props.title, color: element.props.style.backgroundColor}));
         console.log(whiteList);
         console.log(blackList);
         const title = compTitle;
-        
+        const instrument = userInfo.instrument;
         autoSave(title, author, date.toLocaleDateString(), whiteList, blackList, instrument);
         success();
+        
 
         
 

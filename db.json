@@ -121,54 +121,31 @@
   ],
   "compos": [
     {
-      "title": "Hawai de vacaciones",
+      "title": "New compo",
       "author": "badasd",
       "date": "23/1/2023",
+      "instrument": "Drummer",
       "list": [],
       "blackList": [],
-      "id": 3
-    },
-    {
-      "title": "Esta no",
-      "author": "badasd",
-      "date": "23/1/2023",
-      "list": [],
-      "blackList": [],
-      "id": 4
+      "id": 6
     },
     {
       "title": "Esta si",
       "author": "badasd",
       "date": "23/1/2023",
-      "list": [
-        {
-          "name": "Intro",
-          "color": "red",
-          "length": "8"
-        },
-        {
-          "name": "Chorus",
-          "color": "yellow",
-          "length": "16"
-        },
-        {
-          "name": "Verse",
-          "color": "green",
-          "length": "8"
-        },
-        {
-          "name": "Break",
-          "color": "purple",
-          "length": "2"
-        }
-      ],
-      "blackList": [
-        {
-          "name": "Chorus",
-          "color": "yellow"
-        }
-      ],
-      "id": 5
+      "instrument": "Drummer",
+      "list": [],
+      "blackList": [],
+      "id": 7
+    },
+    {
+      "title": "Esta no",
+      "author": "badasd",
+      "date": "23/1/2023",
+      "instrument": "Drummer",
+      "list": [],
+      "blackList": [],
+      "id": 8
     }
   ]
 }

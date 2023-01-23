@@ -3,9 +3,10 @@ import { Input, Button, Popover } from 'antd';
 import { useState } from 'react';
 import './LoginCard.css';
 import { UserOutlined, LockOutlined } from '@ant-design/icons';
-import { checkCredentials } from '../../Services/UserManagement';
+import { checkCredentials, getUserData } from '../../Services/UserManagement';
 import { useChangeUserContext, useUserContext } from '../../Providers/LoggedUserProvider';
 import {useNavigate} from 'react-router-dom';
+
 
 const LoginCard = () => {
 
@@ -13,13 +14,14 @@ const LoginCard = () => {
 
     const [user, setUser] = useState({
         username : '',
-        password: ''
+        password: '',
+        instrument: ''
     });
 
     const [errMsg, setErrMsg] = useState("");
 
     const userChange = useChangeUserContext();
-    const seeUser = useUserContext();
+    
     
 
     const inputHandler = (e) => {
@@ -36,6 +38,10 @@ const LoginCard = () => {
 
     const logMe = async () => {
       var res = await checkCredentials(user.username, user.password);
+
+      
+      
+      
       
         if(res){
             //The user exists, logging the user in...
@@ -43,6 +49,7 @@ const LoginCard = () => {
             console.log("logged in");
             userChange(user);
             console.log("usuario que se loggea", user);
+            
             navigate('/mycompos');
 
 
