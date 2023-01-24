@@ -13,7 +13,7 @@ import { getUserData } from '../../Services/UserManagement';
 
 
 
-const ElementList = ({partsBlack, setPartsBlack}) => {
+const ElementList = ({partsBlack, setPartsBlack, startingParts, id, title}) => {
 
     let DrumPreset = [{name: 'Intro', length:'8', color:'red'}, 
     {name:'Chorus', length:'16', color:'yellow'},
@@ -23,7 +23,6 @@ const ElementList = ({partsBlack, setPartsBlack}) => {
     
     const [buttonPopup, setButtonPopup] = useState(false);
     const [startingPopup, setStartingPopup] = useState(false);
-    const [disableMode, setDisableMode] = useState(false);
     const [compTitle, setCompTitle] = useState("New compo");
     const [editMode, setEditMode] = useState(false);
     const [projectName, setProjectName] = useState("");
@@ -32,9 +31,24 @@ const ElementList = ({partsBlack, setPartsBlack}) => {
     const [api, contextHolder] = notification.useNotification();
     const [messageApi, contextSaveHolder] = message.useMessage();
     const [userInfo, setUserInfo] = useState("");
+    const [existId, setExistId] = useState("");
+    const [partList, setPartList] = useState([]);
+    const [notiOpened, setNotiOpened] = useState("");
+    const [list, setList] = useState([]);
+    const [part, setPart] = useState({
+        name: "",
+        length: 0,
+        color: "white"
+    });
+    const user = useUserContext();
+
+    let navigate = useNavigate();
+    
+
     
     let variables = {DrumPreset};
     const openNotification = () => {
+        setNotiOpened('true');
     api.open({
       message: 'Remember to save your compo',
       description:
@@ -57,20 +71,7 @@ const ElementList = ({partsBlack, setPartsBlack}) => {
     
     ];
 
-    const user = useUserContext();
 
-    let navigate = useNavigate();
-
-    const [list, setList] = useState([]);
-
-    const [part, setPart] = useState({
-        name: "",
-        length: 0,
-        color: "white"
-    })
-
-
-    const [partList, setPartList] = useState([]);
 
     const GoAway = () => {
         navigate('../mycompos');
@@ -79,9 +80,17 @@ const ElementList = ({partsBlack, setPartsBlack}) => {
     
     useEffect(() => {
         
+        if(typeof startingParts === 'undefined' && notiOpened === ""){
         setStartingPopup(true);
         openNotification();
-    }, []);
+        } else {
+            if(list.length === 0){
+            setList(startingParts);
+            setExistId(id);
+            setCompTitle(title);
+            }
+        }
+    }, [startingParts]);
 
     useEffect(() => {
 
@@ -90,9 +99,9 @@ const ElementList = ({partsBlack, setPartsBlack}) => {
         getUserData(user).then(
           res => (setUserInfo(res))
         ).catch(error => console.log(error))
-        console.log(userInfo.instrument)
+        
         } else {
-          console.log(userInfo)
+          
         }
         
         
@@ -127,7 +136,7 @@ const ElementList = ({partsBlack, setPartsBlack}) => {
         const newList = list.concat([part]);
         setButtonPopup(false);
         setList(newList);
-        setDisableMode(false);
+        
         
     }
 
@@ -140,7 +149,7 @@ const ElementList = ({partsBlack, setPartsBlack}) => {
     }
 
     const inputHandler = (e) => {
-        console.log(e.target.value);
+        
         setCompTitle(e.target.value);
         
 
@@ -148,29 +157,23 @@ const ElementList = ({partsBlack, setPartsBlack}) => {
 
     function addNewPart(){
       setButtonPopup(true);
-      setDisableMode(true);
+      
     }
 
     function giveItName(){
-        console.log('algo');
+        
         setStartingPopup(false);
         
     }
 
+
+//The purpose of this one is avoid bugs when deleting
     const handleDeleteClick = (event, index) => {
         event.stopPropagation();
         deletePart(index);
     }
 
-    const deletePart = (index) => {
-        console.log("se borra");
-        console.log(index);
-        const newArray = [...list];
-        newArray.splice(index, 1);
-        setList(newArray);
-
-        
-    }
+ 
 
     const success = () => {
         messageApi.open({
@@ -179,16 +182,28 @@ const ElementList = ({partsBlack, setPartsBlack}) => {
         });
       };
 
+      //This deletes cards in elementList
+      const deletePart = (index) => {
+      
+        const newArray = [...list];
+        newArray.splice(index, 1);
+        setList(newArray);
+
+        
+    }
+
+      //This is responsible for deleting cards in the blackboard
     const handleDeleteCard = (index) => {
-        console.log(index);
+       
         const newArray = [...partsBlack];
         newArray.splice(index, 1);
         setPartsBlack(newArray);
-        console.log(partsBlack);
+        
         
         
     }
 
+    //This is executed once you click on the card in element list
     const displayIt = (element) => {
         setPartList(partList.concat(
             <Card style={{backgroundColor: `${element.color}`, width: `${parseInt(element.length) + 4}rem`}}title={element.name}></Card>));
@@ -200,19 +215,23 @@ const ElementList = ({partsBlack, setPartsBlack}) => {
         
     }
 
-    const saveCompo = () => {
+    const saveCompo = async () => {
         const date = new Date();
-        console.log(date);
         const author = user.username;
-        console.log(author);
         const whiteList = list.map(element => ({name: element.name, color: element.color, length: element.length}));
         const blackList = partsBlack.map(element => ({name: element.props.title, length: element.props.style.width, color: element.props.style.backgroundColor}));
-        console.log(whiteList);
-        console.log(blackList);
         const title = compTitle;
         const instrument = userInfo.instrument;
-        autoSave(title, author, date.toLocaleDateString(), whiteList, blackList, instrument);
+        //If it doesn't have an Id, it saves it in the hook
+        if(existId === ""){await autoSave(title, author, date.toLocaleDateString(), whiteList, blackList, instrument, existId)
+        .then(res => {setExistId(res);
+            
+        });} else {
+            //if it already has an Id, it just executes the function and the petition changes in the service
+            await autoSave(title, author, date.toLocaleDateString(), whiteList, blackList, instrument, existId)
+        }
         success();
+        
         
 
         
@@ -227,7 +246,8 @@ const ElementList = ({partsBlack, setPartsBlack}) => {
             console.log(preset)
             setList(variables[preset])
         } else{
-            //Ací tinc que dir que seleccione un preset
+            //Does nothing if no preset is selected
+
         }
     }
 

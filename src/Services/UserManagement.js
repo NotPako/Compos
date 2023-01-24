@@ -2,7 +2,7 @@
 
 var apiRoot = 'http://localhost:8000/';
 
-export const AddUser =  (user, instrument) => {
+export const AddUser =  (user, instrument, avatar) => {
 
     fetch(`${apiRoot}profiles`, {
         method: 'POST',
@@ -11,7 +11,8 @@ export const AddUser =  (user, instrument) => {
         username: user.username,
         email: user.email,
         password: user.password,
-        instrument: instrument
+        instrument: instrument,
+        avatar: avatar
 
         }),
        headers: {
@@ -30,8 +31,7 @@ export const checkCredentials = async (user, pass) => {
     const fetchedData = fetch(`${apiRoot}profiles?username=${user}&pass=${pass}`)
     .then(response => response.json())
     .then(data => {
-        console.log(data.length);
-        console.log(data.length > 0);
+        
         return data.length > 0;
 
     })
@@ -51,5 +51,32 @@ export const getUserData = async (user) => {
 
 
 
-export const checkUser = (user) => {}
+export const checkUser = (name) => {
 
+    return fetch(`${apiRoot}profiles?username=${name}`)
+    .then(response => response.json())
+    .then(data => {
+        console.log(data.length > 0)
+        return data.length > 0;
+
+    })
+    .catch(error => console.error(error));
+}
+
+export const deleteMyAccount = async (username) => {
+    try {
+        const response = await fetch(`http://localhost:8000/profiles/${username}`, {
+          method: 'DELETE',
+        });
+        if (!response.ok) {
+          throw new Error(response.statusText);
+        }
+        
+      } catch (error) {
+        console.error(error);
+      }
+}
+
+export const updateProfile = () => {
+    
+}

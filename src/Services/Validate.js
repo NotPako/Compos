@@ -1,18 +1,30 @@
+import { checkUser } from "./UserManagement";
 
 export const errorCheck = (name,value) => {
     
     switch(name){
-       case "username":
-        if(value === ""){
-            return("This field cannot be empty")
-        } else {
-        return "";
-        }
-
+        
+        case "username":
+        
+             if(value === ""){
+                return("This field cannot be empty")
+             } else {
+               return checkUser(value).then(
+                res => {
+                    if(res === true){
+                        return "Username already exists"
+                    } else {
+                        return "";
+                    }
+                }
+               )
+             
+            }
+        
 
         case "email":
 
-            if (! /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/.test(value) ) {
+            if (! /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(value) ) {
                 return "Invalid e-mail format";
             } else {
                 if(value === ""){
@@ -31,7 +43,7 @@ export const errorCheck = (name,value) => {
 
                 //Checking the password format....
 
-                if (! /[\d()+-]/g.test(value) ) {
+                if (! /[a-zA-Z]/.test(value) && /\d/.test(value)) {
                     return "Invalid password format";
                 } else {
                     return "";

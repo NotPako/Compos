@@ -1,53 +1,77 @@
 import React, { useEffect } from 'react';
 import { useState } from 'react';
-import { LoadingOutlined, UserOutlined , PlusOutlined, EditOutlined, MailOutlined} from '@ant-design/icons';
-import { message, Upload } from 'antd';
+import {EditOutlined} from '@ant-design/icons';
+import { Dropdown } from 'antd';
+import { useChangeUserContext} from '../../Providers/LoggedUserProvider';
 import './ProfileCard.css';
-import { Avatar, Form, Input, Button, Cascader} from 'antd';
+import { Avatar, Form, Input, Button, Modal} from 'antd';
+import { useNavigate } from 'react-router-dom';
 import { useUserContext } from '../../Providers/LoggedUserProvider';
-import { getUserData } from '../../Services/UserManagement';
-import { options } from '../RegisterCard/RegisterCard';
+import { deleteMyAccount, getUserData } from '../../Services/UserManagement';
+import avatar1 from '../../Resources/guitarAvatar.jpg';
+import avatar2 from '../../Resources/bateriaAvatar.jpg';
+import avatar3 from '../../Resources/singerAvatar.jpg';
+import avatar4 from '../../Resources/pianoAvatar.jpeg'
 
 
 const ProfileCard = () => {
+
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const navigate = useNavigate();
+  const userChange = useChangeUserContext();
+
+  const showModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const handleOk = () => {
+    deleteAccount();
+  };
+
+  const handleCancel = () => {
+    setIsModalOpen(false);
+  };
+
+  const items = [
+    {
+      key: '1',
+      label: (
+        <div style={{display:'flex', alignItems:'center', justifyContent:'center'}}>
+        <Avatar size={100} onClick={() => setImageUrl(avatar1)}  src={avatar1}></Avatar>
+        </div>
+      ),
+    },
+    {
+      key: '2',
+      label: (
+        <div style={{display:'flex', alignItems:'center', justifyContent:'center'}}>
+        <Avatar size={100} onClick={() => setImageUrl(avatar2)}  src={avatar2}></Avatar>
+        </div>      ),
+    },
+    {
+      key: '3',
+      label: (
+        <div style={{display:'flex', alignItems:'center', justifyContent:'center'}}>
+        <Avatar size={100} onClick={() => setImageUrl(avatar3)}  src={avatar3}></Avatar>
+        </div>      ),
+    },
+    {
+      key: '4',
+      label: (
+        <div style={{display:'flex', alignItems:'center', justifyContent:'center'}}>
+        <Avatar size={100} onClick={() => setImageUrl(avatar4)}  src={avatar4}></Avatar>
+        </div>      ),
+    }
+  ];
     
 
 const user = useUserContext();
 
-  const [form] = Form.useForm();
-
-  const onFinish = values => {
-    console.log('Success:', values);
-  };
-
-  const onFinishFailed = errorInfo => {
-    console.log('Failed:', errorInfo);
-  };
-
-  const [pictureUrl, setPictureUrl] = useState("");
-  const [loading, setLoading] = useState(false);
+  
   const [userInfo, setUserInfo] = useState("");
-  const [imageUrl, setImageUrl] = useState("");
+  const [imageUrl, setImageUrl] = useState();
   
 
-  const props = {
-    name: 'file',
-    action: 'https://www.mocky.io/v2/5cc8019d300000980a055e76',
-    headers: {
-      authorization: 'authorization-text',
-    },
-    onChange(info) {
-      if (info.file.status !== 'uploading') {
-        console.log(info.file, info.fileList);
-      }
-      if (info.file.status === 'done') {
-        message.success(`${info.file.name} file uploaded successfully`);
-        setImageUrl(info.file.response.url);
-      } else if (info.file.status === 'error') {
-        message.error(`${info.file.name} file upload failed.`);
-      }
-    },
-  };
 
   useEffect(() => {
 
@@ -56,7 +80,7 @@ const user = useUserContext();
     getUserData(user).then(
       res => (setUserInfo(res))
     ).catch(error => console.log(error))
-    console.log(userInfo.instrument)
+    
     } else {
       console.log(userInfo)
     }
@@ -65,6 +89,16 @@ const user = useUserContext();
   
   }, [userInfo])
 
+  const confirmDelete = () => {
+    showModal();
+  }
+
+  const deleteAccount = () => {
+    deleteMyAccount(userInfo.username);
+    userChange(null);
+    navigate('/');
+  }
+
  
 
  
@@ -72,26 +106,57 @@ const user = useUserContext();
     
     return(
       <div className='profileCardDesign'>
+        <Modal title="You're about to delete your account" open={isModalOpen} onOk={handleOk} onCancel={handleCancel}>
+          <p>Are you sure you want to delete the account?</p>
+        </Modal>
         <div className='leftSideDesign'>
-          <Avatar className="avatarCardDesign" icon={imageUrl === "" ? <UserOutlined/> : {}} size={230}/>
-          <Upload {...props}>
+          <Avatar className="avatarCardDesign"  src={imageUrl} size={230}/>
+          <Dropdown menu={{items}} placement='bottom'>
           <Button icon={<EditOutlined />}>Edit</Button>
-          </Upload>
+          </Dropdown>
+         
           <h1>{userInfo.username}</h1>
-          <Input className='inputsDesign' placeholder='Want to change your username?'></Input>
+          <Button onClick={() => confirmDelete()}style={{marginTop:'2rem'}}danger>Delete account</Button>
+
+          
           
         </div>
         <div className='rightSideDesign'>
-          <div className="mailDesign">
-            <div><MailOutlined style={{color: "white"}}/></div>
-            <div>{userInfo.email}</div>
-          </div>
-          <Cascader defaultValue={`${userInfo.instrument}`} name='instrument' options={options}></Cascader>
-          <br/>
-          <div style={{display:'inline-block'}}>
-            <h3>Password:</h3>
-            <Input className='inputsDesign' type='password' value={userInfo.password}></Input>
-          </div>
+        <Form
+            name="basic"
+            labelCol={{ span: 10 }}
+            wrapperCol={{ span: 16 }}
+            style={{ maxWidth: 600 }}
+            initialValues={{ }}
+            autoComplete="off"
+            size='large'
+        >
+        <Form.Item
+          label="Email"
+          name="email"
+        >
+          <Input placeholder={userInfo.email}/>
+        </Form.Item>
+
+        <Form.Item
+          label="Actual password"
+          name="passwordAct"
+        >
+          <Input.Password />
+        </Form.Item>
+        <Form.Item
+          label=" New Password"
+          name="passwordNew"
+        >
+          <Input.Password />
+        </Form.Item>
+        <Form.Item
+          label="Confirm Password"
+          name="passwordNewConf"
+        >
+          <Input.Password />
+        </Form.Item>
+    </Form>
 
         </div>
         <Button className="saveProfDesign">Save profile</Button>

@@ -10,6 +10,7 @@ import Profile from '../../Containers/Profile/Profile';
 import Register from '../../Containers/Register/Register';
 import {AnimatePresence} from 'framer-motion';
 import ViewMode from '../../Containers/ViewMode/ViewMode';
+import EditMode from '../../Containers/EditMode/EditMode';
 
 
 function AnimatedRoutes() {
@@ -29,6 +30,7 @@ function AnimatedRoutes() {
             <Route path='/createnew' element={<Create/>}/>
             <Route path='/profile' element={<Profile/>}/>
             <Route path='/viewMode' element={<ViewMode/>}/>
+            <Route path='/editMode' element={<EditMode/>}/>
 
         </Routes>
       </AnimatePresence>

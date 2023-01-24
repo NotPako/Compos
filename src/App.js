@@ -2,7 +2,7 @@ import './App.css';
 import React from 'react';
 import Header from './Components/Header/Header';
 import {message} from 'antd';
-import Body from './Components/Body/Body';
+import Body from './Containers/Body/Body';
 import Footer from './Components/Footer/Footer';
 
 

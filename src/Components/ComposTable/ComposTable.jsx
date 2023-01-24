@@ -28,6 +28,10 @@ const ComposTable = ({isMine, thisWeek}) => {
     const goToView = (element) => {
         navigate('/viewMode', {state: `${element.id}`});
     }
+
+    const goToEdit = (element) => {
+        navigate('/editMode', {state: `${element.id}`});
+    }
     
     const oneWeekAgo = new Date();
     oneWeekAgo.setDate(oneWeekAgo.getDate() - 7);
@@ -68,7 +72,12 @@ const ComposTable = ({isMine, thisWeek}) => {
         title: 'Name',
         dataIndex: 'title',
         key:'name',
-        render: (text, record) => <a onClick={() => goToView(record)}>{text}</a>
+        render: (text, record) => <a onClick={() => { if(isMine === 'false'){
+            goToView(record)
+        } else {
+            goToEdit(record)
+        }
+        }}>{text}</a>
     },
     {
         title: 'Author',

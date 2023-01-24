@@ -1,10 +1,11 @@
 var apiRoot = 'http://localhost:8000/compos';
 
-export const autoSave =  async (title, author, date, list, blackList, instrument) => {
+export const autoSave =  async (title, author, date, list, blackList, instrument, existId) => {
 
    
-    
-    fetch(`${apiRoot}`, {
+    if(existId === ""){
+        
+    return fetch(`${apiRoot}`, {
         method: 'POST',
         body: JSON.stringify({
         title: title,
@@ -19,8 +20,26 @@ export const autoSave =  async (title, author, date, list, blackList, instrument
         'Content-Type': 'application/json'
        }
     }).then(res => res.json())
-    .then(response => {console.log('Success:', response.id);})
+    .then(response => {return response.id})
     .catch (error => console.error('Error:', error));
+} else {
+    
+    fetch(`${apiRoot}/${existId}`, {
+  method: 'PATCH',
+  body: JSON.stringify({
+    title: title,
+        author: author,
+        date: date,
+        instrument: instrument,
+        list: list,
+        blackList: blackList
+  }),
+  headers: {
+    'Content-Type': 'application/json'
+  }
+})
+
+}
 }
 
 export const getCompos = async (author) => {
@@ -67,6 +86,7 @@ export const getCompoById = async (id) => {
     })
     .catch(error => console.error(error));
 }
+
 
 
     

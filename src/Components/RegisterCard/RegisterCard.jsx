@@ -1,8 +1,9 @@
 import React from 'react';
 import { UserOutlined, MailOutlined, LockOutlined } from '@ant-design/icons';
-import { Input, Button, Popover, Cascader, message} from 'antd';
+import { Input, Button, Popover, Cascader} from 'antd';
 import { useState } from 'react';
 import {errorCheck} from '../../Services/Validate';
+import { checkUser } from '../../Services/UserManagement';
 import './RegisterCard.css';
 import { AddUser } from '../../Services/UserManagement';
 import { useChangeUserContext } from '../../Providers/LoggedUserProvider';
@@ -57,15 +58,9 @@ const RegisterCard = () => {
 
 
     const [regError, setRegError] = useState('');
-    const [messageApi, contextHolder] = message.useMessage();
+    
 
-    const success = () => {
-    messageApi.open({
-        type: 'success',
-        content: 'Registered succesfully',
-      });
-      console.log('Està executant-se')
-};
+   
     
     
     
@@ -86,13 +81,14 @@ const RegisterCard = () => {
 
     
 
-    const errorHandler = (e) => {
+    const errorHandler = async (e) => {
 
         let error = "";
         
      
 
-        error = errorCheck(e.target.name,e.target.value);
+        error = await errorCheck(e.target.name,e.target.value);
+    
 
 
         if(e.target.name === "password2"){
@@ -118,14 +114,17 @@ const RegisterCard = () => {
             password2Error : ""
         })){
             ///No hi han errors, registrem l'usuari, buidem camps i mostrem missatge de confirmació
-           
+           if(instrument !== ""){
             setRegError('');
             console.log(user);
-            AddUser(user, instrument);
+            AddUser(user, instrument, '');
             console.log('registrado');
             userChange(user);
             
-            navigate('/userHome');
+            navigate('/mycompos');
+           } else {
+            setRegError('Please, select your instrument preference')
+           }
 
             
 
@@ -135,7 +134,7 @@ const RegisterCard = () => {
         } else {
             ///Si hi han, mostrem missatge de que revise els errors
             setRegError('Please, fix the errors above first');
-            console.log(userError);
+            
             
 
             

@@ -1,0 +1,46 @@
+.createDesign{
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: stretch;
+    
+}
+
+.presetSelectorDesign{
+    margin-top: 1rem;
+    margin-left:1rem;
+    margin-right:0.5rem;
+}
+
+
+.cardDesign:hover .closeCardDesign{
+    visibility: visible;
+}
+
+.closeCardDesign{
+    cursor:pointer;
+    display:'none';
+    visibility: hidden;
+}
+
+.closeCardDesign:hover {
+    color:red;
+}
+
+
+.elementsDesign {
+    cursor: pointer;
+}
+
+.elementsDesign:hover {
+    color:whitesmoke;
+}
+
+.elDraggable{
+    cursor:pointer;
+    height:max-content;
+    width:max-content;
+}
+
+.deleteDesign:hover{
+    color:red;
+}

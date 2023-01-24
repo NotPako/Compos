@@ -1,5 +1,5 @@
 import React from 'react';
-import AnimatedRoutes from '../AnimatedRoutes/AnimatedRoutes';
+import AnimatedRoutes from '../../Components/AnimatedRoutes/AnimatedRoutes';
 
 
 
