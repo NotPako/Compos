@@ -11,7 +11,9 @@ import { deleteMyAccount, getUserData } from '../../Services/UserManagement';
 import avatar1 from '../../Resources/guitarAvatar.jpg';
 import avatar2 from '../../Resources/bateriaAvatar.jpg';
 import avatar3 from '../../Resources/singerAvatar.jpg';
-import avatar4 from '../../Resources/pianoAvatar.jpeg'
+import avatar4 from '../../Resources/pianoAvatar.jpeg';
+import { errorCheck } from '../../Services/Validate';
+import { updateProfile } from '../../Services/UserManagement';
 
 
 const ProfileCard = () => {
@@ -70,7 +72,22 @@ const user = useUserContext();
   
   const [userInfo, setUserInfo] = useState("");
   const [imageUrl, setImageUrl] = useState();
-  
+  const [errorMessage, setErrorMessage] = useState("");
+  const [userError, setUserError] = useState({
+    usernameError : '',
+    emailError : '',
+    passwordError : '',
+    password2Error : '',
+    
+})
+  const [userUpdate, setUserUpdate] = useState({
+    username : "",
+    email : "",
+    password: "",
+    password2: "",
+    
+  });
+
 
 
   useEffect(() => {
@@ -78,7 +95,8 @@ const user = useUserContext();
     if(userInfo === ""){
     
     getUserData(user).then(
-      res => (setUserInfo(res))
+      res => {setUserInfo(res);
+              setImageUrl(res.avatar)}
     ).catch(error => console.log(error))
     
     } else {
@@ -88,6 +106,43 @@ const user = useUserContext();
     
   
   }, [userInfo])
+
+  const errorHandler = async (e) => {
+
+    let error = "";
+    
+ 
+
+    error = await errorCheck(e.target.name,e.target.value, true);
+
+
+
+    if(e.target.name === "password2"){
+      if(userUpdate.password2 !== ''){
+        if(userUpdate.password !== userUpdate.password2){
+            error = "Write the same password twice"
+        }
+      }
+    }
+
+    
+   
+
+    setUserError((prevState)=>({...prevState, 
+        [e.target.name + 'Error'] : error
+    }));
+
+  
+
+}
+
+const inputHandler = (e) => {
+
+  setUserUpdate((prevState)=>({...prevState, 
+      [e.target.name] : e.target.value
+  }));
+
+}
 
   const confirmDelete = () => {
     showModal();
@@ -99,6 +154,32 @@ const user = useUserContext();
     navigate('/');
   }
 
+  const saveProfile = () => {
+    if(userError.emailError !== ''){
+      setErrorMessage('Fix the errors above before updating your data');
+    } else {
+      if(userUpdate.email !== ''){
+        updateProfile(user.username, userUpdate.email, 'email');
+      } else {
+
+      }
+    }
+
+    if(userError.passwordError !== '' && userError.password2Error !== ''){
+      setErrorMessage('Fix the errors above before updating your data');
+    } else {
+      if(userUpdate.password !== '' && userUpdate.password2 !== ''){
+        updateProfile(user.username, userUpdate.password, 'password');
+      } else {
+
+      }
+    }
+
+    
+
+
+  }
+
  
 
  
@@ -106,7 +187,7 @@ const user = useUserContext();
     
     return(
       <div className='profileCardDesign'>
-        <Modal title="You're about to delete your account" open={isModalOpen} onOk={handleOk} onCancel={handleCancel}>
+        <Modal title="You're about to delete your account" okText='Delete' open={isModalOpen} onOk={handleOk} onCancel={handleCancel}>
           <p>Are you sure you want to delete the account?</p>
         </Modal>
         <div className='leftSideDesign'>
@@ -135,31 +216,29 @@ const user = useUserContext();
           label="Email"
           name="email"
         >
-          <Input placeholder={userInfo.email}/>
+          <Input placeholder={userInfo.email} name='email' onBlur={(e)=>errorHandler(e)} onChange={(e)=>inputHandler(e)}/>
+          <div className='errorMsg'>{userError.emailError}</div>
         </Form.Item>
 
-        <Form.Item
-          label="Actual password"
-          name="passwordAct"
-        >
-          <Input.Password />
-        </Form.Item>
         <Form.Item
           label=" New Password"
           name="passwordNew"
         >
-          <Input.Password />
+          <Input.Password name='password' onBlur={(e)=>errorHandler(e)} onChange={(e)=>inputHandler(e)}/>
+          <div className='errorMsg'>{userError.passwordError}</div>
         </Form.Item>
         <Form.Item
           label="Confirm Password"
           name="passwordNewConf"
         >
-          <Input.Password />
+          <Input.Password name='password2' onBlur={(e)=>errorHandler(e)} onChange={(e)=>inputHandler(e)}/>
+          <div className='errorMsg'>{userError.password2Error}</div>
         </Form.Item>
     </Form>
+    <div className='errorMsg'>{errorMessage}</div>
 
         </div>
-        <Button className="saveProfDesign">Save profile</Button>
+        <Button onClick={() => saveProfile()} className="saveProfDesign">Save profile</Button>
         
       </div>
     );

@@ -77,6 +77,39 @@ export const deleteMyAccount = async (username) => {
       }
 }
 
-export const updateProfile = () => {
-    
+export const updateProfile = (name, value, camp) => {
+    if(camp === 'email'){
+    fetch(`${apiRoot}profiles/${name}`, {
+  method: 'PATCH',
+  headers: {
+    'Content-Type': 'application/json',
+  },
+  body: JSON.stringify({
+    email: value
+  }),
+})
+  .then(response => response.json())
+  .then(data => {
+    console.log('Success:', data);
+  })
+  .catch(error => {
+    console.error('Error:', error);
+  });} else {
+    fetch(`${apiRoot}profiles/${name}`, {
+        method: 'PATCH',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          password: value
+        }),
+      })
+        .then(response => response.json())
+        .then(data => {
+          console.log('Success:', data);
+        })
+        .catch(error => {
+          console.error('Error:', error);
+        });
+  }
 }

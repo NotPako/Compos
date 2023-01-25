@@ -1,10 +1,10 @@
 import React from 'react';
-import { Input, Button, Popover } from 'antd';
+import { Input, Button} from 'antd';
 import { useState } from 'react';
 import './LoginCard.css';
 import { UserOutlined, LockOutlined } from '@ant-design/icons';
-import { checkCredentials, getUserData } from '../../Services/UserManagement';
-import { useChangeUserContext, useUserContext } from '../../Providers/LoggedUserProvider';
+import { checkCredentials} from '../../Services/UserManagement';
+import { useChangeUserContext} from '../../Providers/LoggedUserProvider';
 import {useNavigate} from 'react-router-dom';
 
 
@@ -16,6 +16,7 @@ const LoginCard = () => {
         username : '',
         password: '',
         instrument: ''
+        
     });
 
     const [errMsg, setErrMsg] = useState("");

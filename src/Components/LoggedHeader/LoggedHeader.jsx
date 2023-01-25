@@ -1,11 +1,12 @@
-import React from 'react';
+import {React} from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useChangeUserContext, useUserContext } from '../../Providers/LoggedUserProvider';
-import { Button, Dropdown, Space } from 'antd';
+import {Dropdown} from 'antd';
 import { Avatar } from 'antd';
 import {UserOutlined} from '@ant-design/icons';
 import './LoggedHeader.css';
-
+import { useEffect, useState } from 'react';
+import { getUserData } from '../../Services/UserManagement';
 
 
 
@@ -33,6 +34,15 @@ const LoggedHeader = () => {
     const user = useUserContext();
     const userChange = useChangeUserContext();
     const currUrl = window.location.pathname;
+    const [avatarUrl, setAvatarUrl] = useState('');
+
+    useEffect(() => {
+        if(avatarUrl === '' || avatarUrl === undefined){
+            getUserData(user).then(
+              res => setAvatarUrl(res.avatar)
+            )
+        }
+    })
 
     const signOut = () => {
         userChange(null);
@@ -53,7 +63,7 @@ const LoggedHeader = () => {
             }}
             placement="bottom"
         >
-            <Avatar className="avatarDesign" size="large" icon={<UserOutlined/>}></Avatar>
+            <Avatar src={avatarUrl}className="avatarDesign" size="large" icon={<UserOutlined/>}></Avatar>
         </Dropdown>
             
         

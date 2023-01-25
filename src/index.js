@@ -9,13 +9,13 @@ import './Fonts/vonique_92/Vonique92_D.otf'
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <React.StrictMode>
+  
     <LoggedUserProvider>
       <BrowserRouter>
         <App />
       </BrowserRouter>
     </LoggedUserProvider>
-  </React.StrictMode>
+  
 );
 
 // If you want to start measuring performance in your app, pass a function
