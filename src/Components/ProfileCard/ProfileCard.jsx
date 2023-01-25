@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useState } from 'react';
 import {EditOutlined} from '@ant-design/icons';
-import { Dropdown } from 'antd';
+import { Dropdown, message } from 'antd';
 import { useChangeUserContext} from '../../Providers/LoggedUserProvider';
 import './ProfileCard.css';
 import { Avatar, Form, Input, Button, Modal} from 'antd';
@@ -21,6 +21,14 @@ const ProfileCard = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const navigate = useNavigate();
   const userChange = useChangeUserContext();
+  const [messageApi, contextHolder] = message.useMessage();
+
+  const success = () => {
+    messageApi.open({
+      type: 'success',
+      content: 'Profile saved correctly',
+    });
+  };
 
   const showModal = () => {
     setIsModalOpen(true);
@@ -105,7 +113,7 @@ const user = useUserContext();
     
     
   
-  }, [userInfo])
+  }, [userInfo, user])
 
   const errorHandler = async (e) => {
 
@@ -160,6 +168,7 @@ const inputHandler = (e) => {
     } else {
       if(userUpdate.email !== ''){
         updateProfile(user.username, userUpdate.email, 'email');
+        success();
       } else {
 
       }
@@ -170,6 +179,7 @@ const inputHandler = (e) => {
     } else {
       if(userUpdate.password !== '' && userUpdate.password2 !== ''){
         updateProfile(user.username, userUpdate.password, 'password');
+        success();
       } else {
 
       }
@@ -187,6 +197,7 @@ const inputHandler = (e) => {
     
     return(
       <div className='profileCardDesign'>
+        {contextHolder}
         <Modal title="You're about to delete your account" okText='Delete' open={isModalOpen} onOk={handleOk} onCancel={handleCancel}>
           <p>Are you sure you want to delete the account?</p>
         </Modal>
