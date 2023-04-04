@@ -1,46 +1,49 @@
 import React from 'react';
 import './PopUp.css';
-import {Popover2} from '@blueprintjs/popover2'
-import ElementList from '../ElementList/ElementList';
-import Button from 'antd';
-import { useNavigate } from 'react-router-dom';
-
-
-
+import { Button } from 'antd';
 
 const PopUp = (props) => {
+	return props.trigger ? (
+		<div className='popup'>
+			<div className='popup-inner'>
+				{props.newComp ? (
+					<>
+						<Button
+							className='close-btn'
+							onClick={props.goAway}
+						>
+							Cancel
+						</Button>
+						<Button
+							className='add-btn'
+							onClick={props.doIt}
+						>
+							Start
+						</Button>
+					</>
+				) : (
+					<>
+						<Button
+							className='close-btn'
+							onClick={() => props.setTrigger(false)}
+						>
+							Cancel
+						</Button>
+						<Button
+							className='add-btn'
+							onClick={props.doIt}
+						>
+							Add
+						</Button>{' '}
+					</>
+				)}
 
-   
-
-    return (props.trigger) ? (
-       <div className="popup">
-        <div className="popup-inner">
-            { props.newComp ? 
-            (<>
-            <button className="close-btn" onClick={props.goAway}>
-                Cancel
-            </button>
-            <button className="add-btn" onClick={ 
-                props.doIt
-                }>
-                Start
-            </button>
-            </>):  (
-                <>
-            <button className="close-btn" onClick={() => props.setTrigger(false)}>
-                Cancel
-            </button>
-            <button className="add-btn" onClick={ 
-                props.doIt
-                }>
-                Add
-            </button> </>) }
-           
-            {props.children}
-        </div>
-       </div>
-    ) : "";
-
-}
+				{props.children}
+			</div>
+		</div>
+	) : (
+		''
+	);
+};
 
 export default PopUp;
