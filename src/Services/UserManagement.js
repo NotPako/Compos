@@ -94,7 +94,7 @@ export const updateProfile = (name, value, camp) => {
   })
   .catch(error => {
     console.error('Error:', error);
-  });} else {
+  });} else if(camp === 'password'){
     fetch(`${apiRoot}profiles/${name}`, {
         method: 'PATCH',
         headers: {
@@ -102,6 +102,23 @@ export const updateProfile = (name, value, camp) => {
         },
         body: JSON.stringify({
           password: value
+        }),
+      })
+        .then(response => response.json())
+        .then(data => {
+          console.log('Success:', data);
+        })
+        .catch(error => {
+          console.error('Error:', error);
+        });
+  } else if(camp === 'avatar'){
+    fetch(`${apiRoot}profiles/${name}`, {
+        method: 'PATCH',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          avatar: value
         }),
       })
         .then(response => response.json())

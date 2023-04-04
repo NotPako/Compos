@@ -185,6 +185,8 @@ const inputHandler = (e) => {
       }
     }
 
+    updateProfile(user.username, imageUrl, 'avatar');
+
     
 
 
