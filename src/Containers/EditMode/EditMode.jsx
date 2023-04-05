@@ -1,7 +1,7 @@
 import { React, useState, useEffect } from 'react';
 import ElementList from '../../Components/ElementList/ElementList';
 import { useLocation } from 'react-router-dom';
-import Blackboard from '../../Components/Blackboard/Blackboard';
+import Blackboard from '../../Components/Blackboard/Blackboard.tsx';
 import { CloseOutlined } from '@ant-design/icons';
 import { getCompoById } from '../../Services/CompoManagement';
 import { Card } from 'antd';

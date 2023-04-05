@@ -1,7 +1,7 @@
 import React from 'react';
 import './Create.css';
 import ElementList from '../../Components/ElementList/ElementList';
-import Blackboard from '../../Components/Blackboard/Blackboard';
+import Blackboard from '../../Components/Blackboard/Blackboard.tsx';
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 
