@@ -5,9 +5,10 @@ import Card from 'antd/es/card/Card';
 
 interface Props {
 	partsList: typeof Card[];
+	notDraggable: boolean;
 }
 
-const Blackboard: React.FC<Props> = ({ partsList }, style) => {
+const Blackboard: React.FC<Props> = ({ partsList, notDraggable }, style) => {
 	return (
 		<div
 			style={style}
@@ -29,6 +30,7 @@ const Blackboard: React.FC<Props> = ({ partsList }, style) => {
 									key={index}
 									draggableId={index.toString()}
 									index={index}
+									isDragDisabled={notDraggable}
 								>
 									{(provided) => (
 										<div

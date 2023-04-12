@@ -40,7 +40,10 @@ const ViewMode = () => {
 	return (
 		<div style={{ display: 'flex', flexDirection: 'column' }}>
 			<h1 className='titulComp'>{compo.title}</h1>
-			<Blackboard partsList={blackList} />
+			<Blackboard
+				partsList={blackList}
+				notDraggable
+			/>
 			<Button
 				style={{ position: 'fixed', bottom: '20px', right: '20px' }}
 				onClick={() => navigate('/explore')}
