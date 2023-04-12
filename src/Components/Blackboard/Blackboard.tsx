@@ -22,7 +22,7 @@ const Blackboard: React.FC<Props> = ({ partsList }, style) => {
 						<div
 							ref={provided.innerRef}
 							{...provided.droppableProps}
-							style={{ display: 'flex' }}
+							style={{ display: 'flex', width: 'auto', flexWrap: 'wrap' }}
 						>
 							{partsList.map((part, index) => (
 								<Draggable

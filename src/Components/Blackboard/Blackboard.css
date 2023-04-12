@@ -1,14 +1,12 @@
 .pizarraDesign {
     height:max-content;
-    width:80rem;
+    width:max-content;
+    margin-right:5rem;
     margin-left: 5rem;
     color: white;
     display:flex;
     flex-wrap: wrap;
     flex-direction: row;
-    background-color: grey;
-    overflow-x: auto;
-
    
 }
 
