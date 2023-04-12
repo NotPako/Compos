@@ -7,15 +7,22 @@ interface Props {
 	partsList: typeof Card[];
 }
 
-const Blackboard: React.FC<Props> = ({ partsList }) => {
+const Blackboard: React.FC<Props> = ({ partsList }, style) => {
 	return (
-		<div>
-			<DragDropContext>
-				<Droppable droppableId='droppable'>
+		<div
+			style={style}
+			className='pizarraDesign'
+		>
+			<DragDropContext onDragEnd={(result) => console.log(result)}>
+				<Droppable
+					droppableId='droppable'
+					direction='horizontal'
+				>
 					{(provided) => (
 						<div
 							ref={provided.innerRef}
 							{...provided.droppableProps}
+							style={{ display: 'flex' }}
 						>
 							{partsList.map((part, index) => (
 								<Draggable

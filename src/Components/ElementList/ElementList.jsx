@@ -22,15 +22,17 @@ const ElementList = ({
 	startingParts,
 	id,
 	title,
+	style,
 }) => {
 	let DrumPreset = [
-		{ name: 'Intro', length: '8', color: 'red' },
-		{ name: 'Chorus', length: '16', color: 'yellow' },
-		{ name: 'Verse', length: '8', color: 'green' },
+		{ name: 'Intro', length: '8', color: 'red', description: '' },
+		{ name: 'Chorus', length: '16', color: 'yellow', description: '' },
+		{ name: 'Verse', length: '8', color: 'green', description: '' },
 		{
 			name: 'Break',
 			length: '2',
 			color: 'purple',
+			description: '',
 		},
 	];
 
@@ -266,7 +268,10 @@ const ElementList = ({
 		<>
 			{contextHolder}
 			{contextSaveHolder}
-			<div className='listDesign'>
+			<div
+				className='listDesign'
+				style={style}
+			>
 				{editMode ? (
 					<Input
 						defaultValue={compTitle}
