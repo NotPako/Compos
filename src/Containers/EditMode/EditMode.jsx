@@ -70,7 +70,10 @@ const EditMode = () => {
 				id={id}
 				title={compo.title}
 			/>
-			<Blackboard partsList={Object.entries(partsBlack)} />
+			<Blackboard
+				partsList={partsBlack}
+				setPartsBlack={setPartsBlack}
+			/>
 		</motion.div>
 	);
 };

@@ -252,6 +252,7 @@ const ElementList = ({
 				existId
 			);
 		}
+		console.log(blackList);
 		success();
 	};
 

@@ -6,12 +6,17 @@ import Card from 'antd/es/card/Card';
 interface Props {
 	partsList: typeof Card[];
 	notDraggable: boolean;
+	setPartsBlack: React.Dispatch<React.SetStateAction<typeof Card[]>>;
 }
 
-const Blackboard: React.FC<Props> = ({ partsList, notDraggable }, style) => {
+const Blackboard: React.FC<Props> = (
+	{ partsList, notDraggable, setPartsBlack },
+	style
+) => {
 	const [cards, setCards] = useState(partsList);
 
 	useEffect(() => {
+		console.log(partsList);
 		setCards(partsList);
 	}, [partsList]);
 
@@ -23,8 +28,10 @@ const Blackboard: React.FC<Props> = ({ partsList, notDraggable }, style) => {
 		const newCards = Array.from(cards);
 		const [reorderedItem] = newCards.splice(result.source.index, 1);
 		newCards.splice(result.destination.index, 0, reorderedItem);
-
+		console.log(partsList);
+		console.log(cards);
 		setCards(newCards);
+		setPartsBlack(newCards);
 	};
 
 	return (

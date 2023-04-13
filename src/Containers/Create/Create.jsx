@@ -7,6 +7,7 @@ import { motion } from 'framer-motion';
 
 const Create = () => {
 	const [partsBlack, setPartsBlack] = useState([]);
+	console.log(partsBlack, 'del create');
 
 	return (
 		<motion.div
@@ -19,7 +20,10 @@ const Create = () => {
 				partsBlack={partsBlack}
 				setPartsBlack={setPartsBlack}
 			/>
-			<Blackboard partsList={Object.entries(partsBlack)} />
+			<Blackboard
+				partsList={partsBlack}
+				setPartsBlack={setPartsBlack}
+			/>
 		</motion.div>
 	);
 };
