@@ -12,7 +12,7 @@ const ComposTable = ({ isMine, thisWeek }) => {
 	const [dataSource, setDataSource] = useState([]);
 	const [searchText, setSearchText] = useState('');
 	const [instrCasc, setInstrCasc] = useState('');
-	const user = useUserContext();
+	const { user } = useUserContext();
 	const navigate = useNavigate();
 
 	const search = (data) => {
