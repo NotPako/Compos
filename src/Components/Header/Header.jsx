@@ -5,32 +5,19 @@ import { useUserContext } from '../../Providers/LoggedUserProvider';
 import './Header.css';
 import Logo from '../../Resources/ComposLogo.png';
 
-
-
 const Header = () => {
-    
-    const user = useUserContext();
+	const { user } = useUserContext();
 
-   
-  
-  
-
-
-    return (
-      
-    <div className='headerDesign'>
-      
-            <img className='titleDesign' alt='' src={Logo}></img>
-            {user === null ? (
-                <UnloggedHeader/>
-            ) : (
-                <LoggedHeader/>
-            )}
-            
-
-    </div>
-
-    );
-}
+	return (
+		<div className='headerDesign'>
+			<img
+				className='titleDesign'
+				alt=''
+				src={Logo}
+			></img>
+			{user === null ? <UnloggedHeader /> : <LoggedHeader />}
+		</div>
+	);
+};
 
 export default Header;

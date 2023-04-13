@@ -1,32 +1,31 @@
-import React, {useState, useContext} from 'react';
+import React, { useState, useContext } from 'react';
 
-const userContext = React.createContext();
+const userContext = React.createContext({ user: null, profilePicture: '' });
 
 const changeUserContext = React.createContext();
 
 export const useUserContext = () => {
-    return useContext(userContext);
+	return useContext(userContext);
 };
 
 export const useChangeUserContext = () => {
-    return useContext(changeUserContext);
+	return useContext(changeUserContext);
 };
 
-
 export const LoggedUserProvider = (props) => {
-    const [user, setUser] = useState(null);
+	const [user, setUser] = useState(null);
+	const [profilePicture, setProfilePicture] = useState('');
+	const userChange = (logged) => {
+		console.log('el logged', logged);
 
-    const userChange = (logged) => {
-        console.log("el logged",logged);
-      
-        setUser(logged);
-    }
+		setUser(logged);
+	};
 
-    return (
-        <userContext.Provider value={user}>
-            <changeUserContext.Provider value={userChange}>
-                {props.children}
-            </changeUserContext.Provider>
-        </userContext.Provider>
-    )
-}
+	return (
+		<userContext.Provider value={{ user, profilePicture }}>
+			<changeUserContext.Provider value={{ userChange, setProfilePicture }}>
+				{props.children}
+			</changeUserContext.Provider>
+		</userContext.Provider>
+	);
+};
