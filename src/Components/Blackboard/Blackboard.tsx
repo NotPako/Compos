@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 import './Blackboard.css';
 import Card from 'antd/es/card/Card';
@@ -9,12 +9,30 @@ interface Props {
 }
 
 const Blackboard: React.FC<Props> = ({ partsList, notDraggable }, style) => {
+	const [cards, setCards] = useState(partsList);
+
+	useEffect(() => {
+		setCards(partsList);
+	}, [partsList]);
+
+	const handleDragEnd = (result) => {
+		if (!result.destination) {
+			return;
+		}
+
+		const newCards = Array.from(cards);
+		const [reorderedItem] = newCards.splice(result.source.index, 1);
+		newCards.splice(result.destination.index, 0, reorderedItem);
+
+		setCards(newCards);
+	};
+
 	return (
 		<div
 			style={style}
 			className='pizarraDesign'
 		>
-			<DragDropContext onDragEnd={(result) => console.log(result)}>
+			<DragDropContext onDragEnd={handleDragEnd}>
 				<Droppable
 					droppableId='droppable'
 					direction='horizontal'
@@ -25,7 +43,7 @@ const Blackboard: React.FC<Props> = ({ partsList, notDraggable }, style) => {
 							{...provided.droppableProps}
 							style={{ display: 'flex', width: 'auto', flexWrap: 'wrap' }}
 						>
-							{partsList.map((part, index) => (
+							{cards.map((card, index) => (
 								<Draggable
 									key={index}
 									draggableId={index.toString()}
@@ -38,7 +56,7 @@ const Blackboard: React.FC<Props> = ({ partsList, notDraggable }, style) => {
 											{...provided.draggableProps}
 											{...provided.dragHandleProps}
 										>
-											{part}
+											{card}
 										</div>
 									)}
 								</Draggable>

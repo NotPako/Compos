@@ -301,67 +301,6 @@
       "id": 11
     },
     {
-      "title": "Mix 80",
-      "author": "badasd",
-      "date": "21/2/2023",
-      "instrument": "Drummer",
-      "list": [
-        {
-          "name": "Intro",
-          "color": "red",
-          "length": "8"
-        },
-        {
-          "name": "Chorus",
-          "color": "yellow",
-          "length": "16"
-        },
-        {
-          "name": "Verse",
-          "color": "green",
-          "length": "8"
-        },
-        {
-          "name": "Break",
-          "color": "purple",
-          "length": "2"
-        }
-      ],
-      "blackList": [
-        {
-          "name": "Chorus",
-          "length": "20rem",
-          "color": "yellow"
-        },
-        {
-          "name": "Verse",
-          "length": "12rem",
-          "color": "green"
-        },
-        {
-          "name": "Chorus",
-          "length": "20rem",
-          "color": "yellow"
-        },
-        {
-          "name": "Intro",
-          "length": "12rem",
-          "color": "red"
-        },
-        {
-          "name": "Intro",
-          "length": "12rem",
-          "color": "red"
-        },
-        {
-          "name": "Intro",
-          "length": "12rem",
-          "color": "red"
-        }
-      ],
-      "id": 12
-    },
-    {
       "title": "New compo",
       "author": "badasd",
       "date": "12/4/2023",
@@ -461,6 +400,118 @@
         }
       ],
       "id": 13
+    },
+    {
+      "title": "Intro deuria estar la 1a",
+      "author": "badasd",
+      "date": "13/4/2023",
+      "instrument": "Drummer",
+      "list": [
+        {
+          "name": "Intro",
+          "color": "red",
+          "length": "8"
+        },
+        {
+          "name": "Chorus",
+          "color": "yellow",
+          "length": "16"
+        },
+        {
+          "name": "Verse",
+          "color": "green",
+          "length": "8"
+        },
+        {
+          "name": "Break",
+          "color": "purple",
+          "length": "2"
+        }
+      ],
+      "blackList": [
+        {
+          "name": "Intro",
+          "length": "14rem",
+          "color": "red"
+        },
+        {
+          "name": "Chorus",
+          "length": "22rem",
+          "color": "yellow"
+        },
+        {
+          "name": "Chorus",
+          "length": "22rem",
+          "color": "yellow"
+        },
+        {
+          "name": "Verse",
+          "length": "14rem",
+          "color": "green"
+        },
+        {
+          "name": "Chorus",
+          "length": "22rem",
+          "color": "yellow"
+        },
+        {
+          "name": "Chorus",
+          "length": "22rem",
+          "color": "yellow"
+        }
+      ],
+      "id": 14
+    },
+    {
+      "title": "Intro deuria estar 2a",
+      "author": "badasd",
+      "date": "13/4/2023",
+      "instrument": "Drummer",
+      "list": [
+        {
+          "name": "Intro",
+          "color": "red",
+          "length": "8"
+        },
+        {
+          "name": "Chorus",
+          "color": "yellow",
+          "length": "16"
+        },
+        {
+          "name": "Verse",
+          "color": "green",
+          "length": "8"
+        },
+        {
+          "name": "Break",
+          "color": "purple",
+          "length": "2"
+        }
+      ],
+      "blackList": [
+        {
+          "name": "Intro",
+          "length": "12rem",
+          "color": "red"
+        },
+        {
+          "name": "Chorus",
+          "length": "20rem",
+          "color": "yellow"
+        },
+        {
+          "name": "Verse",
+          "length": "12rem",
+          "color": "green"
+        },
+        {
+          "name": "Break",
+          "length": "6rem",
+          "color": "purple"
+        }
+      ],
+      "id": 15
     }
   ]
 }

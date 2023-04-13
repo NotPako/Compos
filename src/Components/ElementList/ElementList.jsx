@@ -80,6 +80,10 @@ const ElementList = ({
 			value: 'DrumPreset',
 			label: 'Drummer classic',
 		},
+		{
+			value: 'JazzPreset',
+			label: 'Jazz Arrangement',
+		},
 	];
 
 	const GoAway = () => {
