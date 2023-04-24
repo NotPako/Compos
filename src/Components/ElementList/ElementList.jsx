@@ -54,7 +54,7 @@ const ElementList = ({
 		length: 0,
 		color: 'white',
 	});
-	const user = useUserContext();
+	const {user} = useUserContext();
 
 	let navigate = useNavigate();
 
