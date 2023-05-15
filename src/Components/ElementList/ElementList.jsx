@@ -173,8 +173,9 @@ const ElementList = ({
 	//This is responsible for deleting cards in the blackboard
 	const handleDeleteCard = (index) => {
 		const newArray = [...partsBlack];
-		newArray.splice(index, 1);
-		setPartsBlack(newArray);
+		console.log(index, 'el index');
+		console.log(newArray, 'deuria ser el puto array')
+		console.log(newArray.length, 'el length')
 	};
 
 	//This is executed once you click on the card in element list
