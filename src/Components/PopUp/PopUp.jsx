@@ -1,6 +1,7 @@
 import React from 'react';
 import './PopUp.css';
 import { Button } from 'antd';
+import {CloseOutlined} from '@ant-design/icons';
 
 const PopUp = (props) => {
 	return props.trigger ? (
@@ -19,6 +20,15 @@ const PopUp = (props) => {
 							onClick={props.doIt}
 						>
 							Start
+						</Button>
+					</>
+				) : props.watchIt ? (
+					<>
+					<Button
+							className='close-btn'
+							onClick={() => props.setTrigger(false)}
+						>
+							<CloseOutlined/>
 						</Button>
 					</>
 				) : (

@@ -8,6 +8,7 @@ import {
 	CloseOutlined,
 	SmileOutlined,
 	SaveOutlined,
+	EyeOutlined
 } from '@ant-design/icons';
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
@@ -15,6 +16,9 @@ import { GithubPicker } from 'react-color';
 import { autoSave } from '../../Services/CompoManagement';
 import { useUserContext } from '../../Providers/LoggedUserProvider';
 import { getUserData } from '../../Services/UserManagement';
+
+
+const { TextArea } = Input;
 
 const ElementList = ({
 	partsBlack,
@@ -36,8 +40,21 @@ const ElementList = ({
 		},
 	];
 
+	let JazzPreset = [
+		{ name: 'Intro', length: '8', color: 'red', description: '' },
+		{ name: 'Chorus', length: '16', color: 'yellow', description: '' },
+		{ name: 'Verse', length: '8', color: 'green', description: '' },
+		{
+			name: 'Break',
+			length: '2',
+			color: 'purple',
+			description: '',
+		},
+	];
+
 	const [buttonPopup, setButtonPopup] = useState(false);
 	const [startingPopup, setStartingPopup] = useState(false);
+	const [watchClose, setWatchClose] = useState(false);
 	const [compTitle, setCompTitle] = useState('New compo');
 	const [editMode, setEditMode] = useState(false);
 	const [cardColor, setCardColor] = useState('');
@@ -58,7 +75,7 @@ const ElementList = ({
 
 	let navigate = useNavigate();
 
-	let variables = { DrumPreset };
+	let variables = { DrumPreset, JazzPreset};
 	const openNotification = () => {
 		setNotiOpened('true');
 		api.open({
@@ -173,10 +190,15 @@ const ElementList = ({
 	//This is responsible for deleting cards in the blackboard
 	const handleDeleteCard = (index) => {
 		const newArray = [...partsBlack];
-		console.log(index, 'el index');
-		console.log(newArray, 'deuria ser el puto array')
-		console.log(newArray.length, 'el length')
+		newArray.splice(index, 1);
+		setPartsBlack(newArray);
 	};
+
+	//This function gets executed when clicking in the eye of the card
+	const watchThisCard = () => {
+		console.log('avore la carta');
+		setWatchClose(true);
+	}
 
 	//This is executed once you click on the card in element list
 	const displayIt = (element) => {
@@ -198,11 +220,18 @@ const ElementList = ({
 					style={{
 						backgroundColor: `${element.color}`,
 						width: `${parseInt(element.length) + 4}rem`,
+						height:'8rem'
 					}}
 					title={element.name}
 				>
 					<div style={{ float: 'right' }}>
 						{' '}
+						<EyeOutlined
+							className='watchCardDesign'
+							style={{marginRight:'2rem'}}
+							onClick={watchThisCard}
+						
+						/>
 						<CloseOutlined
 							onClick={() => handleDeleteCard(partsBlack.length)}
 							className='closeCardDesign'
@@ -220,6 +249,7 @@ const ElementList = ({
 			name: element.name,
 			color: element.color,
 			length: element.length,
+			description: element.description,
 		}));
 		const blackList = partsBlack.map((element) => ({
 			name: element.props.title,
@@ -269,6 +299,8 @@ const ElementList = ({
 	const onChangePreset = (value) => {
 		setPreset(value[0]);
 	};
+
+	
 
 	return (
 		<>
@@ -320,34 +352,48 @@ const ElementList = ({
 					setTrigger={setButtonPopup}
 					doIt={addPart}
 				>
+					<div style={{display:'flex'}}>
 					<div>
 						<h3>Add a name</h3>
-						<input
+						<Input
 							type='text'
 							placeholder='Ex. Intro'
 							name='name'
 							onChange={(e) => {
 								handleChange(e);
 							}}
-						></input>
-					</div>
-					<div>
+						></Input>
+					
 						<h3>How many bars?</h3>
-						<input
+						<Input
 							type='number'
 							name='length'
 							onChange={(e) => {
 								handleChange(e);
 							}}
-						></input>
-					</div>
-					<div>
+						></Input>
+					
 						<h3>Select a color</h3>
 						<p>{cardColor}</p>
 						<GithubPicker
 							color='white'
 							onChange={(e) => handleChange(e, true)}
 						/>
+					</div>
+					<div style={{marginLeft:'2rem'}}>
+					<h3>Give it a description</h3>
+						<TextArea
+							type='text'
+							placeholder='Ex. Intro'
+							name='description'
+							onChange={(e) => {
+								handleChange(e);
+							}}
+							rows={4}
+							
+						></TextArea>
+
+					</div>
 					</div>
 				</PopUp>
 				<PopUp
@@ -359,15 +405,23 @@ const ElementList = ({
 				>
 					<div>
 						<h3>Start with a name for your compo</h3>
-						<input
+						<Input
 							type='text'
 							placeholder='New composition'
 							name='name'
+							style={{width:'40%'}}
 							onChange={(e) => {
 								handleChangeName(e);
 							}}
-						></input>
+						></Input>
 					</div>
+				</PopUp>
+				<PopUp
+				trigger={watchClose}
+				setTrigger={setWatchClose}
+				watchIt={true}
+				>
+
 				</PopUp>
 
 				<br></br>

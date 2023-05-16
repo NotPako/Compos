@@ -29,6 +29,21 @@
     color:red;
 }
 
+.cardDesign:hover .watchCardDesign{
+    visibility: visible;
+}
+
+
+.watchCardDesign{
+    cursor:pointer;
+    display:'none';
+    visibility: hidden;
+}
+
+.watchCardDesign:hover {
+    color:white;
+}
+
 #newElement {
     height: max-content;
     margin-left: 1rem;
