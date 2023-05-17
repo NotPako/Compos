@@ -8,7 +8,8 @@ import {
 	CloseOutlined,
 	SmileOutlined,
 	SaveOutlined,
-	EyeOutlined
+	EyeOutlined,
+	EditOutlined
 } from '@ant-design/icons';
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
@@ -71,6 +72,12 @@ const ElementList = ({
 		length: 0,
 		color: 'white',
 	});
+	const [cardInfo, setCardInfo] = useState({
+		name: '',
+		length: 0,
+		color: '',
+		description: ''
+	})
 	const {user} = useUserContext();
 
 	let navigate = useNavigate();
@@ -195,9 +202,13 @@ const ElementList = ({
 	};
 
 	//This function gets executed when clicking in the eye of the card
-	const watchThisCard = () => {
-		console.log('avore la carta');
+	const watchThisCard = (card) => {
 		setWatchClose(true);
+		setCardInfo({name: card.name,
+			description: card.description,
+			color: card.color,
+			length: card.length,
+		})
 	}
 
 	//This is executed once you click on the card in element list
@@ -223,13 +234,14 @@ const ElementList = ({
 						height:'8rem'
 					}}
 					title={element.name}
+
 				>
 					<div style={{ float: 'right' }}>
 						{' '}
 						<EyeOutlined
 							className='watchCardDesign'
 							style={{marginRight:'2rem'}}
-							onClick={watchThisCard}
+							onClick={() => watchThisCard(element)}
 						
 						/>
 						<CloseOutlined
@@ -421,6 +433,17 @@ const ElementList = ({
 				setTrigger={setWatchClose}
 				watchIt={true}
 				>
+					<div className='frame' style={{display:'flex', flexDirection:'column', borderColor:`${cardInfo.color}`}}>
+						<div style={{fontWeight:'bold', marginBottom:'1rem', display:'flex'}}>
+							{cardInfo.name}
+							<text style={{marginLeft:'2rem'}}>
+								Bars: <text style={{fontWeight:'initial'}}>{cardInfo.length}</text>
+							</text>
+						</div>
+						<div>
+							{cardInfo.description}
+						</div>
+					</div>
 
 				</PopUp>
 
@@ -440,11 +463,15 @@ const ElementList = ({
 								}}
 								title={element.name}
 							>
-								<p>Length: {element.length}</p>
+								<p style={{fontWeight:'bold'}}>Length: <text style={{fontWeight:'initial'}}>{element.length}</text></p>
 								<p>
 									<DeleteOutlined
 										onClick={(e) => handleDeleteClick(e, index)}
 										className='deleteDesign'
+									/>
+									<EditOutlined
+										className='editDesign'
+									
 									/>
 								</p>
 							</Card>

@@ -2,11 +2,12 @@ import { React, useState, useEffect } from 'react';
 import ElementList from '../../Components/ElementList/ElementList';
 import { useLocation } from 'react-router-dom';
 import Blackboard from '../../Components/Blackboard/Blackboard.tsx';
-import { CloseOutlined } from '@ant-design/icons';
+import { CloseOutlined, EyeOutlined } from '@ant-design/icons';
 import { getCompoById } from '../../Services/CompoManagement';
 import { Card } from 'antd';
 import { motion } from 'framer-motion';
 import './EditMode.css';
+import PopUp from '../../Components/PopUp/PopUp';
 
 const EditMode = () => {
 	const [partsBlack, setPartsBlack] = useState([]);
@@ -15,6 +16,13 @@ const EditMode = () => {
 	const [list, setList] = useState([]);
 	const [whiteList, setWhiteList] = useState([]);
 	const [compo, setCompo] = useState('');
+	const [watchClose, setWatchClose] = useState(false);
+	const [cardInfo, setCardInfo] = useState({
+		name: '',
+		length: 0,
+		color: '',
+		description: ''
+	})
 
 	const handleDeleteCard = (index) => {
 		console.log(index);
@@ -23,6 +31,28 @@ const EditMode = () => {
 		setPartsBlack(newArray);
 		console.log(partsBlack);
 	};
+
+	const watchThisCard = (card) => {
+		setWatchClose(true);
+		setCardInfo({name: card.name,
+			description: card.description,
+			color: card.color,
+			length: card.length,
+		})
+	}
+
+	function decreaseByFour(inputString) {
+		// Remove "rem" part and convert the remaining string to a number
+		const number = parseInt(inputString);
+	  
+		// Decrease the number by 4
+		const decreasedNumber = number - 4;
+	  
+		// Return the decreased number as a string
+		return decreasedNumber.toString();
+	  }
+	  
+
 
 	useEffect(() => {
 		if (partsBlack.length === 0 || whiteList.length === 0) {
@@ -43,6 +73,12 @@ const EditMode = () => {
 						>
 							<div style={{ float: 'right' }}>
 								{' '}
+								<EyeOutlined
+							className='watchCardDesign'
+							style={{marginRight:'2rem'}}
+							onClick={() => watchThisCard(element)}
+						
+							/>
 								<CloseOutlined
 									onClick={() => handleDeleteCard(partsBlack.length)}
 									className='closeCardDesign'
@@ -74,6 +110,24 @@ const EditMode = () => {
 				partsList={partsBlack}
 				setPartsBlack={setPartsBlack}
 			/>
+			<PopUp
+				trigger={watchClose}
+				setTrigger={setWatchClose}
+				watchIt={true}
+				>
+					<div className='frame' style={{display:'flex', flexDirection:'column', borderColor:`${cardInfo.color}`}}>
+						<div style={{fontWeight:'bold', marginBottom:'1rem', display:'flex'}}>
+							{cardInfo.name}
+							<text style={{marginLeft:'2rem'}}>
+								Bars: <text style={{fontWeight:'initial'}}>{decreaseByFour(cardInfo.length)}</text>
+							</text>
+						</div>
+						<div>
+							{cardInfo.description}
+						</div>
+					</div>
+
+				</PopUp>
 		</motion.div>
 	);
 };

@@ -118,7 +118,8 @@
       "username": "badasda",
       "email": "bad@bad",
       "password": "12345678",
-      "instrument": "Guitarrist"
+      "instrument": "Guitarrist",
+      "avatar": "/static/media/bateriaAvatar.72a4eb10c1ed9e646a4e.jpg"
     },
     {
       "id": "badasdote",
@@ -266,7 +267,7 @@
     {
       "title": "Mix 80",
       "author": "badasd",
-      "date": "16/5/2023",
+      "date": "17/5/2023",
       "instrument": "Drummer",
       "list": [
         {
@@ -294,34 +295,45 @@
           "description": ""
         }
       ],
-      "blackList": [
+      "blackList": [],
+      "id": 21
+    },
+    {
+      "title": "La nova",
+      "author": "badasd",
+      "date": "17/5/2023",
+      "instrument": "Drummer",
+      "list": [
         {
-          "name": "Intro",
-          "length": "12rem",
-          "color": "red"
-        },
-        {
-          "name": "Chorus",
-          "length": "20rem",
-          "color": "yellow"
-        },
-        {
-          "name": "Verse",
-          "length": "12rem",
-          "color": "green"
-        },
-        {
-          "name": "Break",
-          "length": "6rem",
-          "color": "purple"
-        },
-        {
-          "name": "Verse",
-          "length": "12rem",
-          "color": "green"
+          "name": "Alguna",
+          "color": "#008b02",
+          "length": "8",
+          "description": "LFKNSFBDSJFSDLFNSLKFSFS"
         }
       ],
-      "id": 21
+      "blackList": [
+        {
+          "name": "Alguna",
+          "length": "12rem",
+          "color": "#008b02"
+        },
+        {
+          "name": "Alguna",
+          "length": "12rem",
+          "color": "#008b02"
+        },
+        {
+          "name": "Alguna",
+          "length": "12rem",
+          "color": "#008b02"
+        },
+        {
+          "name": "Alguna",
+          "length": "12rem",
+          "color": "#008b02"
+        }
+      ],
+      "id": 22
     }
   ]
 }

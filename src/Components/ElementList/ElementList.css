@@ -29,6 +29,12 @@
     color:red;
 }
 
+.frame {
+    border: 2px solid;
+    border-radius: 10px;
+    padding: 20px;
+  }
+  
 .cardDesign:hover .watchCardDesign{
     visibility: visible;
 }
@@ -62,6 +68,15 @@
     cursor:pointer;
     height:max-content;
     width:max-content;
+}
+
+.editDesign{
+    cursor: pointer;
+    margin-left: 2rem;
+}
+
+.editDesign:hover{
+    color:white;
 }
 
 .deleteDesign:hover{
