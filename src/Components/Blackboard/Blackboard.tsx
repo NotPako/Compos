@@ -1,7 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import React, { ReactNode, useEffect, useState } from 'react';
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 import './Blackboard.css';
 import Card from 'antd/es/card/Card';
+import jsPDF from 'jspdf'
+import html2canvas from 'html2canvas';
+import { Button } from 'antd';
 
 interface Props {
 	partsList: typeof Card[];
@@ -34,10 +37,43 @@ const Blackboard: React.FC<Props> = (
 		setPartsBlack(newCards);
 	};
 
+	const downloadIt = () => {
+
+		const blackboard = document.getElementById('blackboard') as HTMLElement;
+		
+
+  // Convert the container element to a canvas using html2canvas
+  const width = blackboard.offsetWidth;
+  const height = blackboard.offsetHeight;
+
+  // Calculate the aspect ratio
+  const aspectRatio = width / height;
+
+  // Convert the container element to a canvas using html2canvas
+  html2canvas(blackboard).then((canvas) => {
+	// Create a new jsPDF instance
+	const pdf = new jsPDF();
+
+	// Get the canvas data as an image URL
+	const imageData = canvas.toDataURL('image/png');
+
+	// Calculate the height based on the aspect ratio
+	const pdfHeight = pdf.internal.pageSize.getWidth() * (1 / aspectRatio);
+
+	// Add the image to the PDF while maintaining aspect ratio
+	pdf.addImage(imageData, 'PNG', 10, 10, pdf.internal.pageSize.getWidth() - 20, pdfHeight);
+
+	// Save the PDF file
+	pdf.save('myPDF.pdf');
+	});
+}
+
 	return (
+		<>
 		<div
 			style={style}
 			className='pizarraDesign'
+			id='blackboard'
 		>
 			<DragDropContext onDragEnd={handleDragEnd}>
 				<Droppable
@@ -63,7 +99,7 @@ const Blackboard: React.FC<Props> = (
 											{...provided.draggableProps}
 											{...provided.dragHandleProps}
 										>
-											{card}
+											{card as unknown as ReactNode}
 										</div>
 									)}
 								</Draggable>
@@ -74,6 +110,14 @@ const Blackboard: React.FC<Props> = (
 				</Droppable>
 			</DragDropContext>
 		</div>
+					<Button
+					onClick={() => downloadIt()}
+					size='large'
+					style={{ position: 'fixed', bottom: '20px', right: '160px' }}
+				>
+				 Download in PDF
+				</Button>
+				</>
 	);
 };
 

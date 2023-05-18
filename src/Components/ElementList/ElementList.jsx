@@ -9,7 +9,8 @@ import {
 	SmileOutlined,
 	SaveOutlined,
 	EyeOutlined,
-	EditOutlined
+	EditOutlined,
+	DownloadOutlined
 } from '@ant-design/icons';
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
@@ -17,6 +18,7 @@ import { GithubPicker } from 'react-color';
 import { autoSave } from '../../Services/CompoManagement';
 import { useUserContext } from '../../Providers/LoggedUserProvider';
 import { getUserData } from '../../Services/UserManagement';
+
 
 
 const { TextArea } = Input;
@@ -210,6 +212,8 @@ const ElementList = ({
 			length: card.length,
 		})
 	}
+
+	
 
 	//This is executed once you click on the card in element list
 	const displayIt = (element) => {
@@ -481,6 +485,7 @@ const ElementList = ({
 
 				<br></br>
 			</div>
+
 			<Button
 				onClick={() => saveCompo()}
 				size='large'

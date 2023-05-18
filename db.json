@@ -301,7 +301,7 @@
     {
       "title": "La nova",
       "author": "badasd",
-      "date": "17/5/2023",
+      "date": "18/5/2023",
       "instrument": "Drummer",
       "list": [
         {
@@ -314,22 +314,22 @@
       "blackList": [
         {
           "name": "Alguna",
-          "length": "12rem",
+          "length": "13rem",
           "color": "#008b02"
         },
         {
           "name": "Alguna",
-          "length": "12rem",
+          "length": "13rem",
           "color": "#008b02"
         },
         {
           "name": "Alguna",
-          "length": "12rem",
+          "length": "13rem",
           "color": "#008b02"
         },
         {
           "name": "Alguna",
-          "length": "12rem",
+          "length": "13rem",
           "color": "#008b02"
         }
       ],
