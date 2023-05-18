@@ -92,12 +92,14 @@ const Blackboard: React.FC<Props> = (
 									draggableId={index.toString()}
 									index={index}
 									isDragDisabled={notDraggable}
+									
 								>
 									{(provided) => (
 										<div
 											ref={provided.innerRef}
 											{...provided.draggableProps}
 											{...provided.dragHandleProps}
+											style={{marginTop:'2rem'}}
 										>
 											{card as unknown as ReactNode}
 										</div>
