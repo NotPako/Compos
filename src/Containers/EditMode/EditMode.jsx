@@ -68,6 +68,7 @@ const EditMode = () => {
 							style={{
 								backgroundColor: `${element.color}`,
 								width: `${parseInt(element.length) + 1}rem`,
+								marginTop:'2rem'
 							}}
 							title={element.name}
 						>

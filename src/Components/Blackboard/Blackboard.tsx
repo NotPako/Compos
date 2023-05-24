@@ -5,23 +5,40 @@ import Card from 'antd/es/card/Card';
 import jsPDF from 'jspdf'
 import html2canvas from 'html2canvas';
 import { Button } from 'antd';
+import { useLocation } from 'react-router-dom';
+import { getCompoById } from '../../Services/CompoManagement';
 
 interface Props {
 	partsList: typeof Card[];
+	whiteList: typeof Card[];
 	notDraggable: boolean;
 	setPartsBlack: React.Dispatch<React.SetStateAction<typeof Card[]>>;
 }
 
 const Blackboard: React.FC<Props> = (
-	{ partsList, notDraggable, setPartsBlack },
+	{ partsList, notDraggable, setPartsBlack, whiteList },
 	style
 ) => {
 	const [cards, setCards] = useState(partsList);
+	const [white, setWhite] = useState(whiteList);
+	const [comp, setComp] = useState(Object);
+	const location = useLocation();
+	const id = location.state;
+
+	async function getCompo() {
+		const element = await getCompoById(id);
+		setComp(element);
+	}
+	
+
 
 	useEffect(() => {
-		console.log(partsList);
 		setCards(partsList);
-	}, [partsList]);
+		setWhite(whiteList);
+		getCompo()
+	}, [partsList, whiteList]);
+
+	
 
 	const handleDragEnd = (result) => {
 		if (!result.destination) {
@@ -60,11 +77,18 @@ const Blackboard: React.FC<Props> = (
 	// Calculate the height based on the aspect ratio
 	const pdfHeight = pdf.internal.pageSize.getWidth() * (1 / aspectRatio);
 
+	pdf.text(comp.title, 8, 8)
+
 	// Add the image to the PDF while maintaining aspect ratio
-	pdf.addImage(imageData, 'PNG', 10, 10, pdf.internal.pageSize.getWidth() - 20, pdfHeight);
+	pdf.addImage(imageData, 'PNG', 15, 15, pdf.internal.pageSize.getWidth() - 20, pdfHeight);
+
+	pdf.addPage()
 
 	// Save the PDF file
-	pdf.save('myPDF.pdf');
+	pdf.save(`${comp.title}.pdf`);
+
+	console.log(white, 'les blanques')
+	console.log(cards, 'les negres')
 	});
 }
 
@@ -99,9 +123,8 @@ const Blackboard: React.FC<Props> = (
 											ref={provided.innerRef}
 											{...provided.draggableProps}
 											{...provided.dragHandleProps}
-											style={{marginTop:'2rem'}}
 										>
-											{card as unknown as ReactNode}
+											{card}
 										</div>
 									)}
 								</Draggable>
@@ -115,7 +138,7 @@ const Blackboard: React.FC<Props> = (
 					<Button
 					onClick={() => downloadIt()}
 					size='large'
-					style={{ position: 'fixed', bottom: '20px', right: '160px' }}
+					style={{ position: 'fixed', bottom: '20px', right: '180px' }}
 				>
 				 Download in PDF
 				</Button>

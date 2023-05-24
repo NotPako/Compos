@@ -235,7 +235,8 @@ const ElementList = ({
 					style={{
 						backgroundColor: `${element.color}`,
 						width: `${parseInt(element.length) + 4}rem`,
-						height:'8rem'
+						height:'8rem',
+						marginTop:'2rem'
 					}}
 					title={element.name}
 

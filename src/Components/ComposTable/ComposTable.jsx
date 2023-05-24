@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { Table, Input, Cascader, Popconfirm } from 'antd';
+import { Table, Input, Cascader, Popconfirm, Empty } from 'antd';
 import { getCompos, deleteCompo } from '../../Services/CompoManagement';
 import { DeleteOutlined } from '@ant-design/icons';
-import { SearchOutlined } from '@ant-design/icons';
+import { SearchOutlined, RobotOutlined } from '@ant-design/icons';
 import { useUserContext } from '../../Providers/LoggedUserProvider';
 import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 import './ComposTable.css';
 
@@ -152,6 +153,17 @@ const ComposTable = ({ isMine, thisWeek }) => {
 			.catch((error) => console.log(error));
 	};
 
+	const customLocale = {
+		emptyText: (
+		  <Empty
+			image={<RobotOutlined style={{ fontSize: '48px' }}/>}
+			imageStyle={{ height: 60 }}
+			description={<span>You still haven't created any compo yet, <Link to="/createnew">Start composing!</Link></span>}
+		  />
+		),
+	  };
+	  
+
 	return (
 		<div className='tableContDesign'>
 			<div className='filterBarDesign'>
@@ -178,6 +190,7 @@ const ComposTable = ({ isMine, thisWeek }) => {
 			<Table
 				columns={columns}
 				dataSource={search(dataSource)}
+				locale={customLocale}
 			/>
 		</div>
 	);
