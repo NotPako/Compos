@@ -18,6 +18,7 @@ import { GithubPicker } from 'react-color';
 import { autoSave } from '../../Services/CompoManagement';
 import { useUserContext } from '../../Providers/LoggedUserProvider';
 import { getUserData } from '../../Services/UserManagement';
+import SheetMusic from '../SheetMusic/SheetMusic';
 
 
 
@@ -319,6 +320,8 @@ const ElementList = ({
 
 	
 
+	
+
 	return (
 		<>
 			{contextHolder}
@@ -397,7 +400,7 @@ const ElementList = ({
 							onChange={(e) => handleChange(e, true)}
 						/>
 					</div>
-					<div style={{marginLeft:'2rem'}}>
+					<div style={{marginLeft:'2rem', display:'flex', flexDirection:'column'}}>
 					<h3>Give it a description</h3>
 						<TextArea
 							type='text'
@@ -407,10 +410,14 @@ const ElementList = ({
 								handleChange(e);
 							}}
 							rows={4}
+							style={{width:'20rem'}}
 							
 						></TextArea>
-
+						<div style={{marginTop:'2rem'}}>
+						<SheetMusic/>
+						</div>
 					</div>
+					
 					</div>
 				</PopUp>
 				<PopUp
