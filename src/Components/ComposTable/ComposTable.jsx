@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { Table, Input, Cascader, Popconfirm, Empty } from 'antd';
-import { getCompos, deleteCompo } from '../../Services/CompoManagement';
+import { Table, Input, Cascader, Popconfirm, Empty, Checkbox} from 'antd';
+import { getCompos, deleteCompo, makePublic } from '../../Services/CompoManagement';
 import { DeleteOutlined } from '@ant-design/icons';
 import { SearchOutlined, RobotOutlined } from '@ant-design/icons';
 import { useUserContext } from '../../Providers/LoggedUserProvider';
@@ -9,7 +9,7 @@ import { Link } from 'react-router-dom';
 
 import './ComposTable.css';
 
-const ComposTable = ({ isMine, thisWeek }) => {
+const ComposTable = ({ isMine, thisWeek}) => {
   const [dataSource, setDataSource] = useState([]);
   const [searchText, setSearchText] = useState('');
   const [instrCasc, setInstrCasc] = useState('');
@@ -35,6 +35,17 @@ const ComposTable = ({ isMine, thisWeek }) => {
 
   const goToEdit = (element) => {
     navigate('/editMode', { state: `${element.id}` });
+  };
+
+  const onPublicChange = (record) => (event) => {
+	if (event.target.checked) {
+	  makePublic(record.id, true)
+	  // Perform any other actions you want when the checkbox is checked
+	} else {
+		makePublic(record.id, false)
+	}
+
+	
   };
 
   const oneWeekAgo = new Date();
@@ -102,6 +113,10 @@ const ComposTable = ({ isMine, thisWeek }) => {
       dataIndex: 'instrument',
       key: 'instrument',
     },
+	{
+		title: isMine === 'true' ? 'Share with the world' : '',
+		render: isMine === 'true' ? (record) => (<Checkbox defaultChecked={record.public} onChange={onPublicChange(record)}/>): () => {<></>; },
+	},
     {
       title: '',
       render: isMine === 'true' ? (text, record) => (
@@ -115,7 +130,9 @@ const ComposTable = ({ isMine, thisWeek }) => {
         <></>;
       },
     },
+	
   ];
+
 
   const options = [
     {

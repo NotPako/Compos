@@ -13,7 +13,8 @@ export const autoSave =  async (title, author, date, list, blackList, instrument
         date: date,
         instrument: instrument,
         list: list,
-        blackList: blackList
+        blackList: blackList,
+        public: false
 
         }),
        headers: {
@@ -45,7 +46,7 @@ export const autoSave =  async (title, author, date, list, blackList, instrument
 export const getCompos = async (author) => {
 
     if(author === undefined){
-       return fetch(`${apiRoot}`)
+       return fetch(`${apiRoot}?public=${true}`)
         .then(response => response.json())
         .then(data => {
             return data
@@ -85,6 +86,18 @@ export const getCompoById = async (id) => {
        
     })
     .catch(error => console.error(error));
+}
+
+export const makePublic = async (id, share) => {
+  fetch(`${apiRoot}/${id}`, {
+    method: 'PATCH',
+    body: JSON.stringify({
+     public: share ? true : false
+    }),
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  })
 }
 
 
