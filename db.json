@@ -211,24 +211,307 @@
   ],
   "compos": [
     {
-      "title": "New compo",
+      "title": "Esto",
       "author": "badasd",
-      "date": "29/5/2023",
+      "date": "31/5/2023",
       "instrument": "Drummer",
-      "list": [],
-      "blackList": [],
+      "list": [
+        {
+          "name": "Chorus",
+          "color": "yellow",
+          "length": "16",
+          "description": ""
+        },
+        {
+          "name": "Bridge",
+          "color": "#006b76",
+          "length": "8",
+          "description": "El bridge està bé"
+        },
+        {
+          "name": "Break",
+          "color": "#c1e1c5",
+          "length": "2",
+          "description": "Este es el brake que tinc que fer"
+        }
+      ],
+      "blackList": [
+        {
+          "name": "Intro",
+          "length": "13rem",
+          "color": "red"
+        },
+        {
+          "name": "Chorus",
+          "length": "21rem",
+          "color": "yellow"
+        },
+        {
+          "name": "Chorus",
+          "length": "21rem",
+          "color": "yellow"
+        },
+        {
+          "name": "Intro",
+          "length": "13rem",
+          "color": "red"
+        },
+        {
+          "name": "Bridge",
+          "length": "13rem",
+          "color": "#006b76"
+        },
+        {
+          "name": "Break",
+          "length": "7rem",
+          "color": "#c1e1c5"
+        },
+        {
+          "name": "Bridge",
+          "length": "13rem",
+          "color": "#006b76"
+        },
+        {
+          "name": "Break",
+          "length": "7rem",
+          "color": "#c1e1c5"
+        },
+        {
+          "name": "Chorus",
+          "length": "21rem",
+          "color": "yellow"
+        },
+        {
+          "name": "Intro",
+          "length": "13rem",
+          "color": "red"
+        }
+      ],
       "public": true,
       "id": 1
     },
     {
-      "title": "Algun",
+      "title": "New compo",
       "author": "badasd",
-      "date": "29/5/2023",
+      "date": "31/5/2023",
       "instrument": "Drummer",
-      "list": [],
-      "blackList": [],
+      "list": [
+        {
+          "name": "Intro",
+          "color": "red",
+          "length": "8",
+          "description": ""
+        },
+        {
+          "name": "Chorus",
+          "color": "yellow",
+          "length": "16",
+          "description": ""
+        },
+        {
+          "name": "Verse",
+          "color": "green",
+          "length": "8",
+          "description": ""
+        },
+        {
+          "name": "Break",
+          "color": "purple",
+          "length": "2",
+          "description": ""
+        }
+      ],
+      "blackList": [
+        {
+          "name": "Intro",
+          "length": "12rem",
+          "color": "red"
+        }
+      ],
       "public": false,
       "id": 2
+    },
+    {
+      "title": "New cSASSASA",
+      "author": "badasd",
+      "date": "31/5/2023",
+      "instrument": "Drummer",
+      "list": [
+        {
+          "name": "Intro",
+          "color": "red",
+          "length": "8",
+          "description": ""
+        },
+        {
+          "name": "Chorus",
+          "color": "yellow",
+          "length": "16",
+          "description": ""
+        },
+        {
+          "name": "Verse",
+          "color": "green",
+          "length": "8",
+          "description": ""
+        },
+        {
+          "name": "Break",
+          "color": "purple",
+          "length": "2",
+          "description": ""
+        }
+      ],
+      "blackList": [
+        {
+          "name": "Intro",
+          "length": "12rem",
+          "color": "red"
+        },
+        {
+          "name": "Chorus",
+          "length": "20rem",
+          "color": "yellow"
+        },
+        {
+          "name": "Verse",
+          "length": "12rem",
+          "color": "green"
+        },
+        {
+          "name": "Verse",
+          "length": "12rem",
+          "color": "green"
+        },
+        {
+          "name": "Break",
+          "length": "6rem",
+          "color": "purple"
+        }
+      ],
+      "public": false,
+      "id": 3
+    },
+    {
+      "title": "Mix 80",
+      "author": "badasd",
+      "date": "1/6/2023",
+      "instrument": "Drummer",
+      "list": [
+        {
+          "name": "Intro",
+          "color": "#c4def6",
+          "length": "2",
+          "description": "Instrumental lo que siga"
+        },
+        {
+          "name": "Veu",
+          "color": "#d4c4fb",
+          "length": "16",
+          "description": "Va veu i no nia bateria"
+        },
+        {
+          "name": "afaf",
+          "color": "#004dcf",
+          "length": "8",
+          "description": "eafdsfsdf"
+        },
+        {
+          "name": "Estribillo",
+          "color": "#006b76",
+          "length": "8",
+          "description": "aoshdaifbosaj"
+        }
+      ],
+      "blackList": [
+        {
+          "name": "Intro",
+          "length": "8rem",
+          "color": "#c4def6"
+        },
+        {
+          "name": "Veu",
+          "length": "22rem",
+          "color": "#d4c4fb"
+        },
+        {
+          "name": "Estribillo",
+          "length": "14rem",
+          "color": "#006b76"
+        },
+        {
+          "name": "Estribillo",
+          "length": "14rem",
+          "color": "#006b76"
+        },
+        {
+          "name": "afaf",
+          "length": "14rem",
+          "color": "#004dcf"
+        },
+        {
+          "name": "Estribillo",
+          "length": "14rem",
+          "color": "#006b76"
+        },
+        {
+          "name": "afaf",
+          "length": "14rem",
+          "color": "#004dcf"
+        },
+        {
+          "name": "Veu",
+          "length": "22rem",
+          "color": "#d4c4fb"
+        },
+        {
+          "name": "Veu",
+          "length": "22rem",
+          "color": "#d4c4fb"
+        },
+        {
+          "name": "Intro",
+          "length": "8rem",
+          "color": "#c4def6"
+        },
+        {
+          "name": "Veu",
+          "length": "22rem",
+          "color": "#d4c4fb"
+        },
+        {
+          "name": "Estribillo",
+          "length": "14rem",
+          "color": "#006b76"
+        },
+        {
+          "name": "Veu",
+          "length": "20rem",
+          "color": "#d4c4fb"
+        },
+        {
+          "name": "Estribillo",
+          "length": "12rem",
+          "color": "#006b76"
+        },
+        {
+          "name": "afaf",
+          "length": "12rem",
+          "color": "#004dcf"
+        },
+        {
+          "name": "Veu",
+          "length": "20rem",
+          "color": "#d4c4fb"
+        },
+        {
+          "name": "Estribillo",
+          "length": "12rem",
+          "color": "#006b76"
+        }
+      ],
+      "public": true,
+      "id": 4
     }
   ]
 }

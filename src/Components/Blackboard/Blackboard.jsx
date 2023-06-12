@@ -8,14 +8,9 @@ import { Button } from 'antd';
 import { useLocation } from 'react-router-dom';
 import { getCompoById } from '../../Services/CompoManagement';
 
-interface Props {
-	partsList: typeof Card[];
-	whiteList: typeof Card[];
-	notDraggable: boolean;
-	setPartsBlack: React.Dispatch<React.SetStateAction<typeof Card[]>>;
-}
 
-const Blackboard: React.FC<Props> = (
+
+const Blackboard = (
 	{ partsList, notDraggable, setPartsBlack, whiteList },
 	style
 ) => {
@@ -53,47 +48,47 @@ const Blackboard: React.FC<Props> = (
 		setCards(newCards);
 		setPartsBlack(newCards);
 	};
-
 	const downloadIt = () => {
-
-		const blackboard = document.getElementById('blackboard') as HTMLElement;
-		
-
-  // Convert the container element to a canvas using html2canvas
-  const width = blackboard.offsetWidth;
-  const height = blackboard.offsetHeight;
-
-  // Calculate the aspect ratio
-  const aspectRatio = width / height;
-
-  // Convert the container element to a canvas using html2canvas
-  html2canvas(blackboard).then((canvas) => {
-	// Create a new jsPDF instance
-	const pdf = new jsPDF();
-
-	// Get the canvas data as an image URL
-	const imageData = canvas.toDataURL('image/png');
-
-	// Calculate the height based on the aspect ratio
-	const pdfHeight = pdf.internal.pageSize.getWidth() * (1 / aspectRatio);
-
-	pdf.text(comp.title, 8, 8)
-
-	// Add the image to the PDF while maintaining aspect ratio
-	pdf.addImage(imageData, 'PNG', 15, 15, pdf.internal.pageSize.getWidth() - 20, pdfHeight);
-
-	pdf.addPage()
-
-	// Save the PDF file
-	pdf.save(`${comp.title}.pdf`);
-
-	console.log(white, 'les blanques')
-	console.log(cards, 'les negres')
-	});
-}
+		const blackboard = document.getElementById('blackboard');
+		const descriptionList = document.getElementById('elementDescriptions');
+	  
+		const width = blackboard.offsetWidth;
+		const height = blackboard.offsetHeight;
+		const aspectRatio = width / height;
+	  
+		html2canvas(blackboard).then((canvas) => {
+		  const pdf = new jsPDF();
+		  const imageData = canvas.toDataURL('image/png');
+		  const pdfHeight = pdf.internal.pageSize.getWidth() * (1 / aspectRatio);
+	  
+		  pdf.text(comp.title, 8, 8);
+		  pdf.addImage(imageData, 'PNG', 15, 15, pdf.internal.pageSize.getWidth() - 20, pdfHeight);
+	  
+		  pdf.addPage();
+	  
+		  // Add the descriptionList to the PDF
+		  if (descriptionList) {
+			html2canvas(descriptionList).then((descCanvas) => {
+			  const descData = descCanvas.toDataURL('image/png');
+			  const descAspectRatio = descCanvas.width / descCanvas.height;
+			  const descWidth = pdf.internal.pageSize.getWidth() - 190; // Adjust the margins as needed
+			  const descHeight = descWidth * (1 / descAspectRatio);
+	  
+			  pdf.addImage(descData, 'PNG', 15, 15, descWidth, descHeight);
+	  
+			  pdf.save(`${comp.title}.pdf`);
+			});
+		  } else {
+			pdf.save(`${comp.title}.pdf`);
+		  }
+		});
+	  };
+	  
+	
 
 	return (
 		<>
+		
 		<div
 			style={style}
 			className='pizarraDesign'
@@ -134,6 +129,7 @@ const Blackboard: React.FC<Props> = (
 					)}
 				</Droppable>
 			</DragDropContext>
+			
 		</div>
 					<Button
 					onClick={() => downloadIt()}
@@ -142,6 +138,25 @@ const Blackboard: React.FC<Props> = (
 				>
 				 Download in PDF
 				</Button>
+
+				<div id='elementDescriptions'>
+				{whiteList.map((card) => (
+				<div style={{display:'flex', flexDirection:'row', visibility:'hidden'}}>
+					<Card title={card.name} style={{backgroundColor: `${card.color}`, marginTop:'2rem'}}>
+					</Card>
+
+					<div style={{marginLeft:'8rem'}}>
+					{card.length}
+						{card.description}
+				
+					</div>
+
+						
+
+	
+				</div>
+				))}
+			</div>
 				</>
 	);
 };

@@ -1,7 +1,7 @@
-.backgroundDesign{
+.backgroundDesignLogin{
     background-image: url('../../Resources/backNew.jpg');
-    width: auto;
-    height: auto;
+    width: 100vw;
+    height: 90vh;
     background-size: auto;
     
     justify-content: center;

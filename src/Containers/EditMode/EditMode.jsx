@@ -1,7 +1,7 @@
 import { React, useState, useEffect } from 'react';
 import ElementList from '../../Components/ElementList/ElementList';
 import { useLocation } from 'react-router-dom';
-import Blackboard from '../../Components/Blackboard/Blackboard.tsx';
+import Blackboard from '../../Components/Blackboard/Blackboard.jsx';
 import { CloseOutlined, EyeOutlined } from '@ant-design/icons';
 import { getCompoById } from '../../Services/CompoManagement';
 import { Card } from 'antd';
@@ -33,12 +33,13 @@ const EditMode = () => {
 	};
 
 	const watchThisCard = (card) => {
-		setWatchClose(true);
 		setCardInfo({name: card.name,
 			description: card.description,
 			color: card.color,
 			length: card.length,
-		})
+		});
+		setWatchClose(true)
+
 	}
 
 	function decreaseByFour(inputString) {
@@ -110,6 +111,7 @@ const EditMode = () => {
 			<Blackboard
 				partsList={partsBlack}
 				setPartsBlack={setPartsBlack}
+				whiteList={whiteList}
 			/>
 			<PopUp
 				trigger={watchClose}

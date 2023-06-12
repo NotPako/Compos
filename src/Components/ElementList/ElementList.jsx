@@ -10,7 +10,8 @@ import {
 	SaveOutlined,
 	EyeOutlined,
 	EditOutlined,
-	DownloadOutlined
+	DownloadOutlined,
+	PlusOutlined
 } from '@ant-design/icons';
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
@@ -57,6 +58,7 @@ const ElementList = ({
 	];
 
 	const [buttonPopup, setButtonPopup] = useState(false);
+	const [timeSign, setTimeSign] = useState('4/4')
 	const [startingPopup, setStartingPopup] = useState(false);
 	const [watchClose, setWatchClose] = useState(false);
 	const [compTitle, setCompTitle] = useState('New compo');
@@ -139,6 +141,10 @@ const ElementList = ({
 		}
 	}, [userInfo]);
 
+	useEffect(() => {
+
+	}, [timeSign])
+
 	const handleChange = (e, isItColor) => {
 		if (isItColor) {
 			setCardColor(e.hex);
@@ -152,6 +158,8 @@ const ElementList = ({
 		setCompTitle(e.target.value);
 	};
 
+
+	
 	const addPart = () => {
 		const newList = list.concat([part]);
 		setButtonPopup(false);
@@ -212,6 +220,7 @@ const ElementList = ({
 			color: card.color,
 			length: card.length,
 		})
+		console.log(cardInfo)
 	}
 
 	
@@ -317,6 +326,16 @@ const ElementList = ({
 	const onChangePreset = (value) => {
 		setPreset(value[0]);
 	};
+	function decreaseByFour(inputString) {
+		// Remove "rem" part and convert the remaining string to a number
+		const number = parseInt(inputString);
+	  
+		// Decrease the number by 4
+		const decreasedNumber = number - 4;
+	  
+		// Return the decreased number as a string
+		return decreasedNumber.toString();
+	  }
 
 	
 
@@ -414,7 +433,7 @@ const ElementList = ({
 							
 						></TextArea>
 						<div style={{marginTop:'2rem'}}>
-						<SheetMusic/>
+						<SheetMusic timeSign={timeSign}/>
 						</div>
 					</div>
 					
@@ -460,7 +479,7 @@ const ElementList = ({
 				</PopUp>
 
 				<br></br>
-				<ul>
+				<ul className='whiteListDesign'>
 					{list.map((element, index) => (
 						<div
 							key={element.name}
@@ -470,7 +489,8 @@ const ElementList = ({
 							<Card
 								style={{
 									marginBottom: '1rem',
-									width: '15rem',
+									width: '10rem',
+									height:'10rem',
 									backgroundColor: `${element.color}`,
 								}}
 								title={element.name}
