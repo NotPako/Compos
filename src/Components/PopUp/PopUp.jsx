@@ -5,7 +5,7 @@ import {CloseOutlined} from '@ant-design/icons';
 
 const PopUp = (props) => {
 	return props.trigger ? (
-		<div className='popup'>
+		<div className='popup' data-testid='popupext'>
 			<div className='popup-inner'>
 				{props.newComp ? (
 					<>
@@ -34,6 +34,7 @@ const PopUp = (props) => {
 				) : (
 					<>
 						<Button
+						data-testid='buttontest'
 							className='close-btn'
 							onClick={() => props.setTrigger(false)}
 						>
@@ -52,7 +53,7 @@ const PopUp = (props) => {
 			</div>
 		</div>
 	) : (
-		''
+		<div data-testid='popupclosed'></div>
 	);
 };
 

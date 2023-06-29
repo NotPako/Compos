@@ -207,13 +207,21 @@
       "password": "12345678a",
       "instrument": "Drummer",
       "avatar": ""
+    },
+    {
+      "id": "admin",
+      "username": "admin",
+      "email": "admin@admin.com",
+      "password": "12345678a",
+      "instrument": "Pianist",
+      "avatar": "/static/media/singerAvatar.e8a82433530c76947930.jpg"
     }
   ],
   "compos": [
     {
-      "title": "Esto",
+      "title": "Rosas",
       "author": "badasd",
-      "date": "31/5/2023",
+      "date": "16/6/2023",
       "instrument": "Drummer",
       "list": [
         {
@@ -238,52 +246,52 @@
       "blackList": [
         {
           "name": "Intro",
-          "length": "13rem",
+          "length": "14rem",
           "color": "red"
         },
         {
           "name": "Chorus",
-          "length": "21rem",
+          "length": "22rem",
           "color": "yellow"
         },
         {
           "name": "Chorus",
-          "length": "21rem",
+          "length": "22rem",
           "color": "yellow"
         },
         {
           "name": "Intro",
-          "length": "13rem",
+          "length": "14rem",
           "color": "red"
         },
         {
           "name": "Bridge",
-          "length": "13rem",
+          "length": "14rem",
           "color": "#006b76"
         },
         {
           "name": "Break",
-          "length": "7rem",
+          "length": "8rem",
           "color": "#c1e1c5"
         },
         {
           "name": "Bridge",
-          "length": "13rem",
+          "length": "14rem",
           "color": "#006b76"
         },
         {
           "name": "Break",
-          "length": "7rem",
+          "length": "8rem",
           "color": "#c1e1c5"
         },
         {
           "name": "Chorus",
-          "length": "21rem",
+          "length": "22rem",
           "color": "yellow"
         },
         {
           "name": "Intro",
-          "length": "13rem",
+          "length": "14rem",
           "color": "red"
         }
       ],
@@ -332,70 +340,9 @@
       "id": 2
     },
     {
-      "title": "New cSASSASA",
-      "author": "badasd",
-      "date": "31/5/2023",
-      "instrument": "Drummer",
-      "list": [
-        {
-          "name": "Intro",
-          "color": "red",
-          "length": "8",
-          "description": ""
-        },
-        {
-          "name": "Chorus",
-          "color": "yellow",
-          "length": "16",
-          "description": ""
-        },
-        {
-          "name": "Verse",
-          "color": "green",
-          "length": "8",
-          "description": ""
-        },
-        {
-          "name": "Break",
-          "color": "purple",
-          "length": "2",
-          "description": ""
-        }
-      ],
-      "blackList": [
-        {
-          "name": "Intro",
-          "length": "12rem",
-          "color": "red"
-        },
-        {
-          "name": "Chorus",
-          "length": "20rem",
-          "color": "yellow"
-        },
-        {
-          "name": "Verse",
-          "length": "12rem",
-          "color": "green"
-        },
-        {
-          "name": "Verse",
-          "length": "12rem",
-          "color": "green"
-        },
-        {
-          "name": "Break",
-          "length": "6rem",
-          "color": "purple"
-        }
-      ],
-      "public": false,
-      "id": 3
-    },
-    {
       "title": "Mix 80",
       "author": "badasd",
-      "date": "1/6/2023",
+      "date": "14/6/2023",
       "instrument": "Drummer",
       "list": [
         {
@@ -512,6 +459,178 @@
       ],
       "public": true,
       "id": 4
+    },
+    {
+      "title": "Nova compoçao",
+      "author": "badasd",
+      "date": "12/6/2023",
+      "instrument": "Drummer",
+      "list": [
+        {
+          "name": "Intro",
+          "color": "red",
+          "length": "8",
+          "description": ""
+        },
+        {
+          "name": "Chorus",
+          "color": "yellow",
+          "length": "16",
+          "description": ""
+        },
+        {
+          "name": "Verse",
+          "color": "green",
+          "length": "8",
+          "description": ""
+        },
+        {
+          "name": "Break",
+          "color": "purple",
+          "length": "2",
+          "description": ""
+        }
+      ],
+      "blackList": [
+        {
+          "name": "Intro",
+          "length": "13rem",
+          "color": "red"
+        },
+        {
+          "name": "Chorus",
+          "length": "21rem",
+          "color": "yellow"
+        },
+        {
+          "name": "Verse",
+          "length": "13rem",
+          "color": "green"
+        },
+        {
+          "name": "Break",
+          "length": "7rem",
+          "color": "purple"
+        },
+        {
+          "name": "Verse",
+          "length": "13rem",
+          "color": "green"
+        },
+        {
+          "name": "Break",
+          "length": "7rem",
+          "color": "purple"
+        },
+        {
+          "name": "Chorus",
+          "length": "21rem",
+          "color": "yellow"
+        },
+        {
+          "name": "Chorus",
+          "length": "21rem",
+          "color": "yellow"
+        },
+        {
+          "name": "Verse",
+          "length": "12rem",
+          "color": "green"
+        },
+        {
+          "name": "Break",
+          "length": "6rem",
+          "color": "purple"
+        }
+      ],
+      "public": false,
+      "id": 5
+    },
+    {
+      "title": "Regularmente bien",
+      "author": "badasd",
+      "date": "13/6/2023",
+      "instrument": "Drummer",
+      "list": [
+        {
+          "name": "Intro",
+          "color": "#004dcf",
+          "length": "4",
+          "description": "dafsdgsdgsgsg"
+        },
+        {
+          "name": "Estribillo",
+          "color": "#c4def6",
+          "length": "8",
+          "description": "Lo que va después"
+        },
+        {
+          "name": "Pont",
+          "color": "#db3e00",
+          "length": "4",
+          "description": "dnkaf ksfsdfnlsdkflkdsffdf"
+        },
+        {
+          "name": "Part tranquila",
+          "color": "#d4c4fb",
+          "length": "6",
+          "description": "Si va, si"
+        }
+      ],
+      "blackList": [
+        {
+          "name": "Estribillo",
+          "length": "12rem",
+          "color": "#c4def6"
+        },
+        {
+          "name": "Intro",
+          "length": "8rem",
+          "color": "#004dcf"
+        },
+        {
+          "name": "Estribillo",
+          "length": "12rem",
+          "color": "#c4def6"
+        },
+        {
+          "name": "Pont",
+          "length": "8rem",
+          "color": "#db3e00"
+        },
+        {
+          "name": "Part tranquila",
+          "length": "10rem",
+          "color": "#d4c4fb"
+        },
+        {
+          "name": "Estribillo",
+          "length": "12rem",
+          "color": "#c4def6"
+        },
+        {
+          "name": "Pont",
+          "length": "8rem",
+          "color": "#db3e00"
+        },
+        {
+          "name": "Part tranquila",
+          "length": "10rem",
+          "color": "#d4c4fb"
+        },
+        {
+          "name": "Estribillo",
+          "length": "12rem",
+          "color": "#c4def6"
+        },
+        {
+          "name": "Part tranquila",
+          "length": "10rem",
+          "color": "#d4c4fb"
+        }
+      ],
+      "public": true,
+      "id": 6
     }
   ]
 }

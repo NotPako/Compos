@@ -230,6 +230,7 @@ const ElementList = ({
 		setPartList(
 			partList.concat(
 				<Card
+					data-testid='partlisttest'
 					style={{
 						backgroundColor: `${element.color}`,
 						width: `${parseInt(element.length) + 4}rem`,
@@ -241,6 +242,7 @@ const ElementList = ({
 		setPartsBlack(
 			partsBlack.concat(
 				<Card
+					data-testid='parttest'
 					className='cardDesign'
 					style={{
 						backgroundColor: `${element.color}`,
@@ -434,6 +436,7 @@ const ElementList = ({
 						></TextArea>
 						<div style={{marginTop:'2rem'}}>
 						<SheetMusic timeSign={timeSign}/>
+						<Button><PlusOutlined/>Add voice</Button>
 						</div>
 					</div>
 					
