@@ -221,7 +221,7 @@
     {
       "title": "Rosas",
       "author": "badasd",
-      "date": "16/6/2023",
+      "date": "15/7/2023",
       "instrument": "Drummer",
       "list": [
         {
@@ -241,57 +241,63 @@
           "color": "#c1e1c5",
           "length": "2",
           "description": "Este es el brake que tinc que fer"
+        },
+        {
+          "name": "Alguna cosa",
+          "color": "white",
+          "length": "8",
+          "description": "daasfdsfsf"
         }
       ],
       "blackList": [
         {
           "name": "Intro",
-          "length": "14rem",
+          "length": "15rem",
           "color": "red"
         },
         {
           "name": "Chorus",
-          "length": "22rem",
+          "length": "23rem",
           "color": "yellow"
         },
         {
           "name": "Chorus",
-          "length": "22rem",
+          "length": "23rem",
           "color": "yellow"
         },
         {
           "name": "Intro",
-          "length": "14rem",
+          "length": "15rem",
           "color": "red"
         },
         {
           "name": "Bridge",
-          "length": "14rem",
+          "length": "15rem",
           "color": "#006b76"
         },
         {
           "name": "Break",
-          "length": "8rem",
+          "length": "9rem",
           "color": "#c1e1c5"
         },
         {
           "name": "Bridge",
-          "length": "14rem",
+          "length": "15rem",
           "color": "#006b76"
         },
         {
           "name": "Break",
-          "length": "8rem",
+          "length": "9rem",
           "color": "#c1e1c5"
         },
         {
           "name": "Chorus",
-          "length": "22rem",
+          "length": "23rem",
           "color": "yellow"
         },
         {
           "name": "Intro",
-          "length": "14rem",
+          "length": "15rem",
           "color": "red"
         }
       ],

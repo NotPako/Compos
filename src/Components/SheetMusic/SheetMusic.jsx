@@ -1,8 +1,10 @@
 import React, { useEffect } from 'react';
+import {Button, Input} from 'antd';
+import {PlusOutlined} from '@ant-design/icons';
 import Vex from 'vexflow';
 
 const SheetMusic = () => {
-  useEffect(() => {
+  const handleButtonClick = () => {
     const VF = Vex.Flow;
 
     // Create an SVG renderer and attach it to a container
@@ -40,9 +42,15 @@ const SheetMusic = () => {
 
     // Render the voice onto the stave
     voice.draw(context, stave);
-  }, []);
+  };
 
-  return <div id="sheet-music"></div>;
+  return(
+    <>
+    <div id="sheet-music"></div>
+    <Button onClick={handleButtonClick}><PlusOutlined/>Add voice</Button>
+    <Input placeholder='EasyNote' style={{marginLeft:'2rem', width:'200px'}}></Input>
+    </>
+  );
 };
 
 export default SheetMusic;

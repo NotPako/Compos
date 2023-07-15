@@ -112,6 +112,7 @@ const EditMode = () => {
 				partsList={partsBlack}
 				setPartsBlack={setPartsBlack}
 				whiteList={whiteList}
+				style={{display: 'flex', flexDirection: 'column', }}
 			/>
 			<PopUp
 				trigger={watchClose}

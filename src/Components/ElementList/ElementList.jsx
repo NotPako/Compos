@@ -436,7 +436,7 @@ const ElementList = ({
 						></TextArea>
 						<div style={{marginTop:'2rem'}}>
 						<SheetMusic timeSign={timeSign}/>
-						<Button><PlusOutlined/>Add voice</Button>
+						
 						</div>
 					</div>
 					

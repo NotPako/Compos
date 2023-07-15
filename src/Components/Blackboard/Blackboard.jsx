@@ -4,7 +4,7 @@ import './Blackboard.css';
 import Card from 'antd/es/card/Card';
 import jsPDF from 'jspdf'
 import html2canvas from 'html2canvas';
-import { Button } from 'antd';
+import { Button, Checkbox } from 'antd';
 import { useLocation } from 'react-router-dom';
 import { getCompoById } from '../../Services/CompoManagement';
 
@@ -17,6 +17,7 @@ const Blackboard = (
 	const [cards, setCards] = useState(partsList);
 	const [white, setWhite] = useState(whiteList);
 	const [comp, setComp] = useState(Object);
+	const [cheatSheet, setCheatSheet] = useState(false)
 	const location = useLocation();
 	const id = location.state;
 
@@ -71,7 +72,7 @@ const Blackboard = (
 			html2canvas(descriptionList).then((descCanvas) => {
 			  const descData = descCanvas.toDataURL('image/png');
 			  const descAspectRatio = descCanvas.width / descCanvas.height;
-			  const descWidth = pdf.internal.pageSize.getWidth() - 190; // Adjust the margins as needed
+			  const descWidth = pdf.internal.pageSize.getWidth() + 100; // Adjust the margins as needed
 			  const descHeight = descWidth * (1 / descAspectRatio);
 	  
 			  pdf.addImage(descData, 'PNG', 15, 15, descWidth, descHeight);
@@ -83,11 +84,22 @@ const Blackboard = (
 		  }
 		});
 	  };
+
+
+	  const handleButtonClick = () => {
+		setCheatSheet(!cheatSheet);
+		console.log(cheatSheet)
+	  };
+	
+	  const handleCheckboxChange = (e) => {
+		setCheatSheet(e.target.checked);
+	  };
 	  
+	
 	
 
 	return (
-		<>
+		<div style={{display: 'flex', flexDirection: 'column', }}>
 		
 		<div
 			style={style}
@@ -129,25 +141,22 @@ const Blackboard = (
 					)}
 				</Droppable>
 			</DragDropContext>
+								
 			
 		</div>
-					<Button
-					onClick={() => downloadIt()}
-					size='large'
-					style={{ position: 'fixed', bottom: '20px', right: '180px' }}
-				>
-				 Download in PDF
-				</Button>
-
-				<div id='elementDescriptions'>
+		{
+			cheatSheet ? (
+			<div id='elementDescriptions'
+				className= 'detailDesign'>
 				{whiteList.map((card) => (
-				<div style={{display:'flex', flexDirection:'row', visibility:'hidden'}}>
+				<div style={{display:'flex', flexDirection:'row', visibility: 'true'}}>
 					<Card title={card.name} style={{backgroundColor: `${card.color}`, marginTop:'2rem'}}>
 					</Card>
 
-					<div style={{marginLeft:'8rem'}}>
-					{card.length}
-						{card.description}
+					<div style={{marginLeft:'8rem', marginTop: '2rem'}}>
+						<div style={{fontWeight: 'bold'}}> {card.length} bars </div>
+						<div style={{marginTop:'1rem'}}>{card.description}</div>
+						
 				
 					</div>
 
@@ -156,8 +165,24 @@ const Blackboard = (
 	
 				</div>
 				))}
-			</div>
-				</>
+			</div>) : <></>
+}
+					<Button
+					onClick={() => downloadIt()}
+					size='large'
+					style={{ position: 'fixed', bottom: '20px', right: '180px' }}
+				>
+				 Download in PDF
+				</Button>
+				<label htmlFor="checkbox-button">
+				<Button onClick={handleButtonClick} style={{position: 'fixed', bottom: '20px', right: '350px'}}>
+      				<Checkbox id="checkbox-button" checked={cheatSheet}  onChange={handleCheckboxChange} style={{marginRight:'1rem'}}/>
+      					Show detail
+    			</Button>
+				</label>
+
+				
+				</div>
 	);
 };
 
