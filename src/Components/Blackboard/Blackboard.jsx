@@ -7,6 +7,7 @@ import html2canvas from 'html2canvas';
 import { Button, Checkbox } from 'antd';
 import { useLocation } from 'react-router-dom';
 import { getCompoById } from '../../Services/CompoManagement';
+import SheetMusic from '../SheetMusic/SheetMusic';
 
 
 
@@ -156,8 +157,13 @@ const Blackboard = (
 					<div style={{marginLeft:'8rem', marginTop: '2rem'}}>
 						<div style={{fontWeight: 'bold'}}> {card.length} bars </div>
 						<div style={{marginTop:'1rem'}}>{card.description}</div>
+					</div>
+					<div style={{marginLeft:'2rem'}}>
+					
+						{card.easyscore && (
+						<SheetMusic onlySheet={true} thisSheet={card.easyscore} />
+						)}
 						
-				
 					</div>
 
 						

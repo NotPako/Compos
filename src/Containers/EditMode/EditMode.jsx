@@ -8,6 +8,7 @@ import { Card } from 'antd';
 import { motion } from 'framer-motion';
 import './EditMode.css';
 import PopUp from '../../Components/PopUp/PopUp';
+import SheetMusic from '../../Components/SheetMusic/SheetMusic';
 
 const EditMode = () => {
 	const [partsBlack, setPartsBlack] = useState([]);
@@ -21,7 +22,8 @@ const EditMode = () => {
 		name: '',
 		length: 0,
 		color: '',
-		description: ''
+		description: '',
+		easyscore: ''
 	})
 
 	const handleDeleteCard = (index) => {
@@ -37,7 +39,9 @@ const EditMode = () => {
 			description: card.description,
 			color: card.color,
 			length: card.length,
+			easyscore: card.easyscore,
 		});
+		console.log(card, 'la carta')
 		setWatchClose(true)
 
 	}
@@ -128,6 +132,7 @@ const EditMode = () => {
 						</div>
 						<div>
 							{cardInfo.description}
+							<SheetMusic onlySheet={true} thisSheet={cardInfo.easyscore}/>
 						</div>
 					</div>
 

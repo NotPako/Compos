@@ -76,12 +76,15 @@ const ElementList = ({
 		name: '',
 		length: 0,
 		color: 'white',
+		description: '',
+		easyscore: ''
 	});
 	const [cardInfo, setCardInfo] = useState({
 		name: '',
 		length: 0,
 		color: '',
-		description: ''
+		description: '',
+		easyscore: ''
 	})
 	const {user} = useUserContext();
 
@@ -145,10 +148,13 @@ const ElementList = ({
 
 	}, [timeSign])
 
-	const handleChange = (e, isItColor) => {
+	const handleChange = (e, isItColor, isItEasyScore) => {
 		if (isItColor) {
 			setCardColor(e.hex);
 			setPart((prevState) => ({ ...prevState, color: e.hex }));
+		} else if (isItEasyScore) {
+			setPart((prevState) => ({ ...prevState, easyscore: e }));
+			console.log(part, 'la part')
 		} else {
 			setPart((prevState) => ({ ...prevState, [e.target.name]: e.target.value }));
 		}
@@ -219,6 +225,7 @@ const ElementList = ({
 			description: card.description,
 			color: card.color,
 			length: card.length,
+			easyscore: card.easyscore
 		})
 		console.log(cardInfo)
 	}
@@ -271,6 +278,13 @@ const ElementList = ({
 		);
 	};
 
+	function getElementFromWhiteList(name) {
+
+		const matchedElement = list.find((element) => element.name === name);
+	  
+		return matchedElement;
+	  }
+
 	const saveCompo = async () => {
 		const date = new Date();
 		const author = user.username;
@@ -279,12 +293,19 @@ const ElementList = ({
 			color: element.color,
 			length: element.length,
 			description: element.description,
+			easyscore: element.easyscore,
 		}));
-		const blackList = partsBlack.map((element) => ({
-			name: element.props.title,
-			length: element.props.style.width,
-			color: element.props.style.backgroundColor,
-		}));
+		const blackList = partsBlack.map((element) => {
+			console.log('Processing element:', element);
+		  
+			return {
+			  name: element.props.title,
+			  length: element.props.style.width,
+			  color: element.props.style.backgroundColor,
+			  description: getElementFromWhiteList(element.props.title).description,
+			  easyscore: getElementFromWhiteList(element.props.title).easyscore
+			};
+		  });
 		const title = compTitle;
 		const instrument = userInfo.instrument;
 		//If it doesn't have an Id, it saves it in the hook
@@ -435,7 +456,7 @@ const ElementList = ({
 							
 						></TextArea>
 						<div style={{marginTop:'2rem'}}>
-						<SheetMusic timeSign={timeSign}/>
+						<SheetMusic timeSign={timeSign} onChange={(e) => handleChange(e, false, true)} />
 						
 						</div>
 					</div>
@@ -476,6 +497,7 @@ const ElementList = ({
 						</div>
 						<div>
 							{cardInfo.description}
+							<SheetMusic onlySheet={true} thisSheet={cardInfo.easyscore}/>
 						</div>
 					</div>
 

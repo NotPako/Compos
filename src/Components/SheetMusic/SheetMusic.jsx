@@ -1,54 +1,64 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import {Button, Input} from 'antd';
 import {PlusOutlined} from '@ant-design/icons';
-import Vex from 'vexflow';
+import {Vex, EasyScore, System} from 'vexflow';
 
-const SheetMusic = () => {
+const SheetMusic = ({ onChange, onlySheet, thisSheet }) => {
+
+  const [newVoice, setNewVoice] = useState('');
+
+  useEffect(() => {
+    if (onlySheet && thisSheet && thisSheet !== '') {
+      setNewVoice(thisSheet);
+    }
+  }, [onlySheet, thisSheet]);
+
+  useEffect(() => {
+    if (onlySheet && newVoice !== '') {
+      // Trigger your desired function here
+      handleButtonClick()
+    }
+  }, [newVoice]);
+
+
+  const handleInputChange = (e) => {
+    const updatedValue = e.target.value;
+    setNewVoice(updatedValue);
+    onChange(updatedValue)
+  }
+
   const handleButtonClick = () => {
-    const VF = Vex.Flow;
+    const { Factory } = Vex.Flow;
 
-    // Create an SVG renderer and attach it to a container
-    const div = document.getElementById('sheet-music');
-    const renderer = new VF.Renderer(div, VF.Renderer.Backends.SVG);
+// Create a VexFlow renderer attached to the DIV element with id="output".
+const vf = new Factory({ renderer: { elementId: 'sheet-music' } });
+const score = vf.EasyScore();
+const system = vf.System();
 
-    // Size the renderer
-    renderer.resize(500, 200);
+// Create a 4/4 treble stave and add two parallel voices.
+system.addStave({
+  voices: [
+    // Top voice has 4 quarter notes with stems up.
+    score.voice(score.notes(newVoice, { stem: 'up' })),
 
-    // Create a new context
-    const context = renderer.getContext();
+  ]
+}).addClef('treble').addTimeSignature('4/4');
 
-    // Create a stave
-    const stave = new VF.Stave(10, 0, 400);
-
-    // Add a clef and time signature
-    stave.addClef('treble').addTimeSignature('4/4');
-
-    // Connect the stave to the rendering context
-    stave.setContext(context).draw();
-
-    // Create the notes
-    const notes = [
-      new VF.StaveNote({ keys: ['g/4'], duration: 'q' }),
-      new VF.StaveNote({ keys: ['g/4'], duration: 'q' }),
-      new VF.StaveNote({ keys: ['g/4'], duration: 'q' }),
-      new VF.StaveNote({ keys: ['g/4'], duration: 'q' }),
-    ];
-
-    // Add the notes to a voice
-    const voice = new VF.Voice().addTickables(notes);
-
-    // Format and justify the notes within the stave
-    const formatter = new VF.Formatter().joinVoices([voice]).format([voice], 400);
-
-    // Render the voice onto the stave
-    voice.draw(context, stave);
+// Draw it!
+vf.draw();
   };
 
   return(
     <>
+    { onlySheet ? (
+      <>
+      </>
+    ) : <>
+            <Button onClick={handleButtonClick}><PlusOutlined/>Add sheet</Button>
+      <Input placeholder='EasyNote' style={{marginLeft:'2rem', width:'200px'}} onChange={handleInputChange}></Input>
+    </>
+    }
     <div id="sheet-music"></div>
-    <Button onClick={handleButtonClick}><PlusOutlined/>Add voice</Button>
-    <Input placeholder='EasyNote' style={{marginLeft:'2rem', width:'200px'}}></Input>
     </>
   );
 };

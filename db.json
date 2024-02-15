@@ -215,15 +215,45 @@
       "password": "12345678a",
       "instrument": "Pianist",
       "avatar": "/static/media/singerAvatar.e8a82433530c76947930.jpg"
+    },
+    {
+      "id": "musicman",
+      "username": "musicman",
+      "email": "musicman@musicman.com",
+      "password": "12345678a",
+      "instrument": "Guitarrist",
+      "avatar": "/static/media/guitarAvatar.d435da8ae099cde37499.jpg"
+    },
+    {
+      "id": "adminmusic",
+      "username": "adminmusic",
+      "email": "upv@gmail.com",
+      "password": "12345678a",
+      "instrument": "Guitarrist",
+      "avatar": "/static/media/bateriaAvatar.72a4eb10c1ed9e646a4e.jpg"
+    },
+    {
+      "id": "musicupv",
+      "username": "musicupv",
+      "email": "upv@gmail.com",
+      "password": "12345678a",
+      "instrument": "Guitarrist",
+      "avatar": "/static/media/bateriaAvatar.72a4eb10c1ed9e646a4e.jpg"
     }
   ],
   "compos": [
     {
-      "title": "Rosas",
+      "title": "New compo",
       "author": "badasd",
-      "date": "15/7/2023",
+      "date": "17/7/2023",
       "instrument": "Drummer",
       "list": [
+        {
+          "name": "Intro",
+          "color": "red",
+          "length": "8",
+          "description": ""
+        },
         {
           "name": "Chorus",
           "color": "yellow",
@@ -231,84 +261,78 @@
           "description": ""
         },
         {
-          "name": "Bridge",
-          "color": "#006b76",
+          "name": "Verse",
+          "color": "green",
           "length": "8",
-          "description": "El bridge està bé"
+          "description": ""
         },
         {
           "name": "Break",
-          "color": "#c1e1c5",
+          "color": "purple",
           "length": "2",
-          "description": "Este es el brake que tinc que fer"
+          "description": ""
         },
         {
-          "name": "Alguna cosa",
-          "color": "white",
+          "name": "zadfafaf",
+          "color": "#008b02",
           "length": "8",
-          "description": "daasfdsfsf"
+          "description": "afafafdfsdf",
+          "easyscore": "G4/q, G4, G4, G4"
         }
       ],
       "blackList": [
         {
           "name": "Intro",
-          "length": "15rem",
-          "color": "red"
+          "length": "13rem",
+          "color": "red",
+          "description": ""
         },
         {
           "name": "Chorus",
-          "length": "23rem",
-          "color": "yellow"
-        },
-        {
-          "name": "Chorus",
-          "length": "23rem",
-          "color": "yellow"
-        },
-        {
-          "name": "Intro",
-          "length": "15rem",
-          "color": "red"
-        },
-        {
-          "name": "Bridge",
-          "length": "15rem",
-          "color": "#006b76"
+          "length": "21rem",
+          "color": "yellow",
+          "description": ""
         },
         {
           "name": "Break",
-          "length": "9rem",
-          "color": "#c1e1c5"
+          "length": "7rem",
+          "color": "purple",
+          "description": ""
         },
         {
-          "name": "Bridge",
-          "length": "15rem",
-          "color": "#006b76"
-        },
-        {
-          "name": "Break",
-          "length": "9rem",
-          "color": "#c1e1c5"
-        },
-        {
-          "name": "Chorus",
-          "length": "23rem",
-          "color": "yellow"
+          "name": "zadfafaf",
+          "length": "13rem",
+          "color": "#008b02",
+          "description": "afafafdfsdf",
+          "easyscore": "G4/q, G4, G4, G4"
         },
         {
           "name": "Intro",
-          "length": "15rem",
-          "color": "red"
+          "length": "12rem",
+          "color": "red",
+          "description": ""
+        },
+        {
+          "name": "Chorus",
+          "length": "20rem",
+          "color": "yellow",
+          "description": ""
+        },
+        {
+          "name": "Verse",
+          "length": "12rem",
+          "color": "green",
+          "description": ""
         }
       ],
       "public": true,
       "id": 1
     },
     {
-      "title": "New compo",
-      "author": "badasd",
-      "date": "31/5/2023",
-      "instrument": "Drummer",
+      "title": "Mix Aitana",
+      "author": "musicman",
+      "date": "17/7/2023",
+      "instrument": "Guitarrist",
       "list": [
         {
           "name": "Intro",
@@ -339,138 +363,290 @@
         {
           "name": "Intro",
           "length": "12rem",
-          "color": "red"
+          "color": "red",
+          "description": ""
+        },
+        {
+          "name": "Chorus",
+          "length": "20rem",
+          "color": "yellow",
+          "description": ""
+        },
+        {
+          "name": "Verse",
+          "length": "12rem",
+          "color": "green",
+          "description": ""
+        },
+        {
+          "name": "Break",
+          "length": "6rem",
+          "color": "purple",
+          "description": ""
+        },
+        {
+          "name": "Verse",
+          "length": "12rem",
+          "color": "green",
+          "description": ""
+        },
+        {
+          "name": "Break",
+          "length": "6rem",
+          "color": "purple",
+          "description": ""
+        },
+        {
+          "name": "Chorus",
+          "length": "20rem",
+          "color": "yellow",
+          "description": ""
+        },
+        {
+          "name": "Verse",
+          "length": "12rem",
+          "color": "green",
+          "description": ""
+        },
+        {
+          "name": "Break",
+          "length": "6rem",
+          "color": "purple",
+          "description": ""
+        },
+        {
+          "name": "Chorus",
+          "length": "20rem",
+          "color": "yellow",
+          "description": ""
+        },
+        {
+          "name": "Verse",
+          "length": "12rem",
+          "color": "green",
+          "description": ""
         }
       ],
-      "public": false,
+      "public": true,
       "id": 2
     },
     {
-      "title": "Mix 80",
-      "author": "badasd",
-      "date": "14/6/2023",
-      "instrument": "Drummer",
+      "title": "Noche Ochentera",
+      "author": "musicman",
+      "date": "17/7/2023",
+      "instrument": "Guitarrist",
       "list": [
         {
           "name": "Intro",
-          "color": "#c4def6",
-          "length": "2",
-          "description": "Instrumental lo que siga"
+          "color": "red",
+          "length": "8",
+          "description": ""
         },
         {
-          "name": "Veu",
+          "name": "Chorus",
+          "color": "yellow",
+          "length": "16",
+          "description": ""
+        },
+        {
+          "name": "Verse",
+          "color": "green",
+          "length": "8",
+          "description": ""
+        },
+        {
+          "name": "Break",
+          "color": "purple",
+          "length": "2",
+          "description": ""
+        },
+        {
+          "name": "Muntaeta",
+          "color": "#bedadc",
+          "length": "8",
+          "description": "Ací la música va muntant",
+          "easyscore": "G4/q, G4, G4, G4"
+        },
+        {
+          "name": "2ND Chorus",
           "color": "#d4c4fb",
           "length": "16",
-          "description": "Va veu i no nia bateria"
-        },
-        {
-          "name": "afaf",
-          "color": "#004dcf",
-          "length": "8",
-          "description": "eafdsfsdf"
-        },
-        {
-          "name": "Estribillo",
-          "color": "#006b76",
-          "length": "8",
-          "description": "aoshdaifbosaj"
+          "description": "Este estribillo més fort",
+          "easyscore": "D5/q, C5, B4, A4"
         }
       ],
       "blackList": [
         {
           "name": "Intro",
-          "length": "8rem",
-          "color": "#c4def6"
+          "length": "13rem",
+          "color": "red",
+          "description": ""
         },
         {
-          "name": "Veu",
-          "length": "22rem",
-          "color": "#d4c4fb"
+          "name": "Verse",
+          "length": "13rem",
+          "color": "green",
+          "description": ""
         },
         {
-          "name": "Estribillo",
-          "length": "14rem",
-          "color": "#006b76"
+          "name": "Break",
+          "length": "7rem",
+          "color": "purple",
+          "description": ""
         },
         {
-          "name": "Estribillo",
-          "length": "14rem",
-          "color": "#006b76"
+          "name": "Muntaeta",
+          "length": "13rem",
+          "color": "#bedadc",
+          "description": "Ací la música va muntant",
+          "easyscore": "G4/q, G4, G4, G4"
         },
         {
-          "name": "afaf",
-          "length": "14rem",
-          "color": "#004dcf"
+          "name": "Chorus",
+          "length": "21rem",
+          "color": "yellow",
+          "description": ""
         },
         {
-          "name": "Estribillo",
-          "length": "14rem",
-          "color": "#006b76"
+          "name": "2ND Chorus",
+          "length": "21rem",
+          "color": "#d4c4fb",
+          "description": "Este estribillo més fort",
+          "easyscore": "D5/q, C5, B4, A4"
         },
         {
-          "name": "afaf",
-          "length": "14rem",
-          "color": "#004dcf"
+          "name": "Muntaeta",
+          "length": "13rem",
+          "color": "#bedadc",
+          "description": "Ací la música va muntant",
+          "easyscore": "G4/q, G4, G4, G4"
         },
         {
-          "name": "Veu",
-          "length": "22rem",
-          "color": "#d4c4fb"
+          "name": "Chorus",
+          "length": "21rem",
+          "color": "yellow",
+          "description": ""
         },
         {
-          "name": "Veu",
-          "length": "22rem",
-          "color": "#d4c4fb"
+          "name": "2ND Chorus",
+          "length": "21rem",
+          "color": "#d4c4fb",
+          "description": "Este estribillo més fort",
+          "easyscore": "D5/q, C5, B4, A4"
+        }
+      ],
+      "public": true,
+      "id": 3
+    },
+    {
+      "title": "Mix la quinta estación",
+      "author": "adminmusic",
+      "date": "17/7/2023",
+      "instrument": "Guitarrist",
+      "list": [
+        {
+          "name": "Intro",
+          "color": "red",
+          "length": "8",
+          "description": ""
+        },
+        {
+          "name": "Chorus",
+          "color": "yellow",
+          "length": "16",
+          "description": ""
+        },
+        {
+          "name": "Verse",
+          "color": "green",
+          "length": "8",
+          "description": ""
+        },
+        {
+          "name": "Break",
+          "color": "purple",
+          "length": "2",
+          "description": ""
+        },
+        {
+          "name": "2n Chorus",
+          "color": "#d4c4fb",
+          "length": "16",
+          "description": "En aquesta part fem un ritme més lent i la guitarra fa un solo",
+          "easyscore": "G4/q, F4, D4, C5"
+        }
+      ],
+      "blackList": [
+        {
+          "name": "Intro",
+          "length": "12rem",
+          "color": "red",
+          "description": ""
+        },
+        {
+          "name": "Verse",
+          "length": "12rem",
+          "color": "green",
+          "description": ""
+        },
+        {
+          "name": "Break",
+          "length": "6rem",
+          "color": "purple",
+          "description": ""
+        },
+        {
+          "name": "Verse",
+          "length": "12rem",
+          "color": "green",
+          "description": ""
+        },
+        {
+          "name": "Chorus",
+          "length": "20rem",
+          "color": "yellow",
+          "description": ""
+        },
+        {
+          "name": "2n Chorus",
+          "length": "20rem",
+          "color": "#d4c4fb",
+          "description": "En aquesta part fem un ritme més lent i la guitarra fa un solo",
+          "easyscore": "G4/q, F4, D4, C5"
+        },
+        {
+          "name": "Break",
+          "length": "6rem",
+          "color": "purple",
+          "description": ""
+        },
+        {
+          "name": "Verse",
+          "length": "12rem",
+          "color": "green",
+          "description": ""
+        },
+        {
+          "name": "Chorus",
+          "length": "20rem",
+          "color": "yellow",
+          "description": ""
         },
         {
           "name": "Intro",
-          "length": "8rem",
-          "color": "#c4def6"
-        },
-        {
-          "name": "Veu",
-          "length": "22rem",
-          "color": "#d4c4fb"
-        },
-        {
-          "name": "Estribillo",
-          "length": "14rem",
-          "color": "#006b76"
-        },
-        {
-          "name": "Veu",
-          "length": "20rem",
-          "color": "#d4c4fb"
-        },
-        {
-          "name": "Estribillo",
           "length": "12rem",
-          "color": "#006b76"
-        },
-        {
-          "name": "afaf",
-          "length": "12rem",
-          "color": "#004dcf"
-        },
-        {
-          "name": "Veu",
-          "length": "20rem",
-          "color": "#d4c4fb"
-        },
-        {
-          "name": "Estribillo",
-          "length": "12rem",
-          "color": "#006b76"
+          "color": "red",
+          "description": ""
         }
       ],
       "public": true,
       "id": 4
     },
     {
-      "title": "Nova compoçao",
-      "author": "badasd",
-      "date": "12/6/2023",
-      "instrument": "Drummer",
+      "title": "Noche entera",
+      "author": "musicupv",
+      "date": "17/7/2023",
+      "instrument": "Guitarrist",
       "list": [
         {
           "name": "Intro",
@@ -495,148 +671,80 @@
           "color": "purple",
           "length": "2",
           "description": ""
+        },
+        {
+          "name": "2n Chorus",
+          "color": "#bedadc",
+          "length": "16",
+          "description": "La bateria va més ràpida i és més fort",
+          "easyscore": "G4/q, G4, F4, D5"
         }
       ],
       "blackList": [
         {
           "name": "Intro",
-          "length": "13rem",
-          "color": "red"
-        },
-        {
-          "name": "Chorus",
-          "length": "21rem",
-          "color": "yellow"
-        },
-        {
-          "name": "Verse",
-          "length": "13rem",
-          "color": "green"
-        },
-        {
-          "name": "Break",
-          "length": "7rem",
-          "color": "purple"
-        },
-        {
-          "name": "Verse",
-          "length": "13rem",
-          "color": "green"
-        },
-        {
-          "name": "Break",
-          "length": "7rem",
-          "color": "purple"
-        },
-        {
-          "name": "Chorus",
-          "length": "21rem",
-          "color": "yellow"
-        },
-        {
-          "name": "Chorus",
-          "length": "21rem",
-          "color": "yellow"
-        },
-        {
-          "name": "Verse",
           "length": "12rem",
-          "color": "green"
+          "color": "red",
+          "description": ""
         },
         {
           "name": "Break",
           "length": "6rem",
-          "color": "purple"
-        }
-      ],
-      "public": false,
-      "id": 5
-    },
-    {
-      "title": "Regularmente bien",
-      "author": "badasd",
-      "date": "13/6/2023",
-      "instrument": "Drummer",
-      "list": [
+          "color": "purple",
+          "description": ""
+        },
+        {
+          "name": "Verse",
+          "length": "12rem",
+          "color": "green",
+          "description": ""
+        },
+        {
+          "name": "Break",
+          "length": "6rem",
+          "color": "purple",
+          "description": ""
+        },
+        {
+          "name": "Chorus",
+          "length": "20rem",
+          "color": "yellow",
+          "description": ""
+        },
+        {
+          "name": "2n Chorus",
+          "length": "20rem",
+          "color": "#bedadc",
+          "description": "La bateria va més ràpida i és més fort",
+          "easyscore": "G4/q, G4, F4, D5"
+        },
+        {
+          "name": "Break",
+          "length": "6rem",
+          "color": "purple",
+          "description": ""
+        },
+        {
+          "name": "Verse",
+          "length": "12rem",
+          "color": "green",
+          "description": ""
+        },
+        {
+          "name": "Chorus",
+          "length": "20rem",
+          "color": "yellow",
+          "description": ""
+        },
         {
           "name": "Intro",
-          "color": "#004dcf",
-          "length": "4",
-          "description": "dafsdgsdgsgsg"
-        },
-        {
-          "name": "Estribillo",
-          "color": "#c4def6",
-          "length": "8",
-          "description": "Lo que va después"
-        },
-        {
-          "name": "Pont",
-          "color": "#db3e00",
-          "length": "4",
-          "description": "dnkaf ksfsdfnlsdkflkdsffdf"
-        },
-        {
-          "name": "Part tranquila",
-          "color": "#d4c4fb",
-          "length": "6",
-          "description": "Si va, si"
-        }
-      ],
-      "blackList": [
-        {
-          "name": "Estribillo",
           "length": "12rem",
-          "color": "#c4def6"
-        },
-        {
-          "name": "Intro",
-          "length": "8rem",
-          "color": "#004dcf"
-        },
-        {
-          "name": "Estribillo",
-          "length": "12rem",
-          "color": "#c4def6"
-        },
-        {
-          "name": "Pont",
-          "length": "8rem",
-          "color": "#db3e00"
-        },
-        {
-          "name": "Part tranquila",
-          "length": "10rem",
-          "color": "#d4c4fb"
-        },
-        {
-          "name": "Estribillo",
-          "length": "12rem",
-          "color": "#c4def6"
-        },
-        {
-          "name": "Pont",
-          "length": "8rem",
-          "color": "#db3e00"
-        },
-        {
-          "name": "Part tranquila",
-          "length": "10rem",
-          "color": "#d4c4fb"
-        },
-        {
-          "name": "Estribillo",
-          "length": "12rem",
-          "color": "#c4def6"
-        },
-        {
-          "name": "Part tranquila",
-          "length": "10rem",
-          "color": "#d4c4fb"
+          "color": "red",
+          "description": ""
         }
       ],
       "public": true,
-      "id": 6
+      "id": 5
     }
   ]
 }
