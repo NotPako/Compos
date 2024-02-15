@@ -10,7 +10,8 @@ import {
 	SaveOutlined,
 	EyeOutlined,
 	EditOutlined,
-	DownloadOutlined
+	DownloadOutlined,
+	PlusOutlined
 } from '@ant-design/icons';
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
@@ -18,6 +19,7 @@ import { GithubPicker } from 'react-color';
 import { autoSave } from '../../Services/CompoManagement';
 import { useUserContext } from '../../Providers/LoggedUserProvider';
 import { getUserData } from '../../Services/UserManagement';
+import SheetMusic from '../SheetMusic/SheetMusic';
 
 
 
@@ -56,6 +58,7 @@ const ElementList = ({
 	];
 
 	const [buttonPopup, setButtonPopup] = useState(false);
+	const [timeSign, setTimeSign] = useState('4/4')
 	const [startingPopup, setStartingPopup] = useState(false);
 	const [watchClose, setWatchClose] = useState(false);
 	const [compTitle, setCompTitle] = useState('New compo');
@@ -73,12 +76,15 @@ const ElementList = ({
 		name: '',
 		length: 0,
 		color: 'white',
+		description: '',
+		easyscore: ''
 	});
 	const [cardInfo, setCardInfo] = useState({
 		name: '',
 		length: 0,
 		color: '',
-		description: ''
+		description: '',
+		easyscore: ''
 	})
 	const {user} = useUserContext();
 
@@ -138,10 +144,17 @@ const ElementList = ({
 		}
 	}, [userInfo]);
 
-	const handleChange = (e, isItColor) => {
+	useEffect(() => {
+
+	}, [timeSign])
+
+	const handleChange = (e, isItColor, isItEasyScore) => {
 		if (isItColor) {
 			setCardColor(e.hex);
 			setPart((prevState) => ({ ...prevState, color: e.hex }));
+		} else if (isItEasyScore) {
+			setPart((prevState) => ({ ...prevState, easyscore: e }));
+			console.log(part, 'la part')
 		} else {
 			setPart((prevState) => ({ ...prevState, [e.target.name]: e.target.value }));
 		}
@@ -151,6 +164,8 @@ const ElementList = ({
 		setCompTitle(e.target.value);
 	};
 
+
+	
 	const addPart = () => {
 		const newList = list.concat([part]);
 		setButtonPopup(false);
@@ -210,7 +225,9 @@ const ElementList = ({
 			description: card.description,
 			color: card.color,
 			length: card.length,
+			easyscore: card.easyscore
 		})
+		console.log(cardInfo)
 	}
 
 	
@@ -220,6 +237,7 @@ const ElementList = ({
 		setPartList(
 			partList.concat(
 				<Card
+					data-testid='partlisttest'
 					style={{
 						backgroundColor: `${element.color}`,
 						width: `${parseInt(element.length) + 4}rem`,
@@ -231,11 +249,13 @@ const ElementList = ({
 		setPartsBlack(
 			partsBlack.concat(
 				<Card
+					data-testid='parttest'
 					className='cardDesign'
 					style={{
 						backgroundColor: `${element.color}`,
 						width: `${parseInt(element.length) + 4}rem`,
-						height:'8rem'
+						height:'8rem',
+						marginTop:'2rem'
 					}}
 					title={element.name}
 
@@ -258,6 +278,13 @@ const ElementList = ({
 		);
 	};
 
+	function getElementFromWhiteList(name) {
+
+		const matchedElement = list.find((element) => element.name === name);
+	  
+		return matchedElement;
+	  }
+
 	const saveCompo = async () => {
 		const date = new Date();
 		const author = user.username;
@@ -266,12 +293,19 @@ const ElementList = ({
 			color: element.color,
 			length: element.length,
 			description: element.description,
+			easyscore: element.easyscore,
 		}));
-		const blackList = partsBlack.map((element) => ({
-			name: element.props.title,
-			length: element.props.style.width,
-			color: element.props.style.backgroundColor,
-		}));
+		const blackList = partsBlack.map((element) => {
+			console.log('Processing element:', element);
+		  
+			return {
+			  name: element.props.title,
+			  length: element.props.style.width,
+			  color: element.props.style.backgroundColor,
+			  description: getElementFromWhiteList(element.props.title).description,
+			  easyscore: getElementFromWhiteList(element.props.title).easyscore
+			};
+		  });
 		const title = compTitle;
 		const instrument = userInfo.instrument;
 		//If it doesn't have an Id, it saves it in the hook
@@ -315,6 +349,18 @@ const ElementList = ({
 	const onChangePreset = (value) => {
 		setPreset(value[0]);
 	};
+	function decreaseByFour(inputString) {
+		// Remove "rem" part and convert the remaining string to a number
+		const number = parseInt(inputString);
+	  
+		// Decrease the number by 4
+		const decreasedNumber = number - 4;
+	  
+		// Return the decreased number as a string
+		return decreasedNumber.toString();
+	  }
+
+	
 
 	
 
@@ -396,7 +442,7 @@ const ElementList = ({
 							onChange={(e) => handleChange(e, true)}
 						/>
 					</div>
-					<div style={{marginLeft:'2rem'}}>
+					<div style={{marginLeft:'2rem', display:'flex', flexDirection:'column'}}>
 					<h3>Give it a description</h3>
 						<TextArea
 							type='text'
@@ -406,10 +452,15 @@ const ElementList = ({
 								handleChange(e);
 							}}
 							rows={4}
+							style={{width:'20rem'}}
 							
 						></TextArea>
-
+						<div style={{marginTop:'2rem'}}>
+						<SheetMusic timeSign={timeSign} onChange={(e) => handleChange(e, false, true)} />
+						
+						</div>
 					</div>
+					
 					</div>
 				</PopUp>
 				<PopUp
@@ -446,13 +497,14 @@ const ElementList = ({
 						</div>
 						<div>
 							{cardInfo.description}
+							<SheetMusic onlySheet={true} thisSheet={cardInfo.easyscore}/>
 						</div>
 					</div>
 
 				</PopUp>
 
 				<br></br>
-				<ul>
+				<ul className='whiteListDesign'>
 					{list.map((element, index) => (
 						<div
 							key={element.name}
@@ -462,7 +514,8 @@ const ElementList = ({
 							<Card
 								style={{
 									marginBottom: '1rem',
-									width: '15rem',
+									width: '10rem',
+									height:'10rem',
 									backgroundColor: `${element.color}`,
 								}}
 								title={element.name}

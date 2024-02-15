@@ -36,9 +36,9 @@ export const options = [
 
 const RegisterCard = () => {
 
-    const userChange = useChangeUserContext();
     const navigate = useNavigate();
     const [instrument, setInstrument] = useState("");
+    const {userChange} = useChangeUserContext();
 
     const [user, setUser] = useState({
         username : "",
@@ -119,8 +119,7 @@ const RegisterCard = () => {
             console.log(user);
             AddUser(user, instrument, '');
             console.log('registrado');
-            userChange(user);
-            
+            userChange(user)
             navigate('/mycompos');
            } else {
             setRegError('Please, select your instrument preference')

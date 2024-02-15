@@ -1,6 +1,6 @@
 .pizarraDesign {
     height:max-content;
-    width:max-content;
+    width:100dvw - 40px;
     margin-right:5rem;
     margin-left: 5rem;
     color: white;
@@ -12,4 +12,9 @@
 
 .element {
     cursor:pointer;
+}
+
+.detailDesign {
+    margin-left: 8rem; 
+    margin-top: 2rem;
 }

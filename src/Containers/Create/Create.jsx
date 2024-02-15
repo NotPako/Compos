@@ -1,7 +1,7 @@
 import React from 'react';
 import './Create.css';
 import ElementList from '../../Components/ElementList/ElementList';
-import Blackboard from '../../Components/Blackboard/Blackboard.tsx';
+import Blackboard from '../../Components/Blackboard/Blackboard.jsx';
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 
@@ -23,6 +23,7 @@ const Create = () => {
 			<Blackboard
 				partsList={partsBlack}
 				setPartsBlack={setPartsBlack}
+				whiteList={['']}
 			/>
 		</motion.div>
 	);

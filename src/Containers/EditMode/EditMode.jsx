@@ -1,13 +1,14 @@
 import { React, useState, useEffect } from 'react';
 import ElementList from '../../Components/ElementList/ElementList';
 import { useLocation } from 'react-router-dom';
-import Blackboard from '../../Components/Blackboard/Blackboard.tsx';
+import Blackboard from '../../Components/Blackboard/Blackboard.jsx';
 import { CloseOutlined, EyeOutlined } from '@ant-design/icons';
 import { getCompoById } from '../../Services/CompoManagement';
 import { Card } from 'antd';
 import { motion } from 'framer-motion';
 import './EditMode.css';
 import PopUp from '../../Components/PopUp/PopUp';
+import SheetMusic from '../../Components/SheetMusic/SheetMusic';
 
 const EditMode = () => {
 	const [partsBlack, setPartsBlack] = useState([]);
@@ -21,7 +22,8 @@ const EditMode = () => {
 		name: '',
 		length: 0,
 		color: '',
-		description: ''
+		description: '',
+		easyscore: ''
 	})
 
 	const handleDeleteCard = (index) => {
@@ -33,12 +35,15 @@ const EditMode = () => {
 	};
 
 	const watchThisCard = (card) => {
-		setWatchClose(true);
 		setCardInfo({name: card.name,
 			description: card.description,
 			color: card.color,
 			length: card.length,
-		})
+			easyscore: card.easyscore,
+		});
+		console.log(card, 'la carta')
+		setWatchClose(true)
+
 	}
 
 	function decreaseByFour(inputString) {
@@ -68,6 +73,7 @@ const EditMode = () => {
 							style={{
 								backgroundColor: `${element.color}`,
 								width: `${parseInt(element.length) + 1}rem`,
+								marginTop:'2rem'
 							}}
 							title={element.name}
 						>
@@ -109,6 +115,8 @@ const EditMode = () => {
 			<Blackboard
 				partsList={partsBlack}
 				setPartsBlack={setPartsBlack}
+				whiteList={whiteList}
+				style={{display: 'flex', flexDirection: 'column', }}
 			/>
 			<PopUp
 				trigger={watchClose}
@@ -124,6 +132,7 @@ const EditMode = () => {
 						</div>
 						<div>
 							{cardInfo.description}
+							<SheetMusic onlySheet={true} thisSheet={cardInfo.easyscore}/>
 						</div>
 					</div>
 
